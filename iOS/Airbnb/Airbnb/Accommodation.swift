@@ -17,4 +17,5 @@ struct Accommodation: Codable {
     var rating: String
     var numReviews: Int
     var isSuperHost: Bool
+    var isFavorite: Bool
 }
