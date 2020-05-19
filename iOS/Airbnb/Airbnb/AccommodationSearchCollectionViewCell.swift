@@ -23,15 +23,31 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    private func addImage(images: [UIImage]) {
+    private func add(images: [UIImage]) {
         for image in images {
             imageStackView.addArrangedSubview(UIImageView(image: image))
         }
     }
     
-    func configureData() {
-        // TODO:- datasource에서 모델 받아서 각각의 데이터 바인딩 필요
+    private func judge(isFavorite: Bool) {
+        if isFavorite{
+            likeButton.image = UIImage(systemName: "heart.fill")
+        }
     }
     
+    private func judge(isSuperHost: Bool) {
+        if !isSuperHost {
+            badgeLabel.isHidden = true
+        }
+    }
     
+    func configureData(_ accommodation: Accommodation) {
+        judge(isFavorite: accommodation.isFavorite)
+        judge(isSuperHost: accommodation.isSuperHost)
+        infoLabel.text =  "\(accommodation.housingType)" + "\(accommodation.numBedrooms)" + "bedrooms" + "\(accommodation.numBeds)" + "bed"
+        pointAverageLabel.text = accommodation.rating
+        reviewCountLabel.text = "\(accommodation.numReviews)"
+        nameLabel.text = "\(accommodation.name)"
+         
+    }
 }
