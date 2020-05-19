@@ -22,5 +22,32 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    private func add(images: [UIImage]) {
+        for image in images {
+            imageStackView.addArrangedSubview(UIImageView(image: image))
+        }
+    }
+    
+    private func judge(isFavorite: Bool) {
+        if isFavorite{
+            likeButton.image = UIImage(systemName: "heart.fill")
+        }
+    }
+    
+    private func judge(isSuperHost: Bool) {
+        if !isSuperHost {
+            badgeLabel.isHidden = true
+        }
+    }
+    
+    func configureData(_ accommodation: Accommodation) {
+        judge(isFavorite: accommodation.isFavorite)
+        judge(isSuperHost: accommodation.isSuperHost)
+        infoLabel.text =  "\(accommodation.housingType)" + "\(accommodation.numBedrooms)" + "bedrooms" + "\(accommodation.numBeds)" + "bed"
+        pointAverageLabel.text = accommodation.rating
+        reviewCountLabel.text = "\(accommodation.numReviews)"
+        nameLabel.text = "\(accommodation.name)"
+         
+    }
 }
