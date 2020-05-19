@@ -14,7 +14,57 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VW1-Sq-eOP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipc-gY-hMO">
+                                        <rect key="frame" x="8" y="8" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-cS-Znl">
+                                        <rect key="frame" x="8" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-Of-ujo">
+                                        <rect key="frame" x="62" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aL-2j-hug">
+                                        <rect key="frame" x="116" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-N8-4Vl">
+                                        <rect key="frame" x="186" y="94" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ipc-gY-hMO" secondAttribute="trailing" constant="8" id="1RX-He-PWF"/>
+                                    <constraint firstItem="ipc-gY-hMO" firstAttribute="top" secondItem="VW1-Sq-eOP" secondAttribute="top" constant="8" id="7TG-Dy-Fhp"/>
+                                    <constraint firstItem="ldT-Of-ujo" firstAttribute="leading" secondItem="OIr-cS-Znl" secondAttribute="trailing" constant="8" id="FHf-4q-Tbg"/>
+                                    <constraint firstItem="7aL-2j-hug" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="IpK-yP-1Hs"/>
+                                    <constraint firstItem="iJz-N8-4Vl" firstAttribute="top" secondItem="7aL-2j-hug" secondAttribute="bottom" constant="8" id="VmS-w6-6Vm"/>
+                                    <constraint firstItem="OIr-cS-Znl" firstAttribute="leading" secondItem="VW1-Sq-eOP" secondAttribute="leading" constant="8" id="dnQ-Y4-lLV"/>
+                                    <constraint firstItem="iJz-N8-4Vl" firstAttribute="centerX" secondItem="VW1-Sq-eOP" secondAttribute="centerX" id="eU2-XH-BlB"/>
+                                    <constraint firstItem="ldT-Of-ujo" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="eiH-8j-lyx"/>
+                                    <constraint firstItem="OIr-cS-Znl" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="gXT-Xg-Hf8"/>
+                                    <constraint firstItem="7aL-2j-hug" firstAttribute="leading" secondItem="ldT-Of-ujo" secondAttribute="trailing" constant="8" id="p25-aF-KMM"/>
+                                    <constraint firstItem="ipc-gY-hMO" firstAttribute="leading" secondItem="VW1-Sq-eOP" secondAttribute="leading" constant="8" id="tiH-6B-cmZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VW1-Sq-eOP" secondAttribute="trailing" id="2Ie-lH-rLb"/>
+                            <constraint firstItem="VW1-Sq-eOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ze-3L-c4N"/>
+                            <constraint firstItem="VW1-Sq-eOP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LPf-dS-eiF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VW1-Sq-eOP" secondAttribute="bottom" id="Lzi-2d-nMw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="숙소" selectedImage="magnifyingglass" catalog="system" id="VwQ-nf-25J"/>
