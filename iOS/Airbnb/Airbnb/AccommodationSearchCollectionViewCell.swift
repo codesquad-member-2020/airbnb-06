@@ -22,5 +22,16 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    private func addImage(images: [UIImage]) {
+        for image in images {
+            imageStackView.addArrangedSubview(UIImageView(image: image))
+        }
+    }
+    
+    func configureData() {
+        // TODO:- datasource에서 모델 받아서 각각의 데이터 바인딩 필요
+    }
+    
+    
 }
