@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import Floaty
 
 class SearchViewController: UIViewController {
-
-    @IBOutlet var filteringDescriptionLabel: UILabel!
+    
+    @IBOutlet var filteringDescriptionLabel: SearchTextField!
     @IBOutlet var accommodationSearchCollectionView: AccommodationSearchCollectionView!
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
+    @IBOutlet var floatingButton: Floaty!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 }
