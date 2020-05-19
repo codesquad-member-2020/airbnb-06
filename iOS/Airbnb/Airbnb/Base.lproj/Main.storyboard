@@ -1,24 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8kN-le-RZa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--숙소-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VW1-Sq-eOP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipc-gY-hMO">
+                                        <rect key="frame" x="8" y="8" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-cS-Znl" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-Of-ujo" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="62" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aL-2j-hug" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="116" y="50" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-N8-4Vl">
+                                        <rect key="frame" x="186" y="94" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q4f-ws-TDw" customClass="AccommodationSearchCollectionView" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="116" width="398" height="633"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mq6-ga-34U">
+                                            <size key="itemSize" width="398" height="251"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AccommodationSearchCollectionViewCell" id="HJF-Ml-VdA" customClass="AccommodationSearchCollectionViewCell" customModule="Airbnb" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="251"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TQO-cN-vxd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="251"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="398" height="251"/>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ipc-gY-hMO" secondAttribute="trailing" constant="8" id="1RX-He-PWF"/>
+                                    <constraint firstItem="ipc-gY-hMO" firstAttribute="top" secondItem="VW1-Sq-eOP" secondAttribute="top" constant="8" id="7TG-Dy-Fhp"/>
+                                    <constraint firstItem="ldT-Of-ujo" firstAttribute="leading" secondItem="OIr-cS-Znl" secondAttribute="trailing" constant="8" id="FHf-4q-Tbg"/>
+                                    <constraint firstItem="7aL-2j-hug" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="IpK-yP-1Hs"/>
+                                    <constraint firstItem="iJz-N8-4Vl" firstAttribute="top" secondItem="7aL-2j-hug" secondAttribute="bottom" constant="14" id="VmS-w6-6Vm"/>
+                                    <constraint firstItem="Q4f-ws-TDw" firstAttribute="top" secondItem="iJz-N8-4Vl" secondAttribute="bottom" constant="1.5" id="bVn-9c-bsK"/>
+                                    <constraint firstItem="OIr-cS-Znl" firstAttribute="leading" secondItem="VW1-Sq-eOP" secondAttribute="leading" constant="8" id="dnQ-Y4-lLV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q4f-ws-TDw" secondAttribute="bottom" constant="20" symbolic="YES" id="eLB-lv-MLz"/>
+                                    <constraint firstItem="iJz-N8-4Vl" firstAttribute="centerX" secondItem="VW1-Sq-eOP" secondAttribute="centerX" id="eU2-XH-BlB"/>
+                                    <constraint firstItem="ldT-Of-ujo" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="eiH-8j-lyx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q4f-ws-TDw" secondAttribute="trailing" constant="8" id="fVO-mF-4H5"/>
+                                    <constraint firstItem="OIr-cS-Znl" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="8" id="gXT-Xg-Hf8"/>
+                                    <constraint firstItem="7aL-2j-hug" firstAttribute="leading" secondItem="ldT-Of-ujo" secondAttribute="trailing" constant="8" id="p25-aF-KMM"/>
+                                    <constraint firstItem="ipc-gY-hMO" firstAttribute="leading" secondItem="VW1-Sq-eOP" secondAttribute="leading" constant="8" id="tiH-6B-cmZ"/>
+                                    <constraint firstItem="Q4f-ws-TDw" firstAttribute="leading" secondItem="VW1-Sq-eOP" secondAttribute="leading" constant="8" id="zlf-oW-B7J"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VW1-Sq-eOP" secondAttribute="trailing" id="2Ie-lH-rLb"/>
+                            <constraint firstItem="VW1-Sq-eOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ze-3L-c4N"/>
+                            <constraint firstItem="VW1-Sq-eOP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LPf-dS-eiF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VW1-Sq-eOP" secondAttribute="bottom" id="Lzi-2d-nMw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="VwQ-nf-25J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1098.5507246376812" y="-629.46428571428567"/>
+        </scene>
+        <!--즐겨찾기-->
+        <scene sceneID="c8E-3v-PhP">
+            <objects>
+                <viewController id="pNS-Jv-GI3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N3w-Mr-jeN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BcZ-ba-CnP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="즐겨찾기" image="heart.fill" catalog="system" selectedImage="heart.fill" id="dRP-hW-Het"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOp-Ux-cUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1098.5507246376812" y="137.94642857142856"/>
+        </scene>
+        <!--예약-->
+        <scene sceneID="I94-iL-uPP">
+            <objects>
+                <viewController id="5hK-eD-Ul5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5be-rS-ofi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="0zX-Yl-bI5"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="예약" image="person.fill" catalog="system" selectedImage="person.fill" id="W6a-ul-Zwu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HTz-uk-F0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="927"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fEz-OH-eNT">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8kN-le-RZa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7rl-U5-9lY">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Yv8-7Y-XlW"/>
+                        <segue destination="pNS-Jv-GI3" kind="relationship" relationship="viewControllers" id="Fp5-ox-FzE"/>
+                        <segue destination="5hK-eD-Ul5" kind="relationship" relationship="viewControllers" id="Giy-g2-rUg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAi-ou-AFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
