@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -206,6 +206,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-1j-Rp6" customClass="CircleView" customModule="Airbnb" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH7-i1-Xih">
                                                     <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -214,11 +218,16 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bpd-1j-Rp6" secondAttribute="trailing" id="38y-2o-ITy"/>
+                                                <constraint firstAttribute="bottom" secondItem="bpd-1j-Rp6" secondAttribute="bottom" id="D1q-Rv-UKq"/>
                                                 <constraint firstItem="bH7-i1-Xih" firstAttribute="centerX" secondItem="ov4-Sz-14L" secondAttribute="centerX" id="JaH-st-QBy"/>
+                                                <constraint firstItem="bpd-1j-Rp6" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="iKj-RY-wyz"/>
+                                                <constraint firstItem="bpd-1j-Rp6" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" id="xbO-Bt-qCO"/>
                                                 <constraint firstItem="bH7-i1-Xih" firstAttribute="centerY" secondItem="ov4-Sz-14L" secondAttribute="centerY" id="zm0-be-A8K"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="circleView" destination="bpd-1j-Rp6" id="4c6-az-X4v"/>
                                             <outlet property="dateLabel" destination="bH7-i1-Xih" id="XDJ-ux-Riq"/>
                                         </connections>
                                     </collectionViewCell>
@@ -298,9 +307,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="map" catalog="system" width="64" height="56"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="map" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>
