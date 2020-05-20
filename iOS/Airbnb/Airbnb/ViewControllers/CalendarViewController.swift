@@ -9,11 +9,10 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
     private let dateManager = DateManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -51,5 +50,19 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         let width = self.view.bounds.width / 7
         return CGSize(width: width, height: width)
     }
-    
+}
+
+extension CalendarViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        if cell.isSelected {
+            collectionView.deselectItem(at: indexPath, animated: true)
+            cell.deselect()
+        } else {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            cell.select()
+        }
+        return false
+    }
 }
