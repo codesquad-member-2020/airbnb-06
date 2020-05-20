@@ -12,6 +12,8 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
+    let manager = DateManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -31,7 +33,10 @@ extension CalendarViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
+        if manager.firstWeekday() == indexPath.item {
+            cell.configure(date: 1)
+        }
         return cell
     }
     
@@ -45,7 +50,8 @@ extension CalendarViewController: UICollectionViewDataSource {
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.bounds.width / 7, height: self.view.bounds.width / 7)
+        let width = self.view.bounds.width / 7
+        return CGSize(width: width, height: width)
     }
     
 }
