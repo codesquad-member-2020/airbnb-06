@@ -12,7 +12,7 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
-    let manager = DateManager()
+    private let dateManager = DateManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ class CalendarViewController: UIViewController {
         calendarCollectionView.dataSource = self
         calendarCollectionView.delegate = self
     }
-
 }
 
 extension CalendarViewController: UICollectionViewDataSource {
@@ -34,7 +33,7 @@ extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
-        if manager.firstWeekday() == indexPath.item {
+        if dateManager.firstWeekday() == indexPath.item {
             cell.configure(date: 1)
         }
         return cell
@@ -44,7 +43,6 @@ extension CalendarViewController: UICollectionViewDataSource {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath)
         return headerView
     }
-    
 }
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
