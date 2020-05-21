@@ -36,6 +36,10 @@
 		30B2E927247401EB002FB866 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		4012801DAD21A7AE478D9312 /* Pods-Airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airbnb.debug.xcconfig"; path = "Target Support Files/Pods-Airbnb/Pods-Airbnb.debug.xcconfig"; sourceTree = "<group>"; };
+		78683384247653610074D1B7 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		78683386247653820074D1B7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		78683388247657A80074D1B7 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		7868338A247657B30074D1B7 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
 		7872575824750C520050DB66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		787257632475132A0050DB66 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		78725765247525270050DB66 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				78802AD52473A3C300A901E2 /* LaunchScreen.storyboard in Resources */,
+				7868338B247657B30074D1B7 /* FooterView.xib in Resources */,
+				78683385247653610074D1B7 /* HeaderView.xib in Resources */,
 				78802AE52473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib in Resources */,
 				78802AD22473A3C300A901E2 /* Assets.xcassets in Resources */,
 				78802AD02473A3C200A901E2 /* Main.storyboard in Resources */,
@@ -326,6 +332,7 @@
 				78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */,
 				78802AC92473A3C200A901E2 /* AppDelegate.swift in Sources */,
 				30B2E9262473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift in Sources */,
+				78683389247657A80074D1B7 /* FooterView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,
 				30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */,
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
@@ -337,6 +344,7 @@
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
+				78683387247653820074D1B7 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
