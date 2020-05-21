@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -139,6 +139,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsa-HJ-tLS" customClass="HeaderView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-Tv-cIu">
                                 <rect key="frame" x="0.0" y="144" width="414" height="18"/>
                                 <subviews>
@@ -252,12 +256,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Bsa-HJ-tLS" firstAttribute="height" secondItem="RYx-E4-Z2N" secondAttribute="height" multiplier="0.07" id="3gP-K0-MZe"/>
+                            <constraint firstItem="Bsa-HJ-tLS" firstAttribute="top" secondItem="9LH-Q7-AJd" secondAttribute="top" id="4ae-zM-Ujg"/>
                             <constraint firstItem="9LH-Q7-AJd" firstAttribute="trailing" secondItem="8ac-IH-Z8X" secondAttribute="trailing" id="8GG-v4-C4m"/>
                             <constraint firstItem="ae7-Tv-cIu" firstAttribute="leading" secondItem="9LH-Q7-AJd" secondAttribute="leading" id="FT3-Om-v0j"/>
                             <constraint firstItem="9LH-Q7-AJd" firstAttribute="trailing" secondItem="ae7-Tv-cIu" secondAttribute="trailing" id="Gka-nJ-nHu"/>
                             <constraint firstItem="8ac-IH-Z8X" firstAttribute="top" secondItem="ae7-Tv-cIu" secondAttribute="bottom" constant="50" id="VOt-lG-SWe"/>
+                            <constraint firstItem="Bsa-HJ-tLS" firstAttribute="width" secondItem="RYx-E4-Z2N" secondAttribute="width" id="eMK-bw-eLc"/>
+                            <constraint firstItem="Bsa-HJ-tLS" firstAttribute="leading" secondItem="9LH-Q7-AJd" secondAttribute="leading" id="lei-Uh-IkE"/>
                             <constraint firstItem="ae7-Tv-cIu" firstAttribute="top" secondItem="9LH-Q7-AJd" secondAttribute="top" constant="100" id="nFA-uX-4J0"/>
                             <constraint firstItem="8ac-IH-Z8X" firstAttribute="leading" secondItem="9LH-Q7-AJd" secondAttribute="leading" id="ojG-i3-xzd"/>
+                            <constraint firstItem="9LH-Q7-AJd" firstAttribute="trailing" secondItem="Bsa-HJ-tLS" secondAttribute="trailing" id="teX-qR-b6T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9LH-Q7-AJd"/>
                     </view>
@@ -307,9 +316,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="map" catalog="system" width="128" height="113"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="map" catalog="system" width="64" height="56"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
