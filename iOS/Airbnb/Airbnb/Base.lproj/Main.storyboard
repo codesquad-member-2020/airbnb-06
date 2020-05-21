@@ -193,8 +193,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ac-IH-Z8X">
-                                <rect key="frame" x="0.0" y="154" width="414" height="414"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ac-IH-Z8X">
+                                <rect key="frame" x="0.0" y="212" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8ac-IH-Z8X" secondAttribute="height" id="29L-vr-uxg"/>
@@ -239,21 +239,26 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarHeader" id="aLH-4J-OQ3">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarHeader" id="aLH-4J-OQ3" customClass="CalendarHeaderView" customModule="Airbnb" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOE-Zd-iLa">
-                                            <rect key="frame" x="16" y="15" width="82" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-es-HTW">
+                                            <rect key="frame" x="16" y="8" width="390" height="34"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="YOE-Zd-iLa" firstAttribute="leading" secondItem="aLH-4J-OQ3" secondAttribute="leadingMargin" constant="8" id="JKn-da-pIg"/>
-                                        <constraint firstItem="YOE-Zd-iLa" firstAttribute="centerY" secondItem="aLH-4J-OQ3" secondAttribute="centerY" id="rD1-60-3Ef"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eL3-es-HTW" secondAttribute="bottom" id="OvV-Wq-9A2"/>
+                                        <constraint firstItem="eL3-es-HTW" firstAttribute="top" secondItem="aLH-4J-OQ3" secondAttribute="topMargin" id="Zd3-bm-NQw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eL3-es-HTW" secondAttribute="trailing" id="fSo-vK-5Ox"/>
+                                        <constraint firstItem="eL3-es-HTW" firstAttribute="leading" secondItem="aLH-4J-OQ3" secondAttribute="leadingMargin" constant="8" id="fuQ-WU-h0U"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="yearMonthLabel" destination="eL3-es-HTW" id="sXE-E5-95v"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjK-Hb-cx7" customClass="FooterView" customModule="Airbnb" customModuleProvider="target">
