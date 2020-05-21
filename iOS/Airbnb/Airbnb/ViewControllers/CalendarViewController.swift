@@ -11,8 +11,8 @@ import UIKit
 class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
-    private let dateManager = DateManager()
-
+    private var dateManager = DateManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -34,14 +34,22 @@ extension CalendarViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
         if dateManager.firstWeekday() == indexPath.item {
             cell.configure(date: 1)
+        } else if indexPath.item > dateManager.firstWeekday() {
+            cell.configure(date: 3)
         }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath)
-        return headerView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return dateManager.getCountOfMonths().count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath) as! CalendarHeaderView
+        headerView.set("\(dateManager.getMonth(index: indexPath.section))월")
+        return headerViewa
+    }
+    
 }
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
