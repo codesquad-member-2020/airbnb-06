@@ -12,6 +12,7 @@
 		30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E9232473F2C6002FB866 /* SearchViewController.swift */; };
 		30B2E9262473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E9252473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift */; };
 		30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E927247401EB002FB866 /* SearchTextField.swift */; };
+		30D248DE247694C3002F64F2 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */; };
 		7872575924750C520050DB66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872575824750C520050DB66 /* CalendarViewController.swift */; };
 		787257642475132A0050DB66 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787257632475132A0050DB66 /* DateManager.swift */; };
 		78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78725765247525270050DB66 /* CalendarCollectionViewCell.swift */; };
@@ -33,6 +34,7 @@
 		30B2E9232473F2C6002FB866 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		30B2E9252473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationSearchCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		30B2E927247401EB002FB866 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		4012801DAD21A7AE478D9312 /* Pods-Airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airbnb.debug.xcconfig"; path = "Target Support Files/Pods-Airbnb/Pods-Airbnb.debug.xcconfig"; sourceTree = "<group>"; };
 		7872575824750C520050DB66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		787257632475132A0050DB66 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				301FD859247552F000F95C72 /* CircleView.swift */,
+				30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
 				78802ADD2473A7E200A901E2 /* FilterButton.swift in Sources */,
 				301FD85A247552F000F95C72 /* CircleView.swift in Sources */,
+				30D248DE247694C3002F64F2 /* CalendarHeaderView.swift in Sources */,
 				787257642475132A0050DB66 /* DateManager.swift in Sources */,
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
