@@ -21,6 +21,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dateLabel.text = ""
+    }
+    
     func configure(date: Int) {
         dateLabel.text = "\(date)"
     }
