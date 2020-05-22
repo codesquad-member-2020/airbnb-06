@@ -1,16 +1,23 @@
 package io.codesquad.group6.mockbnb.mock;
 
+import io.codesquad.group6.mockbnb.api.request.LikeRequest;
 import io.codesquad.group6.mockbnb.api.response.ListingResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@Slf4j()
 public class MockController {
 
     @GetMapping("/mock/listings")
@@ -68,6 +75,13 @@ public class MockController {
                                     .isLiked(true)
                                     .build());
         return ResponseEntity.ok(listings);
+    }
+
+    @PatchMapping("/mock/listings/{listing-id}")
+    public void likeListing(@PathVariable(name = "listing-id") long listingId,
+                            @RequestBody LikeRequest likeRequest,
+                            HttpServletResponse response) {
+        response.setStatus(202);
     }
 
 }
