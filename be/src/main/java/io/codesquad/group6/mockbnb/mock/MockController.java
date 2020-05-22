@@ -9,6 +9,7 @@ import io.codesquad.group6.mockbnb.api.response.ListingDetail;
 import io.codesquad.group6.mockbnb.api.response.ListingSummary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -173,6 +174,12 @@ public class MockController {
                                               .cleaningFee(25.00)
                                               .totalPrice(123.45 * 3 + 25.00)
                                               .build());
+    }
+
+    @DeleteMapping("/mock/bookings/{booking-id}")
+    public void cancelBooking(@PathVariable(name = "booking-id") long bookingId, HttpServletResponse response) {
+        log.debug("bookingId: {}", bookingId);
+        response.setStatus(202);
     }
 
 }
