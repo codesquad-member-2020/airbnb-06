@@ -9,6 +9,8 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
+    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
     private let dateManager = DateManager()

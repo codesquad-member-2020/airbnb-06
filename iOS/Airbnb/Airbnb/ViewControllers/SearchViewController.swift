@@ -11,10 +11,21 @@ import Floaty
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet var filteringDescriptionLabel: SearchTextField!
-    @IBOutlet var accommodationSearchCollectionView: AccommodationSearchCollectionView!
+    @IBOutlet weak var dateFilterButton: FilterButton!
+    @IBOutlet weak var guestFilterButton: FilterButton!
+    @IBOutlet weak var priceFilterButton: FilterButton!
+    @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
+    @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
+    @IBOutlet weak var floatingButton: Floaty!
+    
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
-    @IBOutlet var floatingButton: Floaty!
+    
+    @IBAction func displayFilter(_ sender: FilterButton) {
+        let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+        calendarViewController.modalPresentationStyle = .overCurrentContext
+        calendarViewController.modalTransitionStyle = .crossDissolve
+        present(calendarViewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
