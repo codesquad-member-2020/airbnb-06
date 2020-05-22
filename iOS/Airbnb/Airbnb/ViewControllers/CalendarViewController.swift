@@ -36,7 +36,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         let thisMonth = dateManager.month(index: indexPath.section)
         let date = indexPath.item - weekday + 1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
-        
+        if chooseDays.contains(indexPath) { cell.select() }
         if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date {
             cell.configure(date: date)
         }
@@ -64,22 +64,46 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 
 extension CalendarViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        chooseDays.count < 2 ? mark(collectionView, indexPath: indexPath) : unmark(collectionView, indexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        if cell.isSelected {
+            if chooseDays.count < 2 {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                chooseDays.remove(at: chooseDays.firstIndex(of: indexPath)!)
+                cell.deselect()
+            }else if chooseDays.contains(indexPath) {
+                removeAndReload(collectionView, cell: cell, indexPath: indexPath)
+            }
+        }else {
+            if chooseDays.count == 0 {
+                mark(collectionView, cell: cell, indexPath: indexPath)
+            }else {
+                if compare(indexPath) {
+                    removeAndReload(collectionView, cell: cell, indexPath: indexPath)
+                }else if !compare(indexPath), chooseDays.count < 2 {
+                    mark(collectionView, cell: cell, indexPath: indexPath)
+                }else {
+                    removeAndReload(collectionView, cell: cell, indexPath: indexPath)
+                }
+            }
+        }
+        return false
     }
     
-    private func mark(_ collectionView: UICollectionView, indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+    private func mark(_ collectionView: UICollectionView, cell: CalendarCollectionViewCell, indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
         cell.select()
         chooseDays.append(indexPath)
     }
     
-    private func unmark(_ collectionView: UICollectionView, indexPath: IndexPath) {
-        chooseDays.forEach {
-            let cell = collectionView.cellForItem(at: $0) as! CalendarCollectionViewCell
-            cell.deselect()
-        }
+    private func removeAndReload(_ collectionView: UICollectionView, cell: CalendarCollectionViewCell, indexPath: IndexPath) {
         chooseDays.removeAll()
-        mark(collectionView, indexPath: indexPath)
+        mark(collectionView, cell: cell, indexPath: indexPath)
+        collectionView.reloadData()
+    }
+    
+    private func compare(_ last: IndexPath) -> Bool {
+        guard let first = chooseDays.first else { return false }
+        return first > last
     }
 }
