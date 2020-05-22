@@ -2,6 +2,7 @@ package io.codesquad.group6.mockbnb.mock;
 
 import io.codesquad.group6.mockbnb.api.request.BookingRequest;
 import io.codesquad.group6.mockbnb.api.request.LikeRequest;
+import io.codesquad.group6.mockbnb.api.response.BookingDetail;
 import io.codesquad.group6.mockbnb.api.response.BookingResponse;
 import io.codesquad.group6.mockbnb.api.response.BookingSummary;
 import io.codesquad.group6.mockbnb.api.response.ListingDetail;
@@ -17,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -155,6 +154,25 @@ public class MockController {
                                    .totalPrice(567.89)
                                    .build());
         return ResponseEntity.ok(bookings);
+    }
+
+    @GetMapping("/mock/bookings/{booking-id}")
+    public ResponseEntity<BookingDetail> getBookingDetail(@PathVariable(name = "booking-id") long bookingId) {
+        log.debug("bookingId: {}", bookingId);
+        return ResponseEntity.ok(BookingDetail.builder()
+                                              .imageUrl("https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large")
+                                              .roomType("Entire home/apt")
+                                              .housingPrice(123.45)
+                                              .rating(4.56)
+                                              .numReviews(123)
+                                              .checkin(LocalDate.parse("2020-05-22"))
+                                              .checkout(LocalDate.parse("2020-05-25"))
+                                              .numGuests(2)
+                                              .numNights(3)
+                                              .totalHousingPrice(123.45 * 3)
+                                              .cleaningFee(25.00)
+                                              .totalPrice(123.45 * 3 + 25.00)
+                                              .build());
     }
 
 }
