@@ -1,7 +1,6 @@
 package io.codesquad.group6.mockbnb.mock;
 
 import io.codesquad.group6.mockbnb.api.response.ListingResponse;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +16,8 @@ public class MockController {
     @GetMapping("/mock/listings")
     public ResponseEntity<List<ListingResponse>> getListings(
             @RequestParam(required = false, defaultValue = "la") String city,
-            @RequestParam(required = false, defaultValue = "2020-05-22") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkin,
-            @RequestParam(required = false, defaultValue = "2020-05-23") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkout,
+            @RequestParam(required = false, defaultValue = "2020-05-22") LocalDate checkin,
+            @RequestParam(required = false, defaultValue = "2020-05-23") LocalDate checkout,
             @RequestParam(name = "num-guests", required = false, defaultValue = "1") int numGuests,
             @RequestParam(name = "min-price", required = false, defaultValue = "0") int minPrice,
             @RequestParam(name = "max-price", required = false, defaultValue = "10000") int maxPrice,
