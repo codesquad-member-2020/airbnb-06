@@ -13,8 +13,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
-    private let dateManager = DateManager()
-
+    private var dateManager = DateManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -29,19 +29,28 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 35
+        return 42
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let weekday = dateManager.firstWeekday(month: indexPath.section)
+        let thisMonth = dateManager.month(index: indexPath.section)
+        let date = indexPath.item - weekday + 1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
-        if dateManager.firstWeekday() == indexPath.item {
-            cell.configure(date: 1)
+        
+        if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date {
+            cell.configure(date: date)
         }
         return cell
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return dateManager.countOfMonths().count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath) as! CalendarHeaderView
+        headerView.set("2020년 \(dateManager.month(index: indexPath.section))월")
         return headerView
     }
 }
