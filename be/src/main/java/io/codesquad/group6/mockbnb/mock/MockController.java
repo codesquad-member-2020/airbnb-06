@@ -3,6 +3,7 @@ package io.codesquad.group6.mockbnb.mock;
 import io.codesquad.group6.mockbnb.api.request.BookingRequest;
 import io.codesquad.group6.mockbnb.api.request.LikeRequest;
 import io.codesquad.group6.mockbnb.api.response.BookingResponse;
+import io.codesquad.group6.mockbnb.api.response.BookingSummary;
 import io.codesquad.group6.mockbnb.api.response.ListingDetail;
 import io.codesquad.group6.mockbnb.api.response.ListingSummary;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +119,42 @@ public class MockController {
         return ResponseEntity.ok(BookingResponse.builder()
                                                 .bookingId(1)
                                                 .build());
+    }
+
+    @GetMapping("/mock/bookings")
+    public ResponseEntity<List<BookingSummary>> getBookings() {
+        List<BookingSummary> bookings = new ArrayList<>();
+        bookings.add(BookingSummary.builder()
+                                   .id(1)
+                                   .imageUrl("https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large")
+                                   .name("listing1")
+                                   .checkin(LocalDate.parse("2020-05-22"))
+                                   .checkout(LocalDate.parse("2020-05-23"))
+                                   .numNights(1)
+                                   .numGuests(1)
+                                   .totalPrice(123.45)
+                                   .build());
+        bookings.add(BookingSummary.builder()
+                                   .id(2)
+                                   .imageUrl("https://a0.muscache.com/im/pictures/38165109-1f28-429f-b9fd-99d0932c154e.jpg?aki_policy=large")
+                                   .name("listing2")
+                                   .checkin(LocalDate.parse("2020-06-01"))
+                                   .checkout(LocalDate.parse("2020-06-15"))
+                                   .numNights(14)
+                                   .numGuests(2)
+                                   .totalPrice(1234.56)
+                                   .build());
+        bookings.add(BookingSummary.builder()
+                                   .id(3)
+                                   .imageUrl("https://a0.muscache.com/im/pictures/df7f56e6-71c0-4402-96de-27604ee4d460.jpg?aki_policy=large")
+                                   .name("listing3")
+                                   .checkin(LocalDate.parse("2020-12-24"))
+                                   .checkout(LocalDate.parse("2020-12-31"))
+                                   .numNights(7)
+                                   .numGuests(3)
+                                   .totalPrice(567.89)
+                                   .build());
+        return ResponseEntity.ok(bookings);
     }
 
 }
