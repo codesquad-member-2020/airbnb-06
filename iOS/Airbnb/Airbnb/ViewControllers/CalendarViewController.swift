@@ -12,6 +12,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
     private var dateManager = DateManager()
+    private var chooseDays: [IndexPath] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,16 +63,23 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CalendarViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        chooseDays.count < 2 ? mark(collectionView, indexPath: indexPath) : unmark(collectionView, indexPath: indexPath)
+    }
+    
+    private func mark(_ collectionView: UICollectionView, indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
-        if cell.isSelected {
-            collectionView.deselectItem(at: indexPath, animated: true)
+        cell.select()
+        chooseDays.append(indexPath)
+    }
+    
+    private func unmark(_ collectionView: UICollectionView, indexPath: IndexPath) {
+        chooseDays.forEach {
+            let cell = collectionView.cellForItem(at: $0) as! CalendarCollectionViewCell
             cell.deselect()
-        } else {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            cell.select()
         }
-        return false
+        chooseDays.removeAll()
+        mark(collectionView, indexPath: indexPath)
     }
 }
