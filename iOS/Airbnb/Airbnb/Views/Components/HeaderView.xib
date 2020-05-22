@@ -25,6 +25,9 @@
                     <state key="normal" image="xmark" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                     </state>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="1nA-ef-gEx"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="체크인 ― 체크아웃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-xG-lQ3">
                     <rect key="frame" x="143" y="61.5" width="128" height="21"/>
