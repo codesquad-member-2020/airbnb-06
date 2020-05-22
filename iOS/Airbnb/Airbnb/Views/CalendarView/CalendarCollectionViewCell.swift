@@ -12,7 +12,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var circleView: CircleView!
-  
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -24,6 +24,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         dateLabel.text = ""
+        circleView.hide()
+        dateLabel.textColor = .black
     }
     
     func configure(date: Int) {
