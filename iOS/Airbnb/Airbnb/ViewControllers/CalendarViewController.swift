@@ -13,6 +13,7 @@ class CalendarViewController: UIViewController {
     
     private var dateManager = DateManager()
     private var chooseDays: [IndexPath] = []
+    private var periodDays: [IndexPath] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,10 @@ extension CalendarViewController: UICollectionViewDelegate {
                 }
             }
         }
+        periodDays.forEach {
+            changeBackgroundPeriodCells(collectionView, indexPath: $0)
+        }
+
         return false
     }
     
@@ -99,6 +104,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     
     private func removeAndReload(_ collectionView: UICollectionView, cell: CalendarCollectionViewCell, indexPath: IndexPath) {
         chooseDays.removeAll()
+        periodDays.removeAll()
         mark(collectionView, cell: cell, indexPath: indexPath)
         collectionView.reloadData()
     }
@@ -113,17 +119,17 @@ extension CalendarViewController: UICollectionViewDelegate {
         if bigger.section == smaller.section {
             for item in smaller.item...bigger.item {
                 let indexPath = IndexPath(item: item, section: smaller.section)
-                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+                periodDays.append(indexPath)
             }
         }else {
             let lastItem = collectionView.numberOfItems(inSection: smaller.section) - 1
             for item in smaller.item...lastItem {
                 let indexPath = IndexPath(item: item, section: smaller.section)
-                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+                periodDays.append(indexPath)
             }
             for item in 0...bigger.item {
                 let indexPath = IndexPath(item: item, section: bigger.section)
-                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+                periodDays.append(indexPath)
             }
         }
     }
