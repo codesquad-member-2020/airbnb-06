@@ -28,10 +28,16 @@ class MainViewController: UIViewController {
         self.session = ASWebAuthenticationSession(url: authURL!, callbackURLScheme: callbackURLScheme, completionHandler: { (callback: URL?, error: Error?) in
             guard error == nil, let successURL = callback else { return }
             let oAuthToken = URLComponents(string: successURL.absoluteString)?.queryItems?.filter({$0.name == "token"}).first?.value
-            UserDefaults.setValue(oAuthToken, forKey: "token")
+            UserDefaults.standard.setValue(oAuthToken, forKey: "token")
+            self.present()
         })
         self.session?.presentationContextProvider = self
         self.session?.start()
+    }
+    
+    private func present() {
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+        self.present(nextViewController, animated: true)
     }
 }
 
