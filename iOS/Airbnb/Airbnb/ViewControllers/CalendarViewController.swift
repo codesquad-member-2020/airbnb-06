@@ -81,18 +81,19 @@ extension CalendarViewController: UICollectionViewDelegate {
             }else {
                 if compare(indexPath) {
                     removeAndReload(collectionView, cell: cell, indexPath: indexPath)
-                }else if !compare(indexPath), chooseDays.count < 2 {
+                }else if !compare(indexPath), chooseDays.count < 2, !chooseDays.contains(indexPath) {
                     mark(collectionView, cell: cell, indexPath: indexPath)
                     checkPeriod(collectionView: collectionView, bigger: indexPath, smaller: chooseDays.first)
-                }else {
+                }else if !compare(indexPath), chooseDays.count == 2 {
                     removeAndReload(collectionView, cell: cell, indexPath: indexPath)
+                }else {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    chooseDays.remove(at: chooseDays.firstIndex(of: indexPath)!)
+                    cell.deselect()
                 }
             }
         }
-        periodDays.forEach {
-            changeBackgroundPeriodCells(collectionView, indexPath: $0)
-        }
-
+        periodDays.forEach { changeBackgroundPeriodCells(collectionView, indexPath: $0) }
         return false
     }
     
