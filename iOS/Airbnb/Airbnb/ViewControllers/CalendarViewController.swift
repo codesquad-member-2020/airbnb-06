@@ -82,6 +82,7 @@ extension CalendarViewController: UICollectionViewDelegate {
                     removeAndReload(collectionView, cell: cell, indexPath: indexPath)
                 }else if !compare(indexPath), chooseDays.count < 2 {
                     mark(collectionView, cell: cell, indexPath: indexPath)
+                    checkPeriod(collectionView: collectionView, bigger: indexPath, smaller: chooseDays.first)
                 }else {
                     removeAndReload(collectionView, cell: cell, indexPath: indexPath)
                 }
@@ -105,5 +106,30 @@ extension CalendarViewController: UICollectionViewDelegate {
     private func compare(_ last: IndexPath) -> Bool {
         guard let first = chooseDays.first else { return false }
         return first > last
+    }
+    
+    private func checkPeriod(collectionView: UICollectionView, bigger: IndexPath?, smaller: IndexPath?) {
+        guard let smaller = smaller, let bigger = bigger else { return }
+        if bigger.section == smaller.section {
+            for item in smaller.item...bigger.item {
+                let indexPath = IndexPath(item: item, section: smaller.section)
+                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+            }
+        }else {
+            let lastItem = collectionView.numberOfItems(inSection: smaller.section) - 1
+            for item in smaller.item...lastItem {
+                let indexPath = IndexPath(item: item, section: smaller.section)
+                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+            }
+            for item in 0...bigger.item {
+                let indexPath = IndexPath(item: item, section: bigger.section)
+                changeBackgroundPeriodCells(collectionView, indexPath: indexPath)
+            }
+        }
+    }
+    
+    private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        cell.changeBackground()
     }
 }
