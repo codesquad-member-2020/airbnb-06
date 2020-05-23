@@ -93,7 +93,7 @@ extension CalendarViewController: UICollectionViewDelegate {
                 }
             }
         }
-        periodDays.forEach { changeBackgroundPeriodCells(collectionView, indexPath: $0) }
+        changeWholePeriodCellsBackground(collectionView)
         return false
     }
     
@@ -133,6 +133,21 @@ extension CalendarViewController: UICollectionViewDelegate {
                 periodDays.append(indexPath)
             }
         }
+    }
+    
+    private func changeWholePeriodCellsBackground(_ collectionView: UICollectionView) {
+        if chooseDays.count == 2 {
+            guard let checkInIndexPath = periodDays.first else { return }
+            guard let checkOutIndexPath = periodDays.last else { return }
+            guard let checkInCell = collectionView.cellForItem(at: checkInIndexPath) as? CalendarCollectionViewCell else { return }
+            guard let checkOutCell = collectionView.cellForItem(at: checkOutIndexPath) as? CalendarCollectionViewCell else { return }
+            checkInCell.checkInBackground()
+            checkOutCell.checkOutBackground()
+            periodDays.removeFirst()
+            periodDays.removeLast()
+        }
+        periodDays.forEach { changeBackgroundPeriodCells(collectionView, indexPath: $0) }
+
     }
     
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
