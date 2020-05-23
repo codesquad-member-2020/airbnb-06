@@ -310,10 +310,10 @@
             </objects>
             <point key="canvasLocation" x="1099" y="927"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="vXC-Z6-ybi">
             <objects>
-                <viewController id="94f-IF-uk0" sceneMemberID="viewController">
+                <viewController id="94f-IF-uk0" customClass="MainViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ilY-xr-K7E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,6 +334,9 @@
                                 <state key="normal" title="sign in Github">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="githubLogin:" destination="94f-IF-uk0" eventType="touchUpInside" id="lBA-Mj-k0R"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
