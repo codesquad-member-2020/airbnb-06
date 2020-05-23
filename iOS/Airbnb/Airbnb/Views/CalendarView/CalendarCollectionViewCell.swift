@@ -11,7 +11,13 @@ import UIKit
 class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet var circleView: CircleView!
+    @IBOutlet weak var circleView: CircleView!
+    
+    private var background: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "LightGray")
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,5 +53,23 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         if dateLabel.text != "" {
             self.backgroundColor = UIColor(named: "LightGray")
         }
+    }
+    
+    func checkInBackground() {
+        self.contentView.insertSubview(background, belowSubview: circleView)
+        background.translatesAutoresizingMaskIntoConstraints = false
+        background.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        background.leadingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        background.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+    }
+    
+    func checkOutBackground() {
+        self.contentView.insertSubview(background, belowSubview: circleView)
+        background.translatesAutoresizingMaskIntoConstraints = false
+        background.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        background.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
     }
 }
