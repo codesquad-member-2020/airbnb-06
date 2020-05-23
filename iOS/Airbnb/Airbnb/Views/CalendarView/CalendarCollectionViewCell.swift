@@ -26,6 +26,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         dateLabel.text = ""
         circleView.hide()
         dateLabel.textColor = .black
+        self.backgroundColor = .clear
     }
     
     func configure(date: Int) {
@@ -40,5 +41,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     func deselect() {
         circleView.hide()
         dateLabel.textColor = .black
+    }
+    
+    func changeBackground() {
+        self.backgroundColor = UIColor(named: "LightGray")
     }
 }
