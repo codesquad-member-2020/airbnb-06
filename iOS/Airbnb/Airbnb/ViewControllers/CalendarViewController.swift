@@ -38,6 +38,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         let date = indexPath.item - weekday + 1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
         if chooseDays.contains(indexPath) { cell.select() }
+        changeWholePeriodCellsBackground(collectionView)
         if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date {
             cell.configure(date: date)
         }
