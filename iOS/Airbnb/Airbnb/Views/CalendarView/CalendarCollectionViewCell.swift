@@ -33,6 +33,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         circleView.hide()
         dateLabel.textColor = .black
         self.backgroundColor = .clear
+        background.isHidden = true
     }
     
     func configure(date: Int) {
@@ -56,20 +57,26 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     func checkInBackground() {
-        self.contentView.insertSubview(background, belowSubview: circleView)
-        background.translatesAutoresizingMaskIntoConstraints = false
-        background.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        configureBackground()
         background.leadingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         background.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
     }
     
     func checkOutBackground() {
+        configureBackground()
+        background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        background.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+    }
+    
+    func removeBackground() {
+        background.removeFromSuperview()
+    }
+    
+    private func configureBackground() {
+        background.isHidden = false
         self.contentView.insertSubview(background, belowSubview: circleView)
         background.translatesAutoresizingMaskIntoConstraints = false
         background.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        background.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
     }
 }
