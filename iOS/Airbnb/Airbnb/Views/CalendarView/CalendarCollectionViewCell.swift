@@ -49,7 +49,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     func changeBackground() {
         if dateLabel.text != "" {
-            self.backgroundColor = UIColor(named: "LightGray")
+            configureLeftBackground()
+            configureRightBackground()
         }
     }
     
