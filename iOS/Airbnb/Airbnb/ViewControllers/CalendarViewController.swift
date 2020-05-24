@@ -109,8 +109,8 @@ extension CalendarViewController: UICollectionViewDelegate {
             guard let checkOutIndexPath = periodDays.last else { return }
             guard let checkInCell = collectionView.cellForItem(at: checkInIndexPath) as? CalendarCollectionViewCell else { return }
             guard let checkOutCell = collectionView.cellForItem(at: checkOutIndexPath) as? CalendarCollectionViewCell else { return }
-            checkInCell.removeBackground()
-            checkOutCell.removeBackground()
+            checkInCell.hideRightBackground()
+            checkOutCell.hideLeftBackground()
         }
         chooseDays.removeAll()
         periodDays.removeAll()
@@ -149,8 +149,8 @@ extension CalendarViewController: UICollectionViewDelegate {
             guard let checkOutIndexPath = periodDays.last else { return }
             guard let checkInCell = collectionView.cellForItem(at: checkInIndexPath) as? CalendarCollectionViewCell else { return }
             guard let checkOutCell = collectionView.cellForItem(at: checkOutIndexPath) as? CalendarCollectionViewCell else { return }
-            checkInCell.checkInBackground()
-            checkOutCell.checkOutBackground()
+            checkInCell.configureRightBackground()
+            checkOutCell.configureLeftBackground()
             periodDays.removeFirst()
             periodDays.removeLast()
         }
