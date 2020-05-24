@@ -12,12 +12,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var circleView: CircleView!
-    
-    private var background: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "LightGray")
-        return view
-    }()
+    @IBOutlet weak var rightBackground: UIView!
+    @IBOutlet weak var leftBackground: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +29,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         circleView.hide()
         dateLabel.textColor = .black
         self.backgroundColor = .clear
-        background.isHidden = true
+        leftBackground.backgroundColor = .clear
+        rightBackground.backgroundColor = .clear
     }
     
     func configure(date: Int) {
@@ -56,27 +53,19 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func checkInBackground() {
-        configureBackground()
-        background.leadingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
-        background.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+    func configureLeftBackground() {
+        leftBackground.backgroundColor = UIColor(named: "LightGray")
     }
     
-    func checkOutBackground() {
-        configureBackground()
-        background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        background.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+    func configureRightBackground() {
+        rightBackground.backgroundColor = UIColor(named: "LightGray")
     }
     
-    func removeBackground() {
-        background.removeFromSuperview()
+    func hideLeftBackground() {
+        leftBackground.backgroundColor = .clear
     }
     
-    private func configureBackground() {
-        background.isHidden = false
-        self.contentView.insertSubview(background, belowSubview: circleView)
-        background.translatesAutoresizingMaskIntoConstraints = false
-        background.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+    func hideRightBackground() {
+        rightBackground.backgroundColor = .clear
     }
 }
