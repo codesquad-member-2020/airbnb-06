@@ -104,6 +104,14 @@ extension CalendarViewController: UICollectionViewDelegate {
     }
     
     private func removeAndReload(_ collectionView: UICollectionView, cell: CalendarCollectionViewCell, indexPath: IndexPath) {
+        if chooseDays.count == 2 {
+            guard let checkInIndexPath = periodDays.first else { return }
+            guard let checkOutIndexPath = periodDays.last else { return }
+            guard let checkInCell = collectionView.cellForItem(at: checkInIndexPath) as? CalendarCollectionViewCell else { return }
+            guard let checkOutCell = collectionView.cellForItem(at: checkOutIndexPath) as? CalendarCollectionViewCell else { return }
+            checkInCell.removeBackground()
+            checkOutCell.removeBackground()
+        }
         chooseDays.removeAll()
         periodDays.removeAll()
         mark(collectionView, cell: cell, indexPath: indexPath)
