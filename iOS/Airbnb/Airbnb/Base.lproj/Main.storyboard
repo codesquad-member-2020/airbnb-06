@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5sj-qi-lN0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -194,7 +194,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ac-IH-Z8X">
-                                <rect key="frame" x="0.0" y="212" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="154" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8ac-IH-Z8X" secondAttribute="height" id="29L-vr-uxg"/>
@@ -213,6 +213,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-fb-N06">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mul-Np-7Vw">
+                                                    <rect key="frame" x="25" y="0.0" width="25" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-1j-Rp6" customClass="CircleView" customModule="Airbnb" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -226,9 +234,17 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="bpd-1j-Rp6" secondAttribute="trailing" id="38y-2o-ITy"/>
+                                                <constraint firstItem="mul-Np-7Vw" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="9fW-bX-aLs"/>
                                                 <constraint firstAttribute="bottom" secondItem="bpd-1j-Rp6" secondAttribute="bottom" id="D1q-Rv-UKq"/>
+                                                <constraint firstAttribute="bottom" secondItem="mul-Np-7Vw" secondAttribute="bottom" id="Gqv-ke-Ku9"/>
                                                 <constraint firstItem="bH7-i1-Xih" firstAttribute="centerX" secondItem="ov4-Sz-14L" secondAttribute="centerX" id="JaH-st-QBy"/>
+                                                <constraint firstAttribute="bottom" secondItem="Kjo-fb-N06" secondAttribute="bottom" id="OfO-KG-59h"/>
+                                                <constraint firstItem="Kjo-fb-N06" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" id="Ux6-js-cHC"/>
+                                                <constraint firstAttribute="trailing" secondItem="mul-Np-7Vw" secondAttribute="trailing" id="Wce-ND-UsZ"/>
+                                                <constraint firstItem="Kjo-fb-N06" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="f0J-Xt-cIG"/>
                                                 <constraint firstItem="bpd-1j-Rp6" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="iKj-RY-wyz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kjo-fb-N06" secondAttribute="trailing" constant="25" id="j5f-S0-GWY"/>
+                                                <constraint firstItem="mul-Np-7Vw" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" constant="25" id="lCK-ff-v9R"/>
                                                 <constraint firstItem="bpd-1j-Rp6" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" id="xbO-Bt-qCO"/>
                                                 <constraint firstItem="bH7-i1-Xih" firstAttribute="centerY" secondItem="ov4-Sz-14L" secondAttribute="centerY" id="zm0-be-A8K"/>
                                             </constraints>
@@ -236,6 +252,8 @@
                                         <connections>
                                             <outlet property="circleView" destination="bpd-1j-Rp6" id="4c6-az-X4v"/>
                                             <outlet property="dateLabel" destination="bH7-i1-Xih" id="XDJ-ux-Riq"/>
+                                            <outlet property="leftBackground" destination="Kjo-fb-N06" id="aJ0-or-XaN"/>
+                                            <outlet property="rightBackground" destination="mul-Np-7Vw" id="YdE-Sj-8am"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -332,9 +350,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="map" catalog="system" width="64" height="56"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="map" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>
