@@ -151,11 +151,13 @@ extension CalendarViewController: UICollectionViewDelegate {
             guard let checkOutCell = collectionView.cellForItem(at: checkOutIndexPath) as? CalendarCollectionViewCell else { return }
             checkInCell.configureRightBackground()
             checkOutCell.configureLeftBackground()
-            periodDays.removeFirst()
-            periodDays.removeLast()
         }
-        periodDays.forEach { changeBackgroundPeriodCells(collectionView, indexPath: $0) }
-
+        
+        if periodDays.count > 2 {
+            for index in 1..<periodDays.count - 1 {
+                changeBackgroundPeriodCells(collectionView, indexPath: periodDays[index])
+            }
+        }
     }
     
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
