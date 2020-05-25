@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+final class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
     private var dateManager = DateManager()
@@ -100,7 +100,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     }
     
     private func judgeIsSecond(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
-        if compare(indexPath) {
+        if IsFirstBigger(indexPath) {
             updateSelectedCell(cell, collectionView: collectionView, indexPath: indexPath)
         }else if !chooseDays.contains(indexPath) {
             mark(cell, collectionView: collectionView, indexPath: indexPath)
@@ -136,11 +136,6 @@ extension CalendarViewController: UICollectionViewDelegate {
         reload(collectionView, indexPath: indexPath, cell: cell)
     }
     
-    private func removeAll() {
-        chooseDays.removeAll()
-        periodDays.removeAll()
-    }
-    
     private func configureCheckInOut(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) -> (checkInCell: CalendarCollectionViewCell, checkOutCell: CalendarCollectionViewCell)? {
         guard let checkInCell = configurePeriodDay(collectionView, indexPath: periodDays.first) else { return nil }
         guard let checkOutCell = configurePeriodDay(collectionView, indexPath: periodDays.last) else { return nil }
@@ -153,12 +148,17 @@ extension CalendarViewController: UICollectionViewDelegate {
         return checkedCell
     }
     
+    private func removeAll() {
+        chooseDays.removeAll()
+        periodDays.removeAll()
+    }
+    
     private func reload(_ collectionView: UICollectionView, indexPath: IndexPath, cell: CalendarCollectionViewCell) {
         mark(cell, collectionView: collectionView, indexPath: indexPath)
         collectionView.reloadData()
     }
     
-    private func compare(_ last: IndexPath) -> Bool {
+    private func IsFirstBigger(_ last: IndexPath) -> Bool {
         guard let first = chooseDays.first else { return false }
         return first > last
     }
@@ -166,20 +166,28 @@ extension CalendarViewController: UICollectionViewDelegate {
     private func checkPeriod(collectionView: UICollectionView, bigger: IndexPath?, smaller: IndexPath?) {
         guard let smaller = smaller, let bigger = bigger else { return }
         if bigger.section == smaller.section {
-            for item in smaller.item...bigger.item {
-                let indexPath = IndexPath(item: item, section: smaller.section)
-                periodDays.append(indexPath)
-            }
+            checkPeriodSameSection(collectionView: collectionView, bigger: bigger, smaller: smaller)
         }else {
-            let lastItem = collectionView.numberOfItems(inSection: smaller.section) - 1
-            for item in smaller.item...lastItem {
-                let indexPath = IndexPath(item: item, section: smaller.section)
-                periodDays.append(indexPath)
-            }
-            for item in 0...bigger.item {
-                let indexPath = IndexPath(item: item, section: bigger.section)
-                periodDays.append(indexPath)
-            }
+            checkPeriodDifferentSection(collectionView: collectionView, bigger: bigger, smaller: smaller)
+        }
+    }
+    
+    private func checkPeriodSameSection (collectionView: UICollectionView, bigger: IndexPath, smaller: IndexPath) {
+        for item in smaller.item...bigger.item {
+            let indexPath = IndexPath(item: item, section: smaller.section)
+            periodDays.append(indexPath)
+        }
+    }
+    
+    private func checkPeriodDifferentSection(collectionView: UICollectionView, bigger: IndexPath, smaller: IndexPath) {
+        let lastItem = collectionView.numberOfItems(inSection: smaller.section) - 1
+        for item in smaller.item...lastItem {
+            let indexPath = IndexPath(item: item, section: smaller.section)
+            periodDays.append(indexPath)
+        }
+        for item in 0...bigger.item {
+            let indexPath = IndexPath(item: item, section: bigger.section)
+            periodDays.append(indexPath)
         }
     }
     
