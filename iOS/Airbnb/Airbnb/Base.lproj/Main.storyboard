@@ -318,7 +318,40 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmn-2H-KdO" userLabel="Guest View">
                                         <rect key="frame" x="0.0" y="60" width="373" height="289"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pV0-GD-waC">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="270"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJN-SJ-KEi" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="f2w-JV-hUb"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-Pa-Zt7" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="90" width="373" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="BPo-vn-kTH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktM-8W-fkP" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="180" width="373" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="S1B-VA-Djo"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="pV0-GD-waC" firstAttribute="leading" secondItem="Lmn-2H-KdO" secondAttribute="leading" id="2mE-6m-W0Q"/>
+                                            <constraint firstItem="pV0-GD-waC" firstAttribute="top" secondItem="Lmn-2H-KdO" secondAttribute="top" id="RR9-11-2Ii"/>
+                                            <constraint firstAttribute="trailing" secondItem="pV0-GD-waC" secondAttribute="trailing" id="g4C-tc-dqM"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAn-Ga-kth" customClass="FooterView" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="349" width="373" height="60"/>

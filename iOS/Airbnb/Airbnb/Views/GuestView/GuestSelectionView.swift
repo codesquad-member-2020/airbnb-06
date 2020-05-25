@@ -10,12 +10,28 @@ import UIKit
 
 class GuestSelectionView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var ageGroupLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configure()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        configure()
+    }
+    
+    func configure() {
+        Bundle.main.loadNibNamed("GuestSelectionView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+    }
 }
