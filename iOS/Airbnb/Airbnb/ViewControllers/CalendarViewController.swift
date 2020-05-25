@@ -85,7 +85,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         if chooseDays.count < 2 {
             deselect(cell, collectionView: collectionView, indexPath: indexPath)
         }else {
-            removeAll(cell, collectionView: collectionView, indexPath: indexPath)
+            updateSelectedCell(cell, collectionView: collectionView, indexPath: indexPath)
         }
     }
     
@@ -93,15 +93,15 @@ extension CalendarViewController: UICollectionViewDelegate {
         if chooseDays.count == 0 {
             mark(cell, collectionView: collectionView, indexPath: indexPath)
         }else if chooseDays.count == 1 {
-            judgeSecond(cell, collectionView: collectionView, indexPath: indexPath)
+            judgeIsSecond(cell, collectionView: collectionView, indexPath: indexPath)
         } else {
-            removeAll(cell, collectionView: collectionView, indexPath: indexPath)
+            updateSelectedCell(cell, collectionView: collectionView, indexPath: indexPath)
         }
     }
     
-    private func judgeSecond(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
+    private func judgeIsSecond(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
         if compare(indexPath) {
-            removeAll(cell, collectionView: collectionView, indexPath: indexPath)
+            updateSelectedCell(cell, collectionView: collectionView, indexPath: indexPath)
         }else if !chooseDays.contains(indexPath) {
             mark(cell, collectionView: collectionView, indexPath: indexPath)
             checkPeriod(collectionView: collectionView, bigger: indexPath, smaller: chooseDays.first)
@@ -126,15 +126,19 @@ extension CalendarViewController: UICollectionViewDelegate {
         chooseDays.append(indexPath)
     }
     
-    private func removeAll(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
+    private func updateSelectedCell(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
         if chooseDays.count == 2 {
             let cells = configureCheckInOut(cell, collectionView: collectionView, indexPath: indexPath)
             cells?.checkInCell.hideRightBackground()
             cells?.checkOutCell.hideLeftBackground()
         }
+        removeAll()
+        reload(collectionView, indexPath: indexPath, cell: cell)
+    }
+    
+    private func removeAll() {
         chooseDays.removeAll()
         periodDays.removeAll()
-        reload(collectionView, indexPath: indexPath, cell: cell)
     }
     
     private func configureCheckInOut(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) -> (checkInCell: CalendarCollectionViewCell, checkOutCell: CalendarCollectionViewCell)? {
