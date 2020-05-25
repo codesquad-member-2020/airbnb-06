@@ -12,32 +12,34 @@ struct DateManager {
     
     private let calendar = Calendar.current
     private var months: [Int] = []
-    
-    func firstWeekday(month: Int) -> Int {
-        var component = calendar.dateComponents([.year, .month, .weekday], from: Date())
-        component.month! += month
-        let startOfMonth = calendar.date(from: component)
-        let firstWeekday = calendar.dateComponents([.year, .month, .weekday], from: startOfMonth!)
-        return firstWeekday.weekday! - 1
+    private lazy var nowComponents = calendar.dateComponents([.year, .month, .weekday], from: Date())
+
+    mutating func firstWeekday(thisMonth: Int) -> Int {
+        var component = nowComponents
+        component.month! += thisMonth
+        let thisMonthDate = calendar.date(from: component)
+        let thisMonthComponents = calendar.dateComponents([.year, .month, .weekday], from: thisMonthDate!)
+        return thisMonthComponents.weekday! - 1
     }
     
-    mutating func countOfMonths() -> [Int] {
-        let thisMonth = calendar.dateComponents([.month], from: Date())
-        for month in thisMonth.month!...12 {
+    mutating func monthsFromNowToDecember() -> [Int] {
+        for month in nowComponents.month!...12 {
             months.append(month)
         }
         return months
     }
     
     mutating func countOfDays(year: Int, month: Int) -> Int {
-        let dateComponents = DateComponents(year: year, month: month)
-        let calendar = Calendar.current
-        let date = calendar.date(from: dateComponents)!
+        let date = calendar.date(from: nowComponents)!
         let range = calendar.range(of: .day, in: .month, for: date)!
         return range.count
     }
     
-    func month(index: Int) -> Int {
+    mutating func yearMonth(_ index: Int) -> (year: Int, month: Int) {
+        return (nowComponents.year!, months[index])
+    }
+    
+    func thisMonth(_ index: Int) -> Int {
         return months[index]
     }
 }
