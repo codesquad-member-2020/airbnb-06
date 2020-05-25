@@ -23,6 +23,7 @@ struct DateManager {
     }
     
     mutating func monthsFromNowToDecember() -> [Int] {
+        guard months.count == 0 else { return months }
         for month in nowComponents.month!...12 {
             months.append(month)
         }
