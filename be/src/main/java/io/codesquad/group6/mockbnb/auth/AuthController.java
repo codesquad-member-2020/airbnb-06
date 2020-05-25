@@ -1,8 +1,5 @@
 package io.codesquad.group6.mockbnb.auth;
 
-import io.dc215.githuboauth.GitHubUserData;
-import io.dc215.githuboauth.JwtService;
-import io.dc215.githuboauth.OAuthService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +31,5 @@ public class AuthController {
         // response.sendRedirect("http://localhost:8080/");
         response.sendRedirect("io.airbnb.app:/oauth?token=" + jwt);
     }
-
 
 }
