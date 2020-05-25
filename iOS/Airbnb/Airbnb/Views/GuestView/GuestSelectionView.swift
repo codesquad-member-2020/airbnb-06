@@ -13,9 +13,9 @@ class GuestSelectionView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var ageGroupLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var minusButton: CountControlButton!
     @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var plusButton: CountControlButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
