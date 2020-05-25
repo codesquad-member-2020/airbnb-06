@@ -33,7 +33,7 @@ class CountControlButton: UIButton {
         tintColor = .darkGray
         imageEdgeInsets = UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0)
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.darkGray.cgColor
+        layer.borderColor = UIColor.lightGray.cgColor
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: 28.0).isActive = true
         heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true

@@ -11,10 +11,23 @@ import Floaty
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet var filteringDescriptionLabel: SearchTextField!
-    @IBOutlet var accommodationSearchCollectionView: AccommodationSearchCollectionView!
+    @IBOutlet weak var dateFilterButton: FilterButton!
+    @IBOutlet weak var guestFilterButton: FilterButton!
+    @IBOutlet weak var priceFilterButton: FilterButton!
+    @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
+    @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
+    @IBOutlet weak var floatingButton: Floaty!
+    
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
-    @IBOutlet var floatingButton: Floaty!
+    private let identifiers: [String : String] = ["날짜": "CalendarViewController", "인원": "GuestViewController"]
+    
+    @IBAction func displayPopup(_ sender: UIButton) {
+        guard let title = sender.titleLabel?.text else { return }
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifiers[title]!) else { return }
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
