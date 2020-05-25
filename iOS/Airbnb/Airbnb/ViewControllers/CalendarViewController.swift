@@ -33,25 +33,25 @@ extension CalendarViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let weekday = dateManager.firstWeekday(month: indexPath.section)
-        let thisMonth = dateManager.month(index: indexPath.section)
-        let date = indexPath.item - weekday + 1
+        let firstWeekday = dateManager.firstWeekday(thisMonth: indexPath.section)
+        let date = indexPath.item - firstWeekday + 1
+        let thisMonth = dateManager.thisMonth(indexPath.section)
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
+        if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date { cell.configure(date: date) }
         if chooseDays.contains(indexPath) { cell.select() }
         changeWholePeriodCellsBackground(collectionView)
-        if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date {
-            cell.configure(date: date)
-        }
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return dateManager.countOfMonths().count
+        return dateManager.monthsFromNowToDecember().count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CalendarHeader", for: indexPath) as! CalendarHeaderView
-        headerView.set("2020년 \(dateManager.month(index: indexPath.section))월")
+        let yearMonth = dateManager.yearMonth(indexPath.section)
+        headerView.set("\(yearMonth.year)년 \(yearMonth.month)월")
         return headerView
     }
 }
