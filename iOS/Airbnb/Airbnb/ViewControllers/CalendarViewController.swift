@@ -40,8 +40,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
         if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date { cell.configure(date: date) }
         if chooseDays.contains(indexPath) { cell.select() }
-//        changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
-        print(indexPath)
+        changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
         return cell
     }
     
@@ -70,10 +69,9 @@ extension CalendarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
         judgeCellSelected(cell, collectionView: collectionView, indexPath: indexPath)
-        changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
         return false
     }
-    
+   
     private func judgeCellSelected(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
         if cell.isSelected {
             selectAlreadySelected(cell, collectionView: collectionView, indexPath: indexPath)
@@ -106,6 +104,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         }else if !chooseDays.contains(indexPath) {
             mark(cell, collectionView: collectionView, indexPath: indexPath)
             checkPeriod(collectionView: collectionView, bigger: indexPath, smaller: chooseDays.first)
+            changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
         }else {
             deselect(cell, collectionView: collectionView, indexPath: indexPath)
         }
@@ -211,11 +210,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     }
     
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
         cell.changeBackground()
-    }
-    
-    private func calculateIndexPathToDate() {
-        
     }
 }
