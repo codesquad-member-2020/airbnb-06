@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderView: UIView {
+class PopupHeaderView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var closeButton: UIButton!
@@ -29,7 +29,7 @@ class HeaderView: UIView {
     }
     
     func configure() {
-        Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("PopupHeaderView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
     }
