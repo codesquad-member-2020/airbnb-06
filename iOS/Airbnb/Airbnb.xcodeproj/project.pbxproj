@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		301FD85A247552F000F95C72 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301FD859247552F000F95C72 /* CircleView.swift */; };
+		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
 		30B2E9202473D228002FB866 /* Accommodation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E91F2473D228002FB866 /* Accommodation.swift */; };
 		30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E9232473F2C6002FB866 /* SearchViewController.swift */; };
 		30B2E9262473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2E9252473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		301FD859247552F000F95C72 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		30B2E91F2473D228002FB866 /* Accommodation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accommodation.swift; sourceTree = "<group>"; };
 		30B2E9232473F2C6002FB866 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		30B2E9252473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationSearchCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		7872575E2475120B0050DB66 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				306FD629247D402A00A65DB0 /* MainViewController.swift */,
 				30B2E9232473F2C6002FB866 /* SearchViewController.swift */,
 				7872575824750C520050DB66 /* CalendarViewController.swift */,
 				78262B4A247BDB88007AAEDA /* GuestViewController.swift */,
@@ -377,6 +380,7 @@
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
+				306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
