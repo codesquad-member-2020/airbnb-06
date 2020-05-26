@@ -29,6 +29,7 @@ class SearchViewController: UIViewController {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         present(viewController, animated: true, completion: nil)
+
     }
     
     override func viewDidLoad() {
