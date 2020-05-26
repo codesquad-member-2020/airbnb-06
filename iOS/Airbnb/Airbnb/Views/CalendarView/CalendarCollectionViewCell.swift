@@ -25,10 +25,14 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        dateLabel.text = ""
         circleView.hide()
+        
+        dateLabel.text = ""
         dateLabel.textColor = .black
+        
         self.backgroundColor = .clear
+        self.isUserInteractionEnabled = true
+        
         leftBackground.backgroundColor = .clear
         rightBackground.backgroundColor = .clear
     }
@@ -68,5 +72,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     func hideRightBackground() {
         rightBackground.backgroundColor = .clear
+    }
+    
+    func disable() {
+        dateLabel.textColor = .lightGray
+        self.isUserInteractionEnabled = false
     }
 }
