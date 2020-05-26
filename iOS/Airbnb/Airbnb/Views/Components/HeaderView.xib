@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="Airbnb" customModuleProvider="target">
             <connections>
-                <outlet property="cancelButton" destination="KP2-uy-15j" id="SWe-Zd-Zz7"/>
+                <outlet property="closeButton" destination="KP2-uy-15j" id="SWe-Zd-Zz7"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="nN0-H2-0aD"/>
                 <outlet property="titleLabel" destination="QMS-xG-lQ3" id="EAM-g1-8pP"/>
             </connections>
@@ -25,9 +25,12 @@
                     <state key="normal" image="xmark" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                     </state>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="fRQ-cr-Xym"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="체크인 ― 체크아웃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-xG-lQ3">
-                    <rect key="frame" x="139.5" y="61.5" width="135.5" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-xG-lQ3">
+                    <rect key="frame" x="183.5" y="61.5" width="47.5" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

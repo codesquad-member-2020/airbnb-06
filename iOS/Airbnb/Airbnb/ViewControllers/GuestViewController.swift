@@ -19,11 +19,11 @@ class GuestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configure()
+        configureView()
+        registerNotification()
     }
     
-    private func configure() {
+    private func configureView() {
         contentView.layer.cornerRadius = 12.0
         contentView.layer.masksToBounds = true
         headerView.titleLabel.text = "인원"
@@ -34,5 +34,15 @@ class GuestViewController: UIViewController {
         infantSelectionView.ageGroupLabel.text = "영유아"
         infantSelectionView.detailLabel.text = "만2세 이하"
     }
-
+    
+    private func registerNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(close),
+                                               name: NotificationName.closeButtonDidTouch,
+                                               object: nil)
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
+    }
 }

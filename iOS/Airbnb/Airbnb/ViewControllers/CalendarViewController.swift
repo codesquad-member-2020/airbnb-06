@@ -9,18 +9,46 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var footerView: FooterView!
     
     private var dateManager = DateManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureCollectionView()
+        configureView()
+        registerNotification()
     }
     
-    private func configure() {
+    private func configureCollectionView() {
         calendarCollectionView.dataSource = self
         calendarCollectionView.delegate = self
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        calendarCollectionView.collectionViewLayout = layout
+    }
+    
+    private func configureView() {
+        contentView.layer.cornerRadius = 12.0
+        contentView.layer.masksToBounds = true
+        headerView.titleLabel.text = "체크인 ― 체크아웃"
+    }
+    
+    private func registerNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(close),
+                                               name: NotificationName.closeButtonDidTouch,
+                                               object: nil)
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -56,7 +84,7 @@ extension CalendarViewController: UICollectionViewDataSource {
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.bounds.width / 7
+        let width = collectionView.bounds.width / 7
         return CGSize(width: width, height: width)
     }
 }
