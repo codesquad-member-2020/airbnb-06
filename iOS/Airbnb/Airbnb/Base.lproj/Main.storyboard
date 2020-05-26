@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="94f-IF-uk0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -577,10 +577,56 @@
             </objects>
             <point key="canvasLocation" x="1099" y="927"/>
         </scene>
+        <!--Main View Controller-->
+        <scene sceneID="vXC-Z6-ybi">
+            <objects>
+                <viewController id="94f-IF-uk0" customClass="MainViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ilY-xr-K7E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="WPg-IJ-xyu">
+                                <rect key="frame" x="103.5" y="194" width="207" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WPg-IJ-xyu" secondAttribute="height" multiplier="1:1" id="TNd-rc-fMV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryg-lN-drI">
+                                <rect key="frame" x="25" y="582" width="364" height="48"/>
+                                <color key="backgroundColor" red="0.86976736779999997" green="0.36666804549999998" blue="0.3143491149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="g3m-xT-8N5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="sign in Github">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="githubLogin:" destination="94f-IF-uk0" eventType="touchUpInside" id="lBA-Mj-k0R"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ryg-lN-drI" firstAttribute="leading" secondItem="eZn-IC-Ers" secondAttribute="leading" constant="25" id="5qP-Js-yDP"/>
+                            <constraint firstItem="WPg-IJ-xyu" firstAttribute="centerX" secondItem="ilY-xr-K7E" secondAttribute="centerX" id="8Sz-JX-3dP"/>
+                            <constraint firstItem="WPg-IJ-xyu" firstAttribute="top" secondItem="eZn-IC-Ers" secondAttribute="top" constant="150" id="Gqg-ZY-lOh"/>
+                            <constraint firstItem="WPg-IJ-xyu" firstAttribute="width" secondItem="ilY-xr-K7E" secondAttribute="width" multiplier="0.5" id="HJO-Iv-vPD"/>
+                            <constraint firstItem="WPg-IJ-xyu" firstAttribute="centerX" secondItem="ryg-lN-drI" secondAttribute="centerX" id="gAA-6F-kwi"/>
+                            <constraint firstItem="eZn-IC-Ers" firstAttribute="trailing" secondItem="ryg-lN-drI" secondAttribute="trailing" constant="25" id="ga2-ag-MfU"/>
+                            <constraint firstItem="ryg-lN-drI" firstAttribute="top" secondItem="WPg-IJ-xyu" secondAttribute="top" multiplier="3" id="ofS-s2-DZJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eZn-IC-Ers"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvX-K0-L7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-688.40579710144937" y="145.98214285714286"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fEz-OH-eNT">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8kN-le-RZa" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="8kN-le-RZa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7rl-U5-9lY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -600,6 +646,7 @@
     </scenes>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="logo" width="81.666664123535156" height="90"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="113"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
