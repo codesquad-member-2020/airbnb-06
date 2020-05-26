@@ -40,7 +40,8 @@ extension CalendarViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
         if 1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date { cell.configure(date: date) }
         if chooseDays.contains(indexPath) { cell.select() }
-        changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
+//        changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
+        print(indexPath)
         return cell
     }
     
@@ -127,11 +128,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     }
     
     private func updateSelectedCell(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
-        if chooseDays.count == 2 {
-            let cells = configureCheckInOut(cell, collectionView: collectionView, indexPath: indexPath)
-            cells?.checkInCell.hideRightBackground()
-            cells?.checkOutCell.hideLeftBackground()
-        }
+        if chooseDays.count == 2 { unMarkCheckInOut(cell, collectionView: collectionView, indexPath: indexPath) }
         removeAll()
         reload(collectionView, indexPath: indexPath, cell: cell)
     }
@@ -191,12 +188,20 @@ extension CalendarViewController: UICollectionViewDelegate {
         }
     }
     
+    private func markCheckInOut(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
+        let cells = configureCheckInOut(cell, collectionView: collectionView, indexPath: indexPath)
+        cells?.checkInCell.configureRightBackground()
+        cells?.checkOutCell.configureLeftBackground()
+    }
+    
+    private func unMarkCheckInOut(_ cell: CalendarCollectionViewCell, collectionView: UICollectionView, indexPath: IndexPath) {
+        let cells = configureCheckInOut(cell, collectionView: collectionView, indexPath: indexPath)
+        cells?.checkInCell.hideRightBackground()
+        cells?.checkOutCell.hideLeftBackground()
+    }
+    
     private func changeWholePeriodCellsBackground(_ collectionView: UICollectionView, cell: CalendarCollectionViewCell, indexPath: IndexPath) {
-        if chooseDays.count == 2 {
-            let cells = configureCheckInOut(cell, collectionView: collectionView, indexPath: indexPath)
-            cells?.checkInCell.configureRightBackground()
-            cells?.checkOutCell.configureLeftBackground()
-        }
+        if chooseDays.count == 2 { markCheckInOut(cell, collectionView: collectionView, indexPath: indexPath) }
         
         if periodDays.count > 2 {
             for index in 1..<periodDays.count - 1 {
@@ -208,5 +213,9 @@ extension CalendarViewController: UICollectionViewDelegate {
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
         cell.changeBackground()
+    }
+    
+    private func calculateIndexPathToDate() {
+        
     }
 }
