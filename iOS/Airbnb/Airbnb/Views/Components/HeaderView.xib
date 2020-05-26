@@ -27,11 +27,18 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="체크인 ― 체크아웃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-xG-lQ3">
-                    <rect key="frame" x="143" y="61.5" width="128" height="21"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <rect key="frame" x="139.5" y="61.5" width="135.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coK-6S-RHv">
+                    <rect key="frame" x="0.0" y="99" width="414" height="1"/>
+                    <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0Ql-LY-eAU"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -39,6 +46,9 @@
                 <constraint firstItem="KP2-uy-15j" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="9zA-eH-uxs"/>
                 <constraint firstItem="QMS-xG-lQ3" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="MLQ-KH-T5z"/>
                 <constraint firstItem="KP2-uy-15j" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Rsi-oA-Eub"/>
+                <constraint firstItem="coK-6S-RHv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="V9X-ld-GG2"/>
+                <constraint firstItem="coK-6S-RHv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="pGX-kW-6lT"/>
+                <constraint firstItem="coK-6S-RHv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rhu-y2-gkV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

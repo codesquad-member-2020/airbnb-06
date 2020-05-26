@@ -316,7 +316,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FW0-qA-u8I" userLabel="Content View">
-                                <rect key="frame" x="20.5" y="150" width="373" height="409"/>
+                                <rect key="frame" x="20.5" y="150" width="373" height="360"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-du-or2" customClass="HeaderView" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="60"/>
@@ -326,30 +326,30 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmn-2H-KdO" userLabel="Guest View">
-                                        <rect key="frame" x="0.0" y="60" width="373" height="289"/>
+                                        <rect key="frame" x="0.0" y="60" width="373" height="240"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pV0-GD-waC">
-                                                <rect key="frame" x="0.0" y="20" width="373" height="240"/>
+                                                <rect key="frame" x="0.0" y="20" width="373" height="210"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJN-SJ-KEi" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="70"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="8o0-3L-SHW"/>
+                                                            <constraint firstAttribute="height" constant="70" id="8o0-3L-SHW"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-Pa-Zt7" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="80" width="373" height="80"/>
+                                                        <rect key="frame" x="0.0" y="70" width="373" height="70"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="48f-YH-v4B"/>
+                                                            <constraint firstAttribute="height" constant="70" id="48f-YH-v4B"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktM-8W-fkP" customClass="GuestSelectionView" customModule="Airbnb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="160" width="373" height="80"/>
+                                                        <rect key="frame" x="0.0" y="140" width="373" height="70"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="d4K-lR-iC5"/>
+                                                            <constraint firstAttribute="height" constant="70" id="d4K-lR-iC5"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -363,7 +363,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAn-Ga-kth" customClass="FooterView" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="349" width="373" height="60"/>
+                                        <rect key="frame" x="0.0" y="300" width="373" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Kqr-qu-rnM"/>
@@ -381,6 +381,7 @@
                                     <constraint firstAttribute="trailing" secondItem="uc3-du-or2" secondAttribute="trailing" id="g7k-Ng-ayF"/>
                                     <constraint firstAttribute="trailing" secondItem="Lmn-2H-KdO" secondAttribute="trailing" id="jKA-20-u0W"/>
                                     <constraint firstAttribute="bottom" secondItem="IAn-Ga-kth" secondAttribute="bottom" id="nWE-Bf-PBQ"/>
+                                    <constraint firstAttribute="height" constant="360" id="pIz-lC-vzn"/>
                                     <constraint firstItem="IAn-Ga-kth" firstAttribute="leading" secondItem="FW0-qA-u8I" secondAttribute="leading" id="xfy-cG-uRe"/>
                                 </constraints>
                             </view>
@@ -391,13 +392,20 @@
                             <constraint firstItem="Nm3-u2-Ode" firstAttribute="trailing" secondItem="NvW-zb-pb2" secondAttribute="trailing" id="PNg-RZ-3Hj"/>
                             <constraint firstItem="FW0-qA-u8I" firstAttribute="width" secondItem="Nm3-u2-Ode" secondAttribute="width" multiplier="0.9" id="gsM-ug-wEM"/>
                             <constraint firstItem="NvW-zb-pb2" firstAttribute="bottom" secondItem="pxM-lC-KfN" secondAttribute="bottom" id="jLx-3s-tL7"/>
-                            <constraint firstItem="FW0-qA-u8I" firstAttribute="height" secondItem="Nm3-u2-Ode" secondAttribute="height" multiplier="0.5" id="jN2-Ag-Yjk"/>
                             <constraint firstItem="NvW-zb-pb2" firstAttribute="leading" secondItem="Nm3-u2-Ode" secondAttribute="leading" id="kp5-Ge-Yd2"/>
                             <constraint firstItem="NvW-zb-pb2" firstAttribute="top" secondItem="pxM-lC-KfN" secondAttribute="top" id="mr0-zA-toA"/>
                             <constraint firstItem="FW0-qA-u8I" firstAttribute="centerX" secondItem="Nm3-u2-Ode" secondAttribute="centerX" id="x0Q-jZ-cAc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nm3-u2-Ode"/>
                     </view>
+                    <connections>
+                        <outlet property="adultSelectionView" destination="kJN-SJ-KEi" id="SPB-Sq-ytr"/>
+                        <outlet property="childSelectionView" destination="dTo-Pa-Zt7" id="2ie-Lp-0hn"/>
+                        <outlet property="contentView" destination="FW0-qA-u8I" id="4WG-Gv-Ayi"/>
+                        <outlet property="footerView" destination="IAn-Ga-kth" id="cZb-eq-f5H"/>
+                        <outlet property="headerView" destination="uc3-du-or2" id="y0u-aG-vhz"/>
+                        <outlet property="infantSelectionView" destination="ktM-8W-fkP" id="Ovi-tS-Upo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dfs-ZB-thA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
