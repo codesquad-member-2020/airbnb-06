@@ -11,8 +11,10 @@ import UIKit
 class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet var circleView: CircleView!
-  
+    @IBOutlet weak var circleView: CircleView!
+    @IBOutlet weak var rightBackground: UIView!
+    @IBOutlet weak var leftBackground: UIView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -23,7 +25,16 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        circleView.hide()
+        
         dateLabel.text = ""
+        dateLabel.textColor = .black
+        
+        self.backgroundColor = .clear
+        self.isUserInteractionEnabled = true
+        
+        leftBackground.backgroundColor = .clear
+        rightBackground.backgroundColor = .clear
     }
     
     func configure(date: Int) {
@@ -38,5 +49,33 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     func deselect() {
         circleView.hide()
         dateLabel.textColor = .black
+    }
+    
+    func changeBackground() {
+        if dateLabel.text != "" {
+            configureLeftBackground()
+            configureRightBackground()
+        }
+    }
+    
+    func configureLeftBackground() {
+        leftBackground.backgroundColor = UIColor(named: "LightGray")
+    }
+    
+    func configureRightBackground() {
+        rightBackground.backgroundColor = UIColor(named: "LightGray")
+    }
+    
+    func hideLeftBackground() {
+        leftBackground.backgroundColor = .clear
+    }
+    
+    func hideRightBackground() {
+        rightBackground.backgroundColor = .clear
+    }
+    
+    func disable() {
+        dateLabel.textColor = .lightGray
+        self.isUserInteractionEnabled = false
     }
 }
