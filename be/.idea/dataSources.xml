@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="jdbc:mysql://localhost:3306/airbnb?serverTimezone=Asia/Seoul" uuid="8fb9b4da-d454-4ae3-85d2-73125a804294">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/airbnb?serverTimezone=Asia/Seoul</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="airbnb@db-dev.cskoslbhhrzm.ap-northeast-2.rds.amazonaws.com" uuid="4ae589da-58cb-4ff0-8c13-5cac5ef67333">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db-dev.cskoslbhhrzm.ap-northeast-2.rds.amazonaws.com:3306/airbnb</jdbc-url>
+    </data-source>
+  </component>
+</project>
