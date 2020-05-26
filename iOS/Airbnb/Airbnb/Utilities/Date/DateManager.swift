@@ -12,13 +12,15 @@ struct DateManager {
     
     private let calendar = Calendar.current
     private var months: [Int] = []
-    private lazy var nowComponents = calendar.dateComponents([.year, .month, .weekday], from: Date())
+    private lazy var nowComponents = calendar.dateComponents([.year, .month, .weekday, .day], from: Date())
 
     mutating func firstWeekday(thisMonth: Int) -> Int {
         var component = nowComponents
         component.month! += thisMonth
         let thisMonthDate = calendar.date(from: component)
-        let thisMonthComponents = calendar.dateComponents([.year, .month, .weekday], from: thisMonthDate!)
+        let firstDateOfMonth = thisMonthDate?.firstDayOfMonth
+        let thisMonthComponents = calendar.dateComponents([.year, .month, .weekday, .day], from: firstDateOfMonth!)
+        
         return thisMonthComponents.weekday! - 1
     }
     
@@ -42,5 +44,13 @@ struct DateManager {
     
     func thisMonth(_ index: Int) -> Int {
         return months[index]
+    }
+}
+
+extension Date {
+    var firstDayOfMonth: Date {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.year, .month], from: self)
+        return  calendar.date(from: components)!
     }
 }
