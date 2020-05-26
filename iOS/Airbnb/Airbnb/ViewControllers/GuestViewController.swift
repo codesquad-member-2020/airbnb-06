@@ -11,11 +11,11 @@ import UIKit
 class GuestViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var headerView: HeaderView!
+    @IBOutlet weak var headerView: PopupHeaderView!
     @IBOutlet weak var adultSelectionView: GuestSelectionView!
     @IBOutlet weak var childSelectionView: GuestSelectionView!
     @IBOutlet weak var infantSelectionView: GuestSelectionView!
-    @IBOutlet weak var footerView: FooterView!
+    @IBOutlet weak var footerView: PopupFooterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,8 +9,11 @@
 import UIKit
 
 final class CalendarViewController: UIViewController {
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var headerView: PopupHeaderView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
-    @IBOutlet weak var footerView: FooterView!
+    @IBOutlet weak var footerView: PopupFooterView!
 
     private var dateManager = DateManager()
     private var chooseDays: [IndexPath] = []
@@ -34,9 +37,9 @@ final class CalendarViewController: UIViewController {
     }
 
     private func configureView() {
-//        contentView.layer.cornerRadius = 12.0
-//        contentView.layer.masksToBounds = true
-//        headerView.titleLabel.text = "체크인 ― 체크아웃"
+        contentView.layer.cornerRadius = 12.0
+        contentView.layer.masksToBounds = true
+        headerView.titleLabel.text = "체크인 ― 체크아웃"
     }
 
     private func registerNotification() {
@@ -85,6 +88,11 @@ extension CalendarViewController: UICollectionViewDataSource {
 }
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width = collectionView.bounds.width
+        return CGSize(width: width, height: 60)
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width / 7

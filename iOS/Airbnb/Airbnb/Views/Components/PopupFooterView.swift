@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FooterView: UIView {
+class PopupFooterView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var resetButton: UIButton!
@@ -25,7 +25,7 @@ class FooterView: UIView {
     }
     
     func configure() {
-        Bundle.main.loadNibNamed("FooterView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("PopupFooterView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         completeButton.layer.cornerRadius = 5.0

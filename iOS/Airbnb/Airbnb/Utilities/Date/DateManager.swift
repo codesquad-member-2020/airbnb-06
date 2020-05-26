@@ -29,6 +29,7 @@ struct DateManager {
         for month in nowComponents.month!...12 {
             months.append(month)
         }
+        print(months.count)
         return months
     }
     
