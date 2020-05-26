@@ -34,9 +34,9 @@ final class CalendarViewController: UIViewController {
     }
 
     private func configureView() {
-        contentView.layer.cornerRadius = 12.0
-        contentView.layer.masksToBounds = true
-        headerView.titleLabel.text = "체크인 ― 체크아웃"
+//        contentView.layer.cornerRadius = 12.0
+//        contentView.layer.masksToBounds = true
+//        headerView.titleLabel.text = "체크인 ― 체크아웃"
     }
 
     private func registerNotification() {
