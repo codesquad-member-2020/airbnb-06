@@ -21,7 +21,7 @@ struct DateManager {
         let firstDateOfMonth = thisMonthDate?.firstDayOfMonth
         let thisMonthComponents = calendar.dateComponents([.year, .month, .weekday, .day], from: firstDateOfMonth!)
         
-        return thisMonthComponents.weekday! - 1
+        return thisMonthComponents.weekday!
     }
     
     mutating func monthsFromNowToDecember() -> [Int] {
@@ -40,6 +40,10 @@ struct DateManager {
     
     mutating func yearMonth(_ index: Int) -> (year: Int, month: Int) {
         return (nowComponents.year!, months[index])
+    }
+    
+    mutating func today() -> Int {
+        return nowComponents.day!
     }
     
     func thisMonth(_ index: Int) -> Int {
