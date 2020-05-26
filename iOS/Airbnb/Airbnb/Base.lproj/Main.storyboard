@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8kN-le-RZa">
+
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -24,6 +26,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-cS-Znl" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                 <rect key="frame" x="108" y="94" width="30" height="30"/>
                                 <state key="normal" title="가격"/>
+
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-Of-ujo" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                 <rect key="frame" x="70" y="94" width="30" height="30"/>
@@ -38,6 +41,7 @@
                                 <connections>
                                     <action selector="displayPopup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gHI-fI-2VC"/>
                                 </connections>
+
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-N8-4Vl">
                                 <rect key="frame" x="186" y="136" width="42" height="21"/>
@@ -118,6 +122,7 @@
                         <outlet property="floatingButton" destination="bQB-yv-dul" id="dMf-gK-vlR"/>
                         <outlet property="guestFilterButton" destination="ldT-Of-ujo" id="R3a-2N-ash"/>
                         <outlet property="priceFilterButton" destination="OIr-cS-Znl" id="9XJ-ET-SV1"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -155,6 +160,85 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpT-dl-Zgq" userLabel="Content View">
                                 <rect key="frame" x="20.5" y="150" width="373" height="500"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-5Z-FY4">
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D92-2D-gCW">
+                                        <rect key="frame" x="59" y="0.0" width="59.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUL-jZ-eBc">
+                                        <rect key="frame" x="118.5" y="0.0" width="59" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-RR-go7">
+                                        <rect key="frame" x="177.5" y="0.0" width="59" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fC-zc-nQe">
+                                        <rect key="frame" x="236.5" y="0.0" width="59" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-16-Bw5">
+                                        <rect key="frame" x="295.5" y="0.0" width="59.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLx-bf-Wrq">
+                                        <rect key="frame" x="355" y="0.0" width="59" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ac-IH-Z8X">
+                                <rect key="frame" x="0.0" y="154" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8ac-IH-Z8X" secondAttribute="height" id="29L-vr-uxg"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Otl-vs-rMj">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCell" id="o0N-JA-6Qy" customClass="CalendarCollectionViewCell" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ov4-Sz-14L">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-fb-N06">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mul-Np-7Vw">
+                                                    <rect key="frame" x="25" y="0.0" width="25" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-1j-Rp6" customClass="CircleView" customModule="Airbnb" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH7-i1-Xih">
+                                                    <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsa-HJ-tLS" customClass="HeaderView" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -267,6 +351,54 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bpd-1j-Rp6" secondAttribute="trailing" id="38y-2o-ITy"/>
+                                                <constraint firstItem="mul-Np-7Vw" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="9fW-bX-aLs"/>
+                                                <constraint firstAttribute="bottom" secondItem="bpd-1j-Rp6" secondAttribute="bottom" id="D1q-Rv-UKq"/>
+                                                <constraint firstAttribute="bottom" secondItem="mul-Np-7Vw" secondAttribute="bottom" id="Gqv-ke-Ku9"/>
+                                                <constraint firstItem="bH7-i1-Xih" firstAttribute="centerX" secondItem="ov4-Sz-14L" secondAttribute="centerX" id="JaH-st-QBy"/>
+                                                <constraint firstAttribute="bottom" secondItem="Kjo-fb-N06" secondAttribute="bottom" id="OfO-KG-59h"/>
+                                                <constraint firstItem="Kjo-fb-N06" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" id="Ux6-js-cHC"/>
+                                                <constraint firstAttribute="trailing" secondItem="mul-Np-7Vw" secondAttribute="trailing" id="Wce-ND-UsZ"/>
+                                                <constraint firstItem="Kjo-fb-N06" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="f0J-Xt-cIG"/>
+                                                <constraint firstItem="bpd-1j-Rp6" firstAttribute="top" secondItem="ov4-Sz-14L" secondAttribute="top" id="iKj-RY-wyz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kjo-fb-N06" secondAttribute="trailing" constant="25" id="j5f-S0-GWY"/>
+                                                <constraint firstItem="mul-Np-7Vw" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" constant="25" id="lCK-ff-v9R"/>
+                                                <constraint firstItem="bpd-1j-Rp6" firstAttribute="leading" secondItem="ov4-Sz-14L" secondAttribute="leading" id="xbO-Bt-qCO"/>
+                                                <constraint firstItem="bH7-i1-Xih" firstAttribute="centerY" secondItem="ov4-Sz-14L" secondAttribute="centerY" id="zm0-be-A8K"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="circleView" destination="bpd-1j-Rp6" id="4c6-az-X4v"/>
+                                            <outlet property="dateLabel" destination="bH7-i1-Xih" id="XDJ-ux-Riq"/>
+                                            <outlet property="leftBackground" destination="Kjo-fb-N06" id="aJ0-or-XaN"/>
+                                            <outlet property="rightBackground" destination="mul-Np-7Vw" id="YdE-Sj-8am"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarHeader" id="aLH-4J-OQ3" customClass="CalendarHeaderView" customModule="Airbnb" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-es-HTW">
+                                            <rect key="frame" x="16" y="8" width="390" height="34"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eL3-es-HTW" secondAttribute="bottom" id="OvV-Wq-9A2"/>
+                                        <constraint firstItem="eL3-es-HTW" firstAttribute="top" secondItem="aLH-4J-OQ3" secondAttribute="topMargin" id="Zd3-bm-NQw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eL3-es-HTW" secondAttribute="trailing" id="fSo-vK-5Ox"/>
+                                        <constraint firstItem="eL3-es-HTW" firstAttribute="leading" secondItem="aLH-4J-OQ3" secondAttribute="leadingMargin" constant="8" id="fuQ-WU-h0U"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="yearMonthLabel" destination="eL3-es-HTW" id="sXE-E5-95v"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjK-Hb-cx7" customClass="FooterView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="584" width="414" height="60"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="eL3-es-HTW" secondAttribute="bottom" id="OvV-Wq-9A2"/>
                                                 <constraint firstItem="eL3-es-HTW" firstAttribute="top" secondItem="aLH-4J-OQ3" secondAttribute="topMargin" id="Zd3-bm-NQw"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eL3-es-HTW" secondAttribute="trailing" id="fSo-vK-5Ox"/>
@@ -279,6 +411,7 @@
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjK-Hb-cx7" customClass="FooterView" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="440" width="373" height="60"/>
+
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ox-Eq-Cb2"/>
@@ -300,6 +433,7 @@
                                     <constraint firstAttribute="trailing" secondItem="8ac-IH-Z8X" secondAttribute="trailing" id="qe8-fd-ELv"/>
                                     <constraint firstItem="8ac-IH-Z8X" firstAttribute="top" secondItem="ae7-Tv-cIu" secondAttribute="bottom" constant="16" id="upG-02-HjN"/>
                                     <constraint firstAttribute="height" constant="500" id="xcP-mn-SOc"/>
+
                                 </constraints>
                             </view>
                         </subviews>
@@ -312,6 +446,7 @@
                             <constraint firstItem="u1K-t1-CP7" firstAttribute="bottom" secondItem="RYx-E4-Z2N" secondAttribute="bottom" id="ZEv-fq-ZHE"/>
                             <constraint firstItem="rpT-dl-Zgq" firstAttribute="width" secondItem="9LH-Q7-AJd" secondAttribute="width" multiplier="0.9" id="iVR-zm-Z9A"/>
                             <constraint firstItem="u1K-t1-CP7" firstAttribute="top" secondItem="RYx-E4-Z2N" secondAttribute="top" id="zqG-4v-hm4"/>
+
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9LH-Q7-AJd"/>
                     </view>
@@ -321,6 +456,7 @@
                         <outlet property="contentView" destination="rpT-dl-Zgq" id="oHW-om-iJ0"/>
                         <outlet property="footerView" destination="FjK-Hb-cx7" id="iy9-hY-au8"/>
                         <outlet property="headerView" destination="Bsa-HJ-tLS" id="cCw-rX-wi6"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TS1-2e-Fou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
