@@ -315,6 +315,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9LH-Q7-AJd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Qtl-Pd-2VP"/>
                     <connections>
                         <outlet property="calendarCollectionView" destination="8ac-IH-Z8X" id="F12-lY-zFe"/>
                         <outlet property="contentView" destination="rpT-dl-Zgq" id="oHW-om-iJ0"/>
