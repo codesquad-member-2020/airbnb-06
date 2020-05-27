@@ -10,7 +10,9 @@ import Foundation
 
 enum EndPoints {
     static let defaultURL = "http://52.78.203.80/api/"
-    static let login = "login"
-    static let listings = "listings"
-    static let bookings = "bookings"
+    static let login = "login/"
+    static let listings = "listings/"
+    static let bookings = "bookings/"
+    static let map = "map/"
+    static let priceGraph = "price-graph/"
 }
