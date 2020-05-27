@@ -7,20 +7,26 @@
 //
 
 import Foundation
+import Alamofire
 
 enum HTTPMethod: String {
     case get, post, put, patch, delete
 }
 
-protocol Requestable {
+protocol Request {
     var path: String { get }
     var method: HTTPMethod { get }
+    var headers: HTTPHeaders? { get }
     var bodyParams: [String : Any]? { get }
-    var headers: [String : String]? { get }
 }
 
-extension Requestable {
+extension Request {
     var method: HTTPMethod { return .get }
+    var headers: HTTPHeaders? { return nil }
     var bodyParams: [String : Any]? { return nil }
-    var headers: [String : String]? { return nil }
+}
+
+protocol Queryable {
+    var queryItems: [URLQueryItem] { get }
+    func append(name: QueryParameters, value: String)
 }
