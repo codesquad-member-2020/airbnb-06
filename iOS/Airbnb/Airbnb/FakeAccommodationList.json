@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "listing1",
+    "imageUrls": [
+      "https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/38165109-1f28-429f-b9fd-99d0932c154e.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/df7f56e6-71c0-4402-96de-27604ee4d460.jpg?aki_policy=large"
+    ],
+    "housingType": "Entire home/apt",
+    "numBedrooms": 2,
+    "numBeds": 3,
+    "rating": 4.85,
+    "numReviews": 210,
+    "liked": true,
+    "superHost": true
+  },
+  {
+    "id": 2,
+    "name": "listing2",
+    "imageUrls": [
+      "https://a0.muscache.com/im/pictures/2b5214b8-2e0a-4fcb-8004-0f4b95bdcaa4.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/100627966/2ccec29c_original.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/92182afd-7553-42a5-8b41-98d60a600062.jpg?aki_policy=large"
+    ],
+    "housingType": "Private room",
+    "numBedrooms": 1,
+    "numBeds": 2,
+    "rating": 4.93,
+    "numReviews": 52,
+    "liked": false,
+    "superHost": false
+  },
+  {
+    "id": 3,
+    "name": "listing3",
+    "imageUrls": [
+      "https://a0.muscache.com/im/pictures/1fa21b5c-b533-49f9-9569-a6808af8bc29.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/108111917/046dd104_original.jpg?aki_policy=large",
+      "https://a0.muscache.com/im/pictures/b2142aa3-f9db-4c32-8eaa-3bf0c6b548c1.jpg?aki_policy=large"
+    ],
+    "housingType": "House",
+    "numBedrooms": 3,
+    "numBeds": 6,
+    "rating": 4.77,
+    "numReviews": 33,
+    "liked": true,
+    "superHost": false
+  }
+]
