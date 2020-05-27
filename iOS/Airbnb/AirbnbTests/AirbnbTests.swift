@@ -13,13 +13,11 @@ class AirbnbTests: XCTestCase {
     
     func testDecode() {
         if let path = Bundle.main.path(forResource: "FakeAccommodationList", ofType: "json") {
-            do {
+            XCTAssertNoThrow({
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let decodedData = try JSONDecoder().decode(Accommodation.self, from: data)
                 let _ = try! XCTUnwrap(decodedData)
-            } catch {
-
-            }
+            })
         }
     }
 }
