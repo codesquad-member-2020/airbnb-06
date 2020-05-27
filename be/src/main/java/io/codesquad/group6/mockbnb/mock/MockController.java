@@ -29,7 +29,6 @@ public class MockController {
 
     @GetMapping("/mock/listings")
     public ResponseEntity<List<ListingSummary>> getListings(
-            @RequestParam(required = false, defaultValue = "la") String city,
             @RequestParam(required = false, defaultValue = "2020-05-22") LocalDate checkin,
             @RequestParam(required = false, defaultValue = "2020-05-23") LocalDate checkout,
             @RequestParam(name = "num-guests", required = false, defaultValue = "1") int numGuests,
@@ -37,7 +36,10 @@ public class MockController {
             @RequestParam(name = "max-price", required = false, defaultValue = "10000") int maxPrice,
             @RequestParam(required = false, defaultValue = "0") int offset,
             @RequestParam(required = false, defaultValue = "10") int limit,
-            @RequestParam(name = "is-bookmarked", required = false, defaultValue = "false") boolean isBookmarked) {
+            @RequestParam(name = "min-latitude", required = false, defaultValue = "37.7") double minLatitude,
+            @RequestParam(name = "max-latitude", required = false, defaultValue = "37.85") double maxLatitude,
+            @RequestParam(name = "min-longitude", required = false, defaultValue = "-122.55") double minLongitude,
+            @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude) {
         List<ListingSummary> listings = new ArrayList<>();
         listings.add(ListingSummary.builder()
                                    .id(1)
@@ -52,6 +54,8 @@ public class MockController {
                                    .numReviews(210)
                                    .isSuperHost(true)
                                    .isBookmarked(true)
+                                   .latitude(37.76931)
+                                   .longitude(-122.43386)
                                    .build());
         listings.add(ListingSummary.builder()
                                    .id(2)
@@ -66,6 +70,8 @@ public class MockController {
                                    .numReviews(52)
                                    .isSuperHost(false)
                                    .isBookmarked(false)
+                                   .latitude(37.75402)
+                                   .longitude(-122.45805)
                                    .build());
         listings.add(ListingSummary.builder()
                                    .id(3)
@@ -80,6 +86,8 @@ public class MockController {
                                    .numReviews(33)
                                    .isSuperHost(false)
                                    .isBookmarked(true)
+                                   .latitude(37.74511)
+                                   .longitude(-122.42102)
                                    .build());
         return ResponseEntity.ok(listings);
     }

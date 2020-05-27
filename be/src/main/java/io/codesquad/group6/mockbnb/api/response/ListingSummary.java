@@ -20,5 +20,7 @@ public class ListingSummary {
     int numReviews;
     boolean isSuperHost;
     boolean isBookmarked;
+    double latitude;
+    double longitude;
 
 }
