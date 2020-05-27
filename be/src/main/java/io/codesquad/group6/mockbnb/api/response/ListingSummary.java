@@ -19,6 +19,6 @@ public class ListingSummary {
     double rating;
     int numReviews;
     boolean isSuperHost;
-    boolean isLiked;
+    boolean isBookmarked;
 
 }
