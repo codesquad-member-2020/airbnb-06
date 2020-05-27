@@ -10,56 +10,34 @@ import Foundation
 import Alamofire
 
 struct AccommodationListUseCase {
-    var headers: HTTPHeaders = [:]
     
-    class AccommodationListRequest: Requestable {
-        
+    class AccommodationListRequest: Request, Queryable, URLRequestConvertible {
         var path: String = EndPoints.defaultURL + EndPoints.listings
         var method: HTTPMethod = .get
-        var checkIn: String?
-        var checkOut: String?
-        var numGuests: String?
-        var numPrice: String?
-        var maxPrice: String?
-        var offset: String?
-        var limit: String?
+        var headers: HTTPHeaders?
+        var queryItems: [URLQueryItem] = []
         
-        init(checkIn: String? = nil, checkOut: String? = nil, numGuests: String? = nil, numPrice: String? = nil, maxPrice: String? = nil, offset: String? = nil, limit: String? = nil) {
-            self.checkIn = checkIn
-            self.checkOut = checkOut
-            self.numGuests = numGuests
-            self.numPrice = numPrice
-            self.maxPrice = maxPrice
-            self.offset = offset
-            self.limit = limit
+        func append(name: QueryParameters, value: String) {
+            let queryItem = URLQueryItem(name: name.description, value: value)
+            queryItems.append(queryItem)
         }
         
-        func queryDate(checkIn: String, checkOut: String) {
-            guard var urlComponent = URLComponents(string: path) else { return }
-           
-            let queryItems: [URLQueryItem] = [URLQueryItem(name: "checkIn", value: checkIn),
-                                              URLQueryItem(name: "checkOut", value: checkOut)
-            ]
-            urlComponent.queryItems = queryItems
-            self.path = urlComponent.url!.absoluteString
+        func setToken() {
+            guard let token = UserDefaults.standard.object(forKey: "token") as? String else { return }
+            headers = ["Authorization": token]
         }
         
-        func makeRequest() -> URLRequest? {
-            var request: URLRequest?
+        func asURLRequest() throws -> URLRequest {
+            var request: URLRequest
             request = URLRequest(url: URL(string: path)!)
-            request?.httpMethod = self.method.rawValue
+            request.httpMethod = self.method.rawValue
+            guard let header = headers else { return request }
+            request.headers = header
             return request
         }
     }
     
     func request(id: Int?, handler: @escaping (Any) -> Void) {
-        let req = AccommodationListRequest()
-        req.queryDate(checkIn: "2020-03-01", checkOut: "2020-04-01")
-        let request = req.makeRequest()!
-        print(request.url)
-        AF.request(request).responseJSON { jsonData in
-            print(jsonData)
-        }
         
     }
     
