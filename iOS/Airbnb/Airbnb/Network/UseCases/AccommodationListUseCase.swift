@@ -13,6 +13,7 @@ struct AccommodationListUseCase {
     var headers: HTTPHeaders = [:]
     
     class AccommodationListRequest: Requestable {
+        
         var path: String = EndPoints.defaultURL + EndPoints.listings
         var method: HTTPMethod = .get
         var checkIn: String?
@@ -34,17 +35,32 @@ struct AccommodationListUseCase {
         }
         
         func queryDate(checkIn: String, checkOut: String) {
-            var urlComponent = URLComponents(url: URL(string: path)!, resolvingAgainstBaseURL: false)
-            
-            urlComponent?.queryItems?.append(URLQueryItem(name: checkIn, value: checkIn))
-            urlComponent?.queryItems?.append(URLQueryItem(name: checkIn, value: checkIn))
-            
-            self.path = urlComponent!.url!.absoluteString
+            guard var urlComponent = URLComponents(string: path) else { return }
+           
+            let queryItems: [URLQueryItem] = [URLQueryItem(name: "checkIn", value: checkIn),
+                                              URLQueryItem(name: "checkOut", value: checkOut)
+            ]
+            urlComponent.queryItems = queryItems
+            self.path = urlComponent.url!.absoluteString
+        }
+        
+        func makeRequest() -> URLRequest? {
+            var request: URLRequest?
+            request = URLRequest(url: URL(string: path)!)
+            request?.httpMethod = self.method.rawValue
+            return request
         }
     }
     
     func request(id: Int?, handler: @escaping (Any) -> Void) {
-       
+        let req = AccommodationListRequest()
+        req.queryDate(checkIn: "2020-03-01", checkOut: "2020-04-01")
+        let request = req.makeRequest()!
+        print(request.url)
+        AF.request(request).responseJSON { jsonData in
+            print(jsonData)
+        }
+        
     }
     
     

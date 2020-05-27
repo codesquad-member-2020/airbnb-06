@@ -33,5 +33,9 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let req = AccommodationListUseCase()
+        req.request(id: nil) { data in
+            print(data)
+        }
     }
 }
