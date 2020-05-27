@@ -11,7 +11,7 @@ import java.util.List;
 public class ListingDetail {
 
     @Singular List<String> imageUrls;
-    boolean isLiked;
+    boolean isBookmarked;
     String name;
     String location;
     String hostName;

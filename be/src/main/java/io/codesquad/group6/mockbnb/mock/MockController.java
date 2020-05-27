@@ -1,7 +1,7 @@
 package io.codesquad.group6.mockbnb.mock;
 
 import io.codesquad.group6.mockbnb.api.request.BookingRequest;
-import io.codesquad.group6.mockbnb.api.request.LikeRequest;
+import io.codesquad.group6.mockbnb.api.request.BookmarkRequest;
 import io.codesquad.group6.mockbnb.api.response.BookingDetail;
 import io.codesquad.group6.mockbnb.api.response.BookingResponse;
 import io.codesquad.group6.mockbnb.api.response.BookingSummary;
@@ -37,7 +37,7 @@ public class MockController {
             @RequestParam(name = "max-price", required = false, defaultValue = "10000") int maxPrice,
             @RequestParam(required = false, defaultValue = "0") int offset,
             @RequestParam(required = false, defaultValue = "10") int limit,
-            @RequestParam(name = "is-liked", required = false, defaultValue = "false") boolean isLiked) {
+            @RequestParam(name = "is-bookmarked", required = false, defaultValue = "false") boolean isBookmarked) {
         List<ListingSummary> listings = new ArrayList<>();
         listings.add(ListingSummary.builder()
                                    .id(1)
@@ -51,7 +51,7 @@ public class MockController {
                                    .rating(4.85)
                                    .numReviews(210)
                                    .isSuperHost(true)
-                                   .isLiked(true)
+                                   .isBookmarked(true)
                                    .build());
         listings.add(ListingSummary.builder()
                                    .id(2)
@@ -65,7 +65,7 @@ public class MockController {
                                    .rating(4.93)
                                    .numReviews(52)
                                    .isSuperHost(false)
-                                   .isLiked(false)
+                                   .isBookmarked(false)
                                    .build());
         listings.add(ListingSummary.builder()
                                    .id(3)
@@ -79,15 +79,15 @@ public class MockController {
                                    .rating(4.77)
                                    .numReviews(33)
                                    .isSuperHost(false)
-                                   .isLiked(true)
+                                   .isBookmarked(true)
                                    .build());
         return ResponseEntity.ok(listings);
     }
 
     @PatchMapping("/mock/listings/{listing-id}")
-    public void likeListing(@PathVariable(name = "listing-id") long listingId,
-                            @RequestBody LikeRequest likeRequest,
-                            HttpServletResponse response) {
+    public void bookmarkListing(@PathVariable(name = "listing-id") long listingId,
+                                @RequestBody BookmarkRequest bookmarkRequest,
+                                HttpServletResponse response) {
         response.setStatus(202);
     }
 
@@ -98,7 +98,7 @@ public class MockController {
                                               .imageUrl("https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large")
                                               .imageUrl("https://a0.muscache.com/im/pictures/38165109-1f28-429f-b9fd-99d0932c154e.jpg?aki_policy=large")
                                               .imageUrl("https://a0.muscache.com/im/pictures/df7f56e6-71c0-4402-96de-27604ee4d460.jpg?aki_policy=large")
-                                              .isLiked(true)
+                                              .isBookmarked(true)
                                               .name("listing1")
                                               .location("Korea Town, Los Angeles, California, United States")
                                               .hostName("David")
