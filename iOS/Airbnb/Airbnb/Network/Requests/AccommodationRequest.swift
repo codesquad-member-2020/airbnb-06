@@ -58,8 +58,10 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
     override func asURLRequest() -> URLRequest {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
-        guard let urlComponents = URLComponents(url: URL(string: path)!, resolvingAgainstBaseURL: false), var queryItems = urlComponents.queryItems else { return request }
-        queryItems += self.queryItems
+        guard var urlComponents = URLComponents(string: path) else { return request }
+        urlComponents.queryItems = queryItems
+        guard let urlWithQuery = urlComponents.url else { return request}
+        request.url = urlWithQuery
         guard let headers = headers else { return request }
         request.headers = headers
         return request
