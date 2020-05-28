@@ -35,9 +35,11 @@ public class JwtService {
                             .build()
                             .parseClaimsJws(jwt)
                             .getBody();
+        long id = Integer.toUnsignedLong((int) claims.get("id"));
         String login = (String) claims.get("login");
         String email = (String) claims.get("email");
         return GitHubUserData.builder()
+                             .id(id)
                              .login(login)
                              .email(email)
                              .build();
@@ -52,6 +54,7 @@ public class JwtService {
 
     private Map<String, Object> createClaims(GitHubUserData gitHubUserData) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("id", gitHubUserData.getId());
         claims.put("login", gitHubUserData.getLogin());
         claims.put("email", gitHubUserData.getEmail());
         return claims;

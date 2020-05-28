@@ -53,6 +53,7 @@ public class OAuthService {
                                                                       String.class);
         JsonNode jsonNode = objectMapper.readTree(response.getBody());
         return GitHubUserData.builder()
+                             .id(jsonNode.required("id").asLong())
                              .login(jsonNode.required("login").asText())
                              .email(jsonNode.required("email").asText())
                              .build();
