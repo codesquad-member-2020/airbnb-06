@@ -20,7 +20,7 @@ public class ListingDetail {
     int capacity;
     int numBedrooms;
     int numBeds;
-    int numBathrooms;
+    double numBathrooms;
     double price;
     double rating;
     int numReviews;

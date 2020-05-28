@@ -1,18 +1,17 @@
 package io.codesquad.group6.mockbnb.domain.listing;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.Singular;
+import lombok.Value;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
-@Data
+@Value
 @Builder
 public class Listing {
 
     @Id long id;
-    @Singular List<String> imageUrls;
+    List<String> imageUrls;
     String name;
     String housingType;
     String location;
@@ -21,12 +20,13 @@ public class Listing {
     int capacity;
     int numBedrooms;
     int numBeds;
-    int numBathrooms;
+    double numBathrooms;
     double price;
+    double cleaning_fee;
     double rating;
+    int numReviews;
     double latitude;
     double longitude;
-    int numReviews;
     boolean isSuperHost;
     boolean isBookmarked;
 
