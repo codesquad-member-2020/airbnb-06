@@ -16,12 +16,9 @@ enum AccommodationRequests {
     
     var request: URLRequestConvertible {
         switch self {
-        case .detail:
-            return AccommodationRequest()
-        case .list:
-            return AccommodationListRequest()
-        case .liked:
-            return LikedAccommodationListRequest()
+        case .detail: return AccommodationRequest()
+        case .list: return AccommodationListRequest()
+        case .liked: return LikedAccommodationListRequest()
         }
     }
 }
@@ -40,7 +37,7 @@ class AccommodationRequest: Request, URLRequestConvertible {
         headers = ["Authorization": token]
     }
     
-    func asURLRequest() throws -> URLRequest {
+    func asURLRequest() -> URLRequest {
         var request: URLRequest
         request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
@@ -56,6 +53,16 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
     func append(name: QueryParameters, value: String) {
         let queryItem = URLQueryItem(name: name.description, value: value)
         queryItems.append(queryItem)
+    }
+    
+    override func asURLRequest() -> URLRequest {
+        var request = URLRequest(url: URL(string: path)!)
+        request.httpMethod = self.method.rawValue
+        guard let urlComponents = URLComponents(url: URL(string: path)!, resolvingAgainstBaseURL: false), var queryItems = urlComponents.queryItems else { return request }
+        queryItems += self.queryItems
+        guard let headers = headers else { return request }
+        request.headers = headers
+        return request
     }
 }
 
