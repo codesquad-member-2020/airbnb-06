@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -134,20 +134,20 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="454" height="262"/>
             <connections>
-                <outlet property="badgeLabel" destination="UI1-mD-Gng" id="iMw-NU-pqh"/>
-                <outlet property="imageStackView" destination="Uem-9a-9jr" id="Lnk-4d-Pfq"/>
-                <outlet property="infoLabel" destination="nfR-tu-1Me" id="HG5-cq-33P"/>
-                <outlet property="likeButton" destination="9Mt-CV-kZK" id="hyo-nu-drN"/>
-                <outlet property="nameLabel" destination="gVC-01-YYu" id="rh3-13-fs0"/>
-                <outlet property="pageControl" destination="a2i-RE-zCy" id="jwq-3y-fwG"/>
-                <outlet property="pointAverageLabel" destination="CVu-Cd-Vum" id="wry-pC-x3w"/>
-                <outlet property="reviewCountLabel" destination="Ke2-qg-qbO" id="urH-xK-Re0"/>
+                <outlet property="badgeLabel" destination="UI1-mD-Gng" id="qrh-go-faa"/>
+                <outlet property="imageStackView" destination="Uem-9a-9jr" id="j3u-iI-e9a"/>
+                <outlet property="infoLabel" destination="nfR-tu-1Me" id="QyU-No-qF0"/>
+                <outlet property="likeButton" destination="9Mt-CV-kZK" id="0tF-zm-hwB"/>
+                <outlet property="nameLabel" destination="gVC-01-YYu" id="dhH-PG-t1i"/>
+                <outlet property="pageControl" destination="a2i-RE-zCy" id="aGl-YI-CxX"/>
+                <outlet property="pointAverageLabel" destination="CVu-Cd-Vum" id="Xt1-Pl-UkY"/>
+                <outlet property="reviewCountLabel" destination="Ke2-qg-qbO" id="gb2-Zn-Dv3"/>
             </connections>
             <point key="canvasLocation" x="430.43478260869568" y="223.66071428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="heart" catalog="system" width="64" height="54"/>
-        <image name="star.fill" catalog="system" width="64" height="58"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>
