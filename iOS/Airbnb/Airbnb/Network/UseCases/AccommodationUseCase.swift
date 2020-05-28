@@ -1,5 +1,5 @@
 //
-//  AccommodationListUseCase.swift
+//  AccommodationUseCase.swift
 //  Airbnb
 //
 //  Created by delma on 2020/05/27.
@@ -10,42 +10,22 @@ import Foundation
 import Alamofire
 
 struct AccommodationUseCase {
-    let request = AccommodationListRequest()
+    var request: URLRequestConvertible
     
-    func request(id: Int?, name: QueryParameters?, value: String?, handler: @escaping (Any) -> Void) {
-        if let id = id { request.append(id: id) }
-        
+    init(request: URLRequestConvertible) {
+        self.request = request
     }
     
+    func perform<T: Codable>(id: Int? = nil, dataType: T.Type, handler: @escaping (Any) -> Void) {
+        AF.request(request).responseJSON { response in
+            guard let data = response.data, response.error != nil else { return }
+            guard let decodeData = try? JSONDecoder().decode(dataType, from: data) else { return }
+            handler(decodeData)
+        }
+    }
     
+    func append(request: Queryable, name: QueryParameters, value: String) {
+        request.append(name: name, value: value)
+    }
 }
 
-class AccommodationListRequest: Request, Queryable, URLRequestConvertible {
-    var path: String = EndPoints.defaultURL + EndPoints.listings
-    var method: HTTPMethod = .get
-    var headers: HTTPHeaders?
-    var queryItems: [URLQueryItem] = []
-    
-    func append(name: QueryParameters, value: String) {
-        let queryItem = URLQueryItem(name: name.description, value: value)
-        queryItems.append(queryItem)
-    }
-    
-    func append(id: Int) {
-        path += "/\(id)"
-    }
-    
-    func setToken() {
-        guard let token = UserDefaults.standard.object(forKey: "token") as? String else { return }
-        headers = ["Authorization": token]
-    }
-    
-    func asURLRequest() throws -> URLRequest {
-        var request: URLRequest
-        request = URLRequest(url: URL(string: path)!)
-        request.httpMethod = self.method.rawValue
-        guard let headers = headers else { return request }
-        request.headers = headers
-        return request
-    }
-}
