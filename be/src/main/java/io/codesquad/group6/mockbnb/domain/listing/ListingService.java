@@ -17,15 +17,15 @@ public class ListingService {
         this.listingDao = listingDao;
     }
 
-    public List<ListingSummary> getListings(ListingFilter listingFilter) {
+    public List<ListingSummary> getListings(ListingFilter listingFilter, long guestId) {
         List<Listing> listings = listingDao.findListings(listingFilter);
         return listings.stream()
                        .map(this::mapToListingSummary)
                        .collect(Collectors.toList());
     }
 
-    public ListingDetail getListing(long listingId) {
-        Listing listing = listingDao.findListingById(listingId);
+    public ListingDetail getListing(long listingId, long guestId) {
+        Listing listing = listingDao.findListingById(listingId, guestId);
         return mapToListingDetail(listing);
     }
 

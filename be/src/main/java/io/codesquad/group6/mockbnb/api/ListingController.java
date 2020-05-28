@@ -4,9 +4,11 @@ import io.codesquad.group6.mockbnb.api.response.ListingDetail;
 import io.codesquad.group6.mockbnb.api.response.ListingSummary;
 import io.codesquad.group6.mockbnb.domain.listing.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.ListingService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/listings")
+@Slf4j
 public class ListingController {
 
     private final ListingService listingService;
@@ -36,7 +39,8 @@ public class ListingController {
             @RequestParam(name = "min-latitude", required = false, defaultValue = "37.7") double minLatitude,
             @RequestParam(name = "max-latitude", required = false, defaultValue = "37.85") double maxLatitude,
             @RequestParam(name = "min-longitude", required = false, defaultValue = "-122.55") double minLongitude,
-            @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude) {
+            @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude,
+            @RequestAttribute long guestId) {
         ListingFilter listingFilter = ListingFilter.builder()
                                                    .checkin(checkin)
                                                    .checkout(checkout)
@@ -50,12 +54,13 @@ public class ListingController {
                                                    .minLongitude(minLongitude)
                                                    .maxLongitude(maxLongitude)
                                                    .build();
-        return ResponseEntity.ok(listingService.getListings(listingFilter));
+        return ResponseEntity.ok(listingService.getListings(listingFilter, guestId));
     }
 
     @GetMapping("/{listing-id}")
-    public ResponseEntity<ListingDetail> getListingDetail(@PathVariable(name = "listing-id") long listingId) {
-        return ResponseEntity.ok(listingService.getListing(listingId));
+    public ResponseEntity<ListingDetail> getListingDetail(@PathVariable(name = "listing-id") long listingId,
+                                                          @RequestAttribute long guestId) {
+        return ResponseEntity.ok(listingService.getListing(listingId, guestId));
     }
 
 }
