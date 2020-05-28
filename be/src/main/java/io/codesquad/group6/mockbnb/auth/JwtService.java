@@ -5,20 +5,24 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 @Slf4j
 public class JwtService {
 
-    private final Key key;
+    private final SecretKey key;
 
-    public JwtService() {
-        key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    public JwtService(Environment env) {
+        key = Keys.hmacShaKeyFor(Objects.requireNonNull(env.getProperty("jwt.secret"))
+                                        .getBytes(StandardCharsets.UTF_8));
     }
 
     public String buildJwt(GitHubUserData gitHubUserData) {
@@ -30,6 +34,7 @@ public class JwtService {
     }
 
     public GitHubUserData parseJwt(String jwt) {
+        jwt = jwt.replace("Bearer ", "");
         Claims claims = Jwts.parserBuilder()
                             .setSigningKey(key)
                             .build()
