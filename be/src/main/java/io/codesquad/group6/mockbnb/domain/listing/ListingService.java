@@ -34,7 +34,21 @@ public class ListingService {
     }
 
     private ListingDetail mapToListingDetail(Listing listing) {
-        return null;
+        return ListingDetail.builder()
+                            .imageUrls(listing.getImageUrls())
+                            .isBookmarked(listing.isBookmarked())
+                            .name(listing.getName())
+                            .location(listing.getLocation())
+                            .hostName(listing.getHostName())
+                            .roomType(listing.getRoomType())
+                            .capacity(listing.getCapacity())
+                            .numBedrooms(listing.getNumBedrooms())
+                            .numBeds(listing.getNumBeds())
+                            .numBathrooms(listing.getNumBathrooms())
+                            .price(listing.getPrice())
+                            .rating(listing.getRating())
+                            .numReviews(listing.getNumReviews())
+                            .build();
     }
 
 }
