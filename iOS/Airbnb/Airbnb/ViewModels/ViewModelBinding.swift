@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol ViewModelBinding {
+    associatedtype Key
+    func updateNotify(changed handler: @escaping (Key) -> Void)
+}
