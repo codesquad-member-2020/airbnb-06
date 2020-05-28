@@ -1,6 +1,7 @@
 package io.codesquad.group6.mockbnb.data;
 
 import io.codesquad.group6.mockbnb.auth.GitHubUserData;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -11,9 +12,11 @@ import javax.sql.DataSource;
 @Repository
 public class GuestDao {
 
+    private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public GuestDao(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
@@ -26,6 +29,14 @@ public class GuestDao {
                                                                            .addValue("login", gitHubUserData.getLogin())
                                                                            .addValue("email", gitHubUserData.getEmail());
         namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+    }
+
+    public boolean hasGuestById(long guestId) {
+        String sql = "SELECT COUNT(*) " +
+                     "FROM guest " +
+                     "WHERE id = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, guestId);
+        return count == 1;
     }
 
 }
