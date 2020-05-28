@@ -10,19 +10,25 @@ import UIKit
 import Floaty
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var dateFilterButton: FilterButton!
     @IBOutlet weak var guestFilterButton: FilterButton!
     @IBOutlet weak var priceFilterButton: FilterButton!
     @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
     @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
     @IBOutlet weak var floatingButton: Floaty!
-
+    
+    private var accommodationListViewModel: AccommodationListViewModel!
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
     private let identifiers: [String : String] = ["날짜": "CalendarViewController",
                                                   "인원": "GuestViewController",
                                                   "가격": "PriceViewController"]
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        requestMockList()
+    }
+    
     @IBAction func displayPopup(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifiers[title]!) else { return }
@@ -30,8 +36,16 @@ class SearchViewController: UIViewController {
         viewController.modalTransitionStyle = .crossDissolve
         present(viewController, animated: true, completion: nil)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    private func requestMockList() {
+        AccommodationListMock().request { accommodationList in
+            self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList, handler: { accommodations in
+                DispatchQueue.main.async {
+                    self.accommodationSearchDataSource = AccommodationSearchCollectionViewDataSource(accommodations: accommodations)
+                    self.accommodationSearchCollectionView.dataSource = self.accommodationSearchDataSource
+                    self.accommodationSearchCollectionView.reloadData()
+                }
+            })
+        }
     }
 }
