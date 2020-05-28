@@ -2,6 +2,7 @@ package io.codesquad.group6.mockbnb.api;
 
 import io.codesquad.group6.mockbnb.api.response.ListingDetail;
 import io.codesquad.group6.mockbnb.api.response.ListingSummary;
+import io.codesquad.group6.mockbnb.domain.listing.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.ListingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,17 +37,20 @@ public class ListingController {
             @RequestParam(name = "max-latitude", required = false, defaultValue = "37.85") double maxLatitude,
             @RequestParam(name = "min-longitude", required = false, defaultValue = "-122.55") double minLongitude,
             @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude) {
-        return ResponseEntity.ok(listingService.getListings(checkin,
-                                                            checkout,
-                                                            numGuests,
-                                                            minPrice,
-                                                            maxPrice,
-                                                            offset,
-                                                            limit,
-                                                            minLatitude,
-                                                            maxLatitude,
-                                                            minLongitude,
-                                                            maxLongitude));
+        ListingFilter listingFilter = ListingFilter.builder()
+                                                   .checkin(checkin)
+                                                   .checkout(checkout)
+                                                   .numGuests(numGuests)
+                                                   .minPrice(minPrice)
+                                                   .maxPrice(maxPrice)
+                                                   .offset(offset)
+                                                   .limit(limit)
+                                                   .minLatitude(minLatitude)
+                                                   .maxLatitude(maxLatitude)
+                                                   .minLongitude(minLongitude)
+                                                   .maxLongitude(maxLongitude)
+                                                   .build();
+        return ResponseEntity.ok(listingService.getListings(listingFilter));
     }
 
     @GetMapping("/{listing-id}")

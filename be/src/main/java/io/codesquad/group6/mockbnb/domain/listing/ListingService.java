@@ -5,7 +5,6 @@ import io.codesquad.group6.mockbnb.api.response.ListingSummary;
 import io.codesquad.group6.mockbnb.data.ListingDao;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,28 +17,8 @@ public class ListingService {
         this.listingDao = listingDao;
     }
 
-    public List<ListingSummary> getListings(LocalDate checkin,
-                                            LocalDate checkout,
-                                            int numGuests,
-                                            int minPrice,
-                                            int maxPrice,
-                                            int offset,
-                                            int limit,
-                                            double minLatitude,
-                                            double maxLatitude,
-                                            double minLongitude,
-                                            double maxLongitude) {
-        List<Listing> listings = listingDao.findListings(checkin,
-                                                         checkout,
-                                                         numGuests,
-                                                         minPrice,
-                                                         maxPrice,
-                                                         offset,
-                                                         limit,
-                                                         minLatitude,
-                                                         maxLatitude,
-                                                         minLongitude,
-                                                         maxLongitude);
+    public List<ListingSummary> getListings(ListingFilter listingFilter) {
+        List<Listing> listings = listingDao.findListings(listingFilter);
         return listings.stream()
                        .map(this::mapToListingSummary)
                        .collect(Collectors.toList());
