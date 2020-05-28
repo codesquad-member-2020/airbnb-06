@@ -9,11 +9,15 @@
 import Foundation
 
 struct AccommodationListMock {
-    func request(handler: @escaping (Accommodation) -> Void) {
+    func request(handler: @escaping ([Accommodation]) -> Void) {
         if let path = Bundle.main.path(forResource: "FakeAccommodationList", ofType: "json") {
-            guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
-            guard let decodedData = try? JSONDecoder().decode(Accommodation.self, from: data) else { return }
-            handler(decodedData)
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let decodedData = try JSONDecoder().decode([Accommodation].self, from: data)
+                handler(decodedData)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }
