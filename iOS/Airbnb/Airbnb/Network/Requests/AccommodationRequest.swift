@@ -38,8 +38,9 @@ class AccommodationRequest: Request, URLRequestConvertible {
     }
     
     func asURLRequest() -> URLRequest {
-        var request: URLRequest
-        request = URLRequest(url: URL(string: path)!)
+        setToken()
+
+        var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
         guard let headers = headers else { return request }
         request.headers = headers
@@ -56,6 +57,7 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
     }
     
     override func asURLRequest() -> URLRequest {
+        setToken()
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
         guard var urlComponents = URLComponents(string: path) else { return request }

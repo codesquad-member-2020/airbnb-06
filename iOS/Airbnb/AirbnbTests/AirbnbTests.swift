@@ -36,6 +36,18 @@ class AirbnbTests: XCTestCase {
         }catch {
             
         }
+    }
+    
+    func testExistedToken() {
+        let accommodationUseCaseWithToken = AccommodationUseCase(request: AccommodationRequests.detail.request)
+        do {
+            let request = try? accommodationUseCaseWithToken.request.asURLRequest()
+            let urlToken = request?.headers.dictionary["Authorization"]
+            let userDefaultsToken = UserDefaults.standard.object(forKey: "token") as? String
+            XCTAssertEqual(urlToken, userDefaultsToken)
+        } catch {
+            
+        }
         
     }
 }
