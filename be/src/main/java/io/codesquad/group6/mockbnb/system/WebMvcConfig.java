@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.config;
+package io.codesquad.group6.mockbnb.system;
 
 import io.codesquad.group6.mockbnb.auth.JwtInterceptor;
 import org.springframework.context.annotation.Configuration;

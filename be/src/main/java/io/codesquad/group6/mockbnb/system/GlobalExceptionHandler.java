@@ -1,7 +1,8 @@
-package io.codesquad.group6.mockbnb.exception;
+package io.codesquad.group6.mockbnb.system;
 
+import io.codesquad.group6.mockbnb.data.guest.InvalidGuestDataException;
+import io.codesquad.group6.mockbnb.data.listing.ListingNotFoundException;
 import io.jsonwebtoken.JwtException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,12 +13,10 @@ import java.util.StringJoiner;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EmptyResultDataAccessException.class)
-    public ResponseEntity<String> handleEmptyResultDataAccessException(EmptyResultDataAccessException e) {
+    @ExceptionHandler(ListingNotFoundException.class)
+    public ResponseEntity<String> handleListingNotFoundException(ListingNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                             .body(new StringJoiner("\n").add(e.getMessage())
-                                                         .add("Not found. The ID probably doesn't exist.")
-                                                         .toString());
+                             .body(e.getMessage());
     }
 
     @ExceptionHandler(JwtException.class)

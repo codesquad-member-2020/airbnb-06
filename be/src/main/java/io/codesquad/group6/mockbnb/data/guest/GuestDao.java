@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.data;
+package io.codesquad.group6.mockbnb.data.guest;
 
 import io.codesquad.group6.mockbnb.auth.GitHubUserData;
 import org.springframework.jdbc.core.JdbcTemplate;

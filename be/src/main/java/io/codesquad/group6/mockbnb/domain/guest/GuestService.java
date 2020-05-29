@@ -1,8 +1,8 @@
 package io.codesquad.group6.mockbnb.domain.guest;
 
 import io.codesquad.group6.mockbnb.auth.GitHubUserData;
-import io.codesquad.group6.mockbnb.data.GuestDao;
-import io.codesquad.group6.mockbnb.exception.InvalidGuestDataException;
+import io.codesquad.group6.mockbnb.data.guest.GuestDao;
+import io.codesquad.group6.mockbnb.data.guest.InvalidGuestDataException;
 import org.springframework.stereotype.Service;
 
 @Service
