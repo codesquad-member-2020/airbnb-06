@@ -17,7 +17,7 @@ public class ListingService {
         this.listingDao = listingDao;
     }
 
-    public List<ListingSummary> getListings(ListingFilter listingFilter, long guestId) {
+    public List<ListingSummary> getListings(ListingFilter listingFilter) {
         List<Listing> listings = listingDao.findListings(listingFilter);
         return listings.stream()
                        .map(this::mapToListingSummary)

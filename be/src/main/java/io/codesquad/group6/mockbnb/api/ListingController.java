@@ -55,7 +55,7 @@ public class ListingController {
                                                    .minLongitude(minLongitude)
                                                    .maxLongitude(maxLongitude)
                                                    .build();
-        return ResponseEntity.ok(listingService.getListings(listingFilter, guestId));
+        return ResponseEntity.ok(listingService.getListings(listingFilter));
     }
 
     @GetMapping("/{listing-id}")
