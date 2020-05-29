@@ -40,9 +40,9 @@ public class ListingDao {
                              "AND NOT EXISTS(SELECT b.id " +
                                  "FROM booking b " +
                                  "WHERE b.listing = l.id " +
-                                 "AND ((b.checkin BETWEEN :checkin AND :checkout) " +
-                                 "OR (b.checkout BETWEEN :checkin AND :checkout) " +
-                                 "OR (b.checkin < :checkin AND :checkout < checkout))) " +
+                                     "AND ((:checkin <= b.checkin AND b.checkin < :checkout) " +
+                                         "OR (:checkin < b.checkout AND b.checkout <= :checkout) " +
+                                         "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
         return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
