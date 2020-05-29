@@ -47,10 +47,19 @@ final class CalendarViewController: UIViewController {
                                                selector: #selector(close),
                                                name: NotificationName.closeButtonDidTouch,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reset),
+                                               name: .reset, object: nil)
     }
 
     @objc private func close() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func reset() {
+        chooseDays.removeAll()
+        periodDays.removeAll()
+        calendarCollectionView.reloadData()
     }
 }
 
@@ -248,5 +257,12 @@ extension CalendarViewController: UICollectionViewDelegate {
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
         cell.changeBackground()
+    }
+    
+    private func calculator(_ indexPath: IndexPath) -> String {
+        let thisMonth = dateManager.thisMonth(indexPath.section)
+        let month = indexPath.section + thisMonth
+        let date = indexPath.item - dateManager.firstWeekday(thisMonth: thisMonth)
+        return "\(month)월 \(date)일"
     }
 }
