@@ -32,4 +32,11 @@ class PopupFooterView: UIView {
         completeButton.layer.masksToBounds = true
     }
 
+    @IBAction func reset(_ sender: Any) {
+        NotificationCenter.default.post(name: .reset, object: nil)
+    }
+}
+
+extension Notification.Name {
+    static let reset = Notification.Name("reset")
 }
