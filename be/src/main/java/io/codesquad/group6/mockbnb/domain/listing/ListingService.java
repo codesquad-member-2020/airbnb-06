@@ -30,7 +30,20 @@ public class ListingService {
     }
 
     private ListingSummary mapToListingSummary(Listing listing) {
-        return null;
+        return ListingSummary.builder()
+                             .id(listing.getId())
+                             .name(listing.getName())
+                             .imageUrls(listing.getImageUrls())
+                             .housingType(listing.getHousingType())
+                             .numBedrooms(listing.getNumBedrooms())
+                             .numBeds(listing.getNumBeds())
+                             .rating(listing.getRating())
+                             .numReviews(listing.getNumReviews())
+                             .isSuperHost(listing.isSuperHost())
+                             .isBookmarked(listing.isBookmarked())
+                             .latitude(listing.getLatitude())
+                             .longitude(listing.getLongitude())
+                             .build();
     }
 
     private ListingDetail mapToListingDetail(Listing listing) {
