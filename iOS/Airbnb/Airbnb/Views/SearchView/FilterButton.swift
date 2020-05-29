@@ -24,6 +24,7 @@ class FilterButton: UIButton {
     
     private func configure() {
         self.setTitleColor(.lightGray, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = self.bounds.height / 2
@@ -34,5 +35,4 @@ class FilterButton: UIButton {
     func configureTitle(_ text: String) {
         self.setTitle(text, for: .normal)
     }
-
 }
