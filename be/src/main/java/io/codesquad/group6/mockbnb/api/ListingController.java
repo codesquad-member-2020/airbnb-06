@@ -27,7 +27,7 @@ public class ListingController {
         this.listingService = listingService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<ListingSummary>> getListings(
             @RequestParam(required = false, defaultValue = "2020-05-22") LocalDate checkin,
             @RequestParam(required = false, defaultValue = "2020-05-23") LocalDate checkout,
