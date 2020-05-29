@@ -33,7 +33,10 @@ struct DateManager {
     }
     
     mutating func countOfDays(year: Int, month: Int) -> Int {
-        let date = calendar.date(from: nowComponents)!
+        var component = nowComponents
+        component.year! = year
+        component.month! = month
+        let date = calendar.date(from: component)!
         let range = calendar.range(of: .day, in: .month, for: date)!
         return range.count
     }
