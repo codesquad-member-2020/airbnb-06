@@ -2,7 +2,7 @@ package io.codesquad.group6.mockbnb.domain.listing;
 
 import io.codesquad.group6.mockbnb.api.response.ListingDetail;
 import io.codesquad.group6.mockbnb.api.response.ListingSummary;
-import io.codesquad.group6.mockbnb.data.ListingDao;
+import io.codesquad.group6.mockbnb.data.listing.ListingDao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
