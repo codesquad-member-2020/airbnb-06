@@ -32,17 +32,17 @@ public class ListingDao {
                              "WHERE i.listing = l.id) AS l_image_urls, " +
                          "h.id, h.name, h.is_superhost " +
                      "FROM listing l " +
-                     "JOIN host h ON l.host = h.id " +
-                         "WHERE l.capacity >= :num_guests " +
-                             "AND l.price BETWEEN :min_price AND :max_price " +
-                             "AND l.latitude BETWEEN :min_latitude AND :max_latitude " +
-                             "AND l.longitude BETWEEN :min_longitude AND :max_longitude " +
-                             "AND NOT EXISTS(SELECT b.id " +
-                                 "FROM booking b " +
-                                 "WHERE b.listing = l.id " +
-                                     "AND ((:checkin <= b.checkin AND b.checkin < :checkout) " +
-                                         "OR (:checkin < b.checkout AND b.checkout <= :checkout) " +
-                                         "OR (b.checkin < :checkin AND :checkout < checkout))) " +
+                         "JOIN host h ON l.host = h.id " +
+                     "WHERE l.capacity >= :num_guests " +
+                         "AND l.price BETWEEN :min_price AND :max_price " +
+                         "AND l.latitude BETWEEN :min_latitude AND :max_latitude " +
+                         "AND l.longitude BETWEEN :min_longitude AND :max_longitude " +
+                         "AND NOT EXISTS(SELECT b.id " +
+                             "FROM booking b " +
+                             "WHERE b.listing = l.id " +
+                                 "AND ((:checkin <= b.checkin AND b.checkin < :checkout) " +
+                                     "OR (:checkin < b.checkout AND b.checkout <= :checkout) " +
+                                     "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
         return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
@@ -53,8 +53,8 @@ public class ListingDao {
                          "l.price, l.cleaning_fee, l.num_reviews, l.rating, l.latitude, l.longitude, " +
                          "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
                          "(SELECT GROUP_CONCAT(i.image_url) " +
-                         "FROM image i " +
-                         "WHERE i.listing = l.id) AS l_image_urls, " +
+                             "FROM image i " +
+                             "WHERE i.listing = l.id) AS l_image_urls, " +
                          "EXISTS(SELECT b.id " +
                              "FROM bookmark b " +
                              "WHERE b.guest = :g_id " +
