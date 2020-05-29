@@ -9,13 +9,14 @@
 import Foundation
 
 struct Accommodation: Codable {
+    var id: Int
     var name: String
-    var imageURLs: [String]
+    var imageUrls: [String]
     var housingType: String
     var numBedrooms: Int
     var numBeds: Int
-    var rating: String
+    var rating: Double
     var numReviews: Int
-    var isSuperHost: Bool
-    var isFavorite: Bool
+    var superHost: Bool
+    var liked: Bool
 }

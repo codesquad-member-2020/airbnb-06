@@ -10,6 +10,7 @@ import UIKit
 
 class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var likeButton: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -21,33 +22,33 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        scrollView.delegate = self
     }
     
     private func add(images: [UIImage]) {
-        for image in images {
-            imageStackView.addArrangedSubview(UIImageView(image: image))
-        }
+        images.forEach { imageStackView.addArrangedSubview(UIImageView(image: $0)) }
     }
     
     private func judge(isFavorite: Bool) {
-        if isFavorite{
-            likeButton.image = UIImage(systemName: "heart.fill")
-        }
+        isFavorite ? likeButton.image = UIImage(systemName: "heart.fill") : nil
     }
     
     private func judge(isSuperHost: Bool) {
-        if !isSuperHost {
-            badgeLabel.isHidden = true
-        }
+        !isSuperHost ? badgeLabel.isHidden = true : nil
     }
     
     func configureData(_ accommodation: Accommodation) {
-        judge(isFavorite: accommodation.isFavorite)
-        judge(isSuperHost: accommodation.isSuperHost)
-        infoLabel.text =  "\(accommodation.housingType)" + "\(accommodation.numBedrooms)" + "bedrooms" + "\(accommodation.numBeds)" + "bed"
-        pointAverageLabel.text = accommodation.rating
+        judge(isFavorite: accommodation.liked)
+        judge(isSuperHost: accommodation.superHost)
+        infoLabel.text =  "\(accommodation.housingType) " + "\(accommodation.numBedrooms)" + "bedrooms " + "\(accommodation.numBeds)" + "bed"
+        pointAverageLabel.text = "\(accommodation.rating)"
         reviewCountLabel.text = "\(accommodation.numReviews)"
         nameLabel.text = "\(accommodation.name)"
-         
+    }
+}
+
+extension AccommodationSearchCollectionViewCell: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(floor(scrollView.contentOffset.x / self.contentView.bounds.width))
     }
 }
