@@ -26,7 +26,17 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewConfigure()
         requestMockList()
+    }
+    
+    private func collectionViewConfigure() {
+        accommodationSearchCollectionView.register(UINib(nibName: "AccommodationSearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AccommodationSearchCollectionViewCell")
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width - 40, height: self.view.frame.height / 3)
+        layout.scrollDirection = .vertical
+        accommodationSearchCollectionView.collectionViewLayout = layout
+        accommodationSearchCollectionView.showsVerticalScrollIndicator = false
     }
     
     @IBAction func displayPopup(_ sender: UIButton) {
