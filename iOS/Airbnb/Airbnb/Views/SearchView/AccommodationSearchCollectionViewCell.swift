@@ -10,6 +10,7 @@ import UIKit
 
 class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var likeButton: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -21,6 +22,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        scrollView.delegate = self
     }
     
     private func add(images: [UIImage]) {
@@ -38,9 +40,15 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     func configureData(_ accommodation: Accommodation) {
         judge(isFavorite: accommodation.liked)
         judge(isSuperHost: accommodation.superHost)
-        infoLabel.text =  "\(accommodation.housingType)" + "\(accommodation.numBedrooms)" + "bedrooms" + "\(accommodation.numBeds)" + "bed"
+        infoLabel.text =  "\(accommodation.housingType) " + "\(accommodation.numBedrooms)" + "bedrooms " + "\(accommodation.numBeds)" + "bed"
         pointAverageLabel.text = "\(accommodation.rating)"
         reviewCountLabel.text = "\(accommodation.numReviews)"
         nameLabel.text = "\(accommodation.name)"
+    }
+}
+
+extension AccommodationSearchCollectionViewCell: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(floor(scrollView.contentOffset.x / self.contentView.bounds.width))
     }
 }
