@@ -42,6 +42,7 @@ public class ListingController {
             @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude,
             @RequestAttribute long guestId) {
         ListingFilter listingFilter = ListingFilter.builder()
+                                                   .guestId(guestId)
                                                    .checkin(checkin)
                                                    .checkout(checkout)
                                                    .numGuests(numGuests)
