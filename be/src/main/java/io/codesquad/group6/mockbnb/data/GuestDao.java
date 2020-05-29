@@ -24,7 +24,8 @@ public class GuestDao {
         String sql = "INSERT INTO guest (id, login, email) " +
                      "VALUES (:id, :login, :email) " +
                      "ON DUPLICATE KEY " +
-                     "UPDATE login = :login, email = :email";
+                         "UPDATE login = :login, " +
+                             "email = :email";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("id", gitHubUserData.getId())
                                                                            .addValue("login", gitHubUserData.getLogin())
                                                                            .addValue("email", gitHubUserData.getEmail());
@@ -32,11 +33,10 @@ public class GuestDao {
     }
 
     public boolean hasGuestById(long guestId) {
-        String sql = "SELECT COUNT(*) " +
-                     "FROM guest " +
-                     "WHERE id = ?";
-        int count = jdbcTemplate.queryForObject(sql, Integer.class, guestId);
-        return count == 1;
+        String sql = "SELECT EXISTS(SELECT id " +
+                         "FROM guest " +
+                         "WHERE id = ?)";
+        return jdbcTemplate.queryForObject(sql, Boolean.class, guestId);
     }
 
 }
