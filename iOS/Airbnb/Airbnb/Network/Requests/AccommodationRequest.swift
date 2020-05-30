@@ -32,18 +32,11 @@ class AccommodationRequest: Request, URLRequestConvertible {
         path += "/\(id)"
     }
     
-    func setToken() {
-        guard let token = UserDefaults.standard.object(forKey: "token") as? String else { return }
-        headers = ["Authorization": token]
-    }
-    
     func asURLRequest() -> URLRequest {
-        setToken()
-
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
-        guard let headers = headers else { return request }
-        request.headers = headers
+        guard let headersWithToken = setToken() else { return request }
+        request.headers = headersWithToken
         return request
     }
 }
@@ -57,15 +50,14 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
     }
     
     override func asURLRequest() -> URLRequest {
-        setToken()
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = self.method.rawValue
         guard var urlComponents = URLComponents(string: path) else { return request }
         urlComponents.queryItems = queryItems
         guard let urlWithQuery = urlComponents.url else { return request}
         request.url = urlWithQuery
-        guard let headers = headers else { return request }
-        request.headers = headers
+        guard let headersWithToken = setToken() else { return request }
+        request.headers = headersWithToken
         return request
     }
 }
