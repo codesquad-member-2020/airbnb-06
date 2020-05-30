@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.api.response;
+package io.codesquad.group6.mockbnb.domain.listing.api.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Builder;
@@ -20,7 +20,7 @@ public class ListingDetail {
     int capacity;
     int numBedrooms;
     int numBeds;
-    int numBathrooms;
+    double numBathrooms;
     double price;
     double rating;
     int numReviews;

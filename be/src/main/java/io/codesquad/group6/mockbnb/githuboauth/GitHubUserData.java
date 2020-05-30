@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.auth;
+package io.codesquad.group6.mockbnb.githuboauth;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class GitHubUserData {
 
+    private long id;
     private String login;
     private String email;
 

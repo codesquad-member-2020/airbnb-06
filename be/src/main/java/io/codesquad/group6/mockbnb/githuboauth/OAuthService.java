@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.auth;
+package io.codesquad.group6.mockbnb.githuboauth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -53,6 +53,7 @@ public class OAuthService {
                                                                       String.class);
         JsonNode jsonNode = objectMapper.readTree(response.getBody());
         return GitHubUserData.builder()
+                             .id(jsonNode.required("id").asLong())
                              .login(jsonNode.required("login").asText())
                              .email(jsonNode.required("email").asText())
                              .build();

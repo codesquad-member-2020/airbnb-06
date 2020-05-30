@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.auth;
+package io.codesquad.group6.mockbnb.githuboauth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
