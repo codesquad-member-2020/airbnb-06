@@ -39,7 +39,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="날짜"/>
                                 <connections>
-                                    <action selector="displayPopup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gHI-fI-2VC"/>
+                                    <action selector="showCalendarViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t5S-fP-OCy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행하시는 날짜와 인원을 입력해주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-N8-4Vl">
@@ -116,11 +116,8 @@
                     <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="VwQ-nf-25J"/>
                     <connections>
                         <outlet property="accommodationSearchCollectionView" destination="Q4f-ws-TDw" id="fwg-7X-aVd"/>
-                        <outlet property="dateFilterButton" destination="7aL-2j-hug" id="nOp-rZ-2fP"/>
                         <outlet property="filteringDescriptionLabel" destination="iJz-N8-4Vl" id="uhC-qX-nhJ"/>
                         <outlet property="floatingButton" destination="bQB-yv-dul" id="dMf-gK-vlR"/>
-                        <outlet property="guestFilterButton" destination="ldT-Of-ujo" id="R3a-2N-ash"/>
-                        <outlet property="priceFilterButton" destination="OIr-cS-Znl" id="9XJ-ET-SV1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
