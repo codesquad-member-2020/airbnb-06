@@ -1,8 +1,9 @@
 package io.codesquad.group6.mockbnb.domain.listing.api;
 
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.PriceGraphData;
 import io.codesquad.group6.mockbnb.domain.listing.domain.ListingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,8 @@ public class ListingController {
 
     @GetMapping("")
     public ResponseEntity<List<ListingSummary>> getListings(
-            @RequestParam(required = false, defaultValue = "2020-05-22") LocalDate checkin,
-            @RequestParam(required = false, defaultValue = "2020-05-23") LocalDate checkout,
+            @RequestParam(required = false, defaultValue = "2020-06-01") LocalDate checkin,
+            @RequestParam(required = false, defaultValue = "2020-06-02") LocalDate checkout,
             @RequestParam(name = "num-guests", required = false, defaultValue = "1") int numGuests,
             @RequestParam(name = "min-price", required = false, defaultValue = "0") int minPrice,
             @RequestParam(name = "max-price", required = false, defaultValue = "10000") int maxPrice,
@@ -62,6 +63,14 @@ public class ListingController {
     public ResponseEntity<ListingDetail> getListingDetail(@PathVariable(name = "listing-id") long listingId,
                                                           @RequestAttribute long guestId) {
         return ResponseEntity.ok(listingService.getListing(listingId, guestId));
+    }
+
+    @GetMapping("/price-graph")
+    public ResponseEntity<PriceGraphData> getPriceGraphData(
+            @RequestParam(required = false, defaultValue = "2020-06-01") LocalDate checkin,
+            @RequestParam(required = false, defaultValue = "2020-06-02") LocalDate checkout,
+            @RequestParam(name = "num-guests", required = false, defaultValue = "1") int numGuests) {
+        return ResponseEntity.ok(listingService.getPriceGraphData(checkin, checkout, numGuests));
     }
 
 }

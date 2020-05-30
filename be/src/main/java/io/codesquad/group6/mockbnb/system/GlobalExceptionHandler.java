@@ -13,12 +13,6 @@ import java.util.StringJoiner;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ListingNotFoundException.class)
-    public ResponseEntity<String> handleListingNotFoundException(ListingNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                             .body(e.getMessage());
-    }
-
     @ExceptionHandler(JwtException.class)
     public ResponseEntity<String> handleSignatureException(JwtException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -29,6 +23,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidGuestDataException.class)
     public ResponseEntity<String> handleInvalidGuestDataException(InvalidGuestDataException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                             .body(e.getMessage());
+    }
+
+    @ExceptionHandler(ListingNotFoundException.class)
+    public ResponseEntity<String> handleListingNotFoundException(ListingNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                              .body(e.getMessage());
     }

@@ -1,13 +1,11 @@
 package io.codesquad.group6.mockbnb.domain.listing.data;
 
 import io.codesquad.group6.mockbnb.domain.listing.domain.Listing;
-import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.List;
 
 class ListingMapper implements RowMapper<Listing> {
 
@@ -19,7 +17,7 @@ class ListingMapper implements RowMapper<Listing> {
     public Listing mapRow(ResultSet rs, int rowNum) throws SQLException {
         return Listing.builder()
                       .id(rs.getLong("l.id"))
-                      .imageUrls(splitConcatenatedImageUrls(rs.getString("l_image_urls")))
+                      .imageUrls(Arrays.asList(rs.getString("l_image_urls").split(",")))
                       .name(rs.getString("l.name"))
                       .housingType(rs.getString("l.housing_type"))
                       .location(rs.getString("l_location"))
@@ -38,14 +36,6 @@ class ListingMapper implements RowMapper<Listing> {
                       .isSuperHost(rs.getBoolean("h.is_superhost"))
                       .isBookmarked(rs.getBoolean("l_is_bookmarked"))
                       .build();
-    }
-
-    private static List<String> splitConcatenatedImageUrls(String concatenatedImageUrls) {
-        try {
-            return Arrays.asList(concatenatedImageUrls.split(","));
-        } catch (NullPointerException e) { // rs is empty... probably
-            throw new ListingNotFoundException("Not found. The ID probably doesn't exist.");
-        }
     }
 
 }
