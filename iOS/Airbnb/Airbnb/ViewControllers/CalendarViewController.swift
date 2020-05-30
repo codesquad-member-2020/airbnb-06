@@ -15,11 +15,17 @@ final class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var footerView: PopupFooterView!
 
+    var delegate: SendDataDelegate?
     private var dateManager = DateManager()
     private var chooseDays: [IndexPath] = [] {
         didSet {
-            chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0])) : changeCheckedLabel("체크인 ― 체크아웃")
-            chooseDays.count == 2 ? changeCheckedLabel("\(calculator(chooseDays[0])) ― \(calculator(chooseDays[1]))") : nil
+            if chooseDays.count == 2 {
+                changeCheckedLabel("\(calculator(chooseDays[0])) ― \(calculator(chooseDays[1]))")
+                footerView.enableCompleteButton()
+            } else {
+                chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0])) : changeCheckedLabel("체크인 ― 체크아웃")
+                footerView.disableCompleteButton()
+            }
         }
     }
     private var periodDays: [IndexPath] = []
@@ -55,6 +61,9 @@ final class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reset),
                                                name: .reset, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(completeSelection),
+                                               name: .complete, object: nil)
     }
 
     @objc private func close() {
@@ -65,6 +74,12 @@ final class CalendarViewController: UIViewController {
         chooseDays.removeAll()
         periodDays.removeAll()
         calendarCollectionView.reloadData()
+    }
+    
+    @objc private func completeSelection() {
+        dismiss(animated: true) {
+            self.delegate?.send(text: "\(self.calculator(self.chooseDays[0])) ― \(self.calculator(self.chooseDays[1]))")
+        }
     }
     
     private func changeCheckedLabel(_ text: String) {
