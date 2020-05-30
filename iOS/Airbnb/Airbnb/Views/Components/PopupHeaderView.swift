@@ -28,10 +28,14 @@ class PopupHeaderView: UIView {
         configure()
     }
     
-    func configure() {
+     private func configure() {
         Bundle.main.loadNibNamed("PopupHeaderView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+    }
+    
+    func changeTitle(_ text: String) {
+        titleLabel.text = text
     }
 
 }
