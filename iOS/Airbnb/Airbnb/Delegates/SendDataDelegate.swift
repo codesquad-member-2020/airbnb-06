@@ -1,5 +1,5 @@
 //
-//  SendDelegate.swift
+//  SendDataDelegate.swift
 //  Airbnb
 //
 //  Created by delma on 2020/05/30.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol SendDataDelegate {
+    func send(text: String)
+}
