@@ -1,12 +1,12 @@
 package io.codesquad.group6.mockbnb.mock;
 
-import io.codesquad.group6.mockbnb.api.request.BookingRequest;
-import io.codesquad.group6.mockbnb.api.request.BookmarkRequest;
-import io.codesquad.group6.mockbnb.api.response.BookingDetail;
-import io.codesquad.group6.mockbnb.api.response.BookingResponse;
-import io.codesquad.group6.mockbnb.api.response.BookingSummary;
-import io.codesquad.group6.mockbnb.api.response.ListingDetail;
-import io.codesquad.group6.mockbnb.api.response.ListingSummary;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookingRequest;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookmarkRequest;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingDetail;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingResponse;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingSummary;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

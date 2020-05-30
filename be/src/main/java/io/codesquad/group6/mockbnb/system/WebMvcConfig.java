@@ -1,6 +1,6 @@
 package io.codesquad.group6.mockbnb.system;
 
-import io.codesquad.group6.mockbnb.auth.JwtInterceptor;
+import io.codesquad.group6.mockbnb.domain.guest.api.JwtInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;

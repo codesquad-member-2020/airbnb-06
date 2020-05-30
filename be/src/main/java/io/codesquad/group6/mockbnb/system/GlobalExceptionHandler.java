@@ -1,7 +1,7 @@
 package io.codesquad.group6.mockbnb.system;
 
-import io.codesquad.group6.mockbnb.data.guest.InvalidGuestDataException;
-import io.codesquad.group6.mockbnb.data.listing.ListingNotFoundException;
+import io.codesquad.group6.mockbnb.domain.guest.exception.InvalidGuestDataException;
+import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
