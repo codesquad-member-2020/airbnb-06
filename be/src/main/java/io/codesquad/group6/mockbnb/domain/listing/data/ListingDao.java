@@ -1,7 +1,9 @@
 package io.codesquad.group6.mockbnb.domain.listing.data;
 
-import io.codesquad.group6.mockbnb.domain.listing.domain.Listing;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
+import io.codesquad.group6.mockbnb.domain.listing.domain.Listing;
+import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -45,7 +47,11 @@ public class ListingDao {
                                      "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
-        return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
+        try {
+            return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
+        } catch (EmptyResultDataAccessException e) {
+            throw new ListingNotFoundException("No listing meets the provided querying conditions.");
+        }
     }
 
     public Listing findListingById(long listingId, long guestId) {
@@ -65,7 +71,11 @@ public class ListingDao {
                      "WHERE l.id = :l_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("l_id", listingId)
                                                                            .addValue("g_id", guestId);
-        return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, ListingMapper.instance());
+        try {
+            return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, ListingMapper.instance());
+        } catch (EmptyResultDataAccessException e) {
+            throw new ListingNotFoundException("No listing by the provided ID exists.");
+        }
     }
 
 }
