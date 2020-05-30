@@ -30,6 +30,29 @@ class PopupFooterView: UIView {
         contentView.frame = self.bounds
         completeButton.layer.cornerRadius = 5.0
         completeButton.layer.masksToBounds = true
+        completeButton.isEnabled = false
     }
 
+    @IBAction func complete(_ sender: Any) {
+        NotificationCenter.default.post(name: .complete, object: nil)
+    }
+    
+    @IBAction func reset(_ sender: Any) {
+        NotificationCenter.default.post(name: .reset, object: nil)
+    }
+    
+    func enableCompleteButton() {
+        completeButton.isEnabled = true
+        completeButton.backgroundColor = UIColor(named: "MainColor")
+    }
+    
+    func disableCompleteButton() {
+        completeButton.isEnabled = false
+        completeButton.backgroundColor = .black
+    }
+}
+
+extension Notification.Name {
+    static let reset = Notification.Name("reset")
+    static let complete = Notification.Name("complete")
 }

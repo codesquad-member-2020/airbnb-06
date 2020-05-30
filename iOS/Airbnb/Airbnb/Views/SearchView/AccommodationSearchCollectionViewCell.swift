@@ -23,6 +23,18 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         scrollView.delegate = self
+        configure()
+    }
+    
+    private func configure() {
+        self.contentView.layer.cornerRadius = 10.0
+        self.contentView.layer.masksToBounds = true
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOpacity = 0.3
+        self.layer.masksToBounds = false
     }
     
     private func add(images: [UIImage]) {

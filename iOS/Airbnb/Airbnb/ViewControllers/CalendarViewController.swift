@@ -15,8 +15,19 @@ final class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var footerView: PopupFooterView!
 
+    var delegate: SendDataDelegate?
     private var dateManager = DateManager()
-    private var chooseDays: [IndexPath] = []
+    private var chooseDays: [IndexPath] = [] {
+        didSet {
+            if chooseDays.count == 2 {
+                changeCheckedLabel("\(calculator(chooseDays[0])) ― \(calculator(chooseDays[1]))")
+                footerView.enableCompleteButton()
+            } else {
+                chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0])) : changeCheckedLabel("체크인 ― 체크아웃")
+                footerView.disableCompleteButton()
+            }
+        }
+    }
     private var periodDays: [IndexPath] = []
 
     override func viewDidLoad() {
@@ -39,7 +50,7 @@ final class CalendarViewController: UIViewController {
     private func configureView() {
         contentView.layer.cornerRadius = 12.0
         contentView.layer.masksToBounds = true
-        headerView.titleLabel.text = "체크인 ― 체크아웃"
+        headerView.changeTitle("체크인 ― 체크아웃")
     }
 
     private func registerNotification() {
@@ -47,10 +58,32 @@ final class CalendarViewController: UIViewController {
                                                selector: #selector(close),
                                                name: NotificationName.closeButtonDidTouch,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reset),
+                                               name: .reset, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(completeSelection),
+                                               name: .complete, object: nil)
     }
 
     @objc private func close() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func reset() {
+        chooseDays.removeAll()
+        periodDays.removeAll()
+        calendarCollectionView.reloadData()
+    }
+    
+    @objc private func completeSelection() {
+        dismiss(animated: true) {
+            self.delegate?.send(text: "\(self.calculator(self.chooseDays[0])) ― \(self.calculator(self.chooseDays[1]))")
+        }
+    }
+    
+    private func changeCheckedLabel(_ text: String) {
+        headerView.changeTitle(text)
     }
 }
 
@@ -248,5 +281,11 @@ extension CalendarViewController: UICollectionViewDelegate {
     private func changeBackgroundPeriodCells(_ collectionView: UICollectionView, indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
         cell.changeBackground()
+    }
+    
+    private func calculator(_ indexPath: IndexPath) -> String {
+        let thisMonth = dateManager.thisMonth(indexPath.section)
+        let date = indexPath.item - dateManager.firstWeekday(thisMonth: thisMonth) + 1
+        return "\(thisMonth)월 \(date)일"
     }
 }

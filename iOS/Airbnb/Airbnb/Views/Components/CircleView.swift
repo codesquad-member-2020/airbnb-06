@@ -21,7 +21,7 @@ class CircleView: UIView {
     }
     
     private func configure() {
-        self.layer.cornerRadius = self.frame.height / 2 + self.frame.height / 10
+        self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
         self.backgroundColor = .black
         self.alpha = 0.0

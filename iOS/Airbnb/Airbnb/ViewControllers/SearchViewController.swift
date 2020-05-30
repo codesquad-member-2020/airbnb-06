@@ -11,9 +11,6 @@ import Floaty
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var dateFilterButton: FilterButton!
-    @IBOutlet weak var guestFilterButton: FilterButton!
-    @IBOutlet weak var priceFilterButton: FilterButton!
     @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
     @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
     @IBOutlet weak var floatingButton: Floaty!
@@ -39,6 +36,18 @@ class SearchViewController: UIViewController {
         accommodationSearchCollectionView.showsVerticalScrollIndicator = false
     }
     
+    @IBAction func showCalendarViewController(_ sender: Any) {
+        guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else { return }
+        calendarViewController.delegate = self
+        show(calendarViewController)
+    }
+    
+    private func show(_ viewController: UIViewController) {
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: true, completion: nil)
+    }
+    
     @IBAction func displayPopup(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifiers[title]!) else { return }
@@ -57,5 +66,15 @@ class SearchViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func changeFilteringDescription(_ text: String) {
+        filteringDescriptionLabel.text = text
+    }
+}
+
+extension SearchViewController: SendDataDelegate {
+    func send(text: String) {
+        changeFilteringDescription(text)
     }
 }
