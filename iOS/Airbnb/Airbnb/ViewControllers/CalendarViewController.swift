@@ -16,7 +16,12 @@ final class CalendarViewController: UIViewController {
     @IBOutlet weak var footerView: PopupFooterView!
 
     private var dateManager = DateManager()
-    private var chooseDays: [IndexPath] = []
+    private var chooseDays: [IndexPath] = [] {
+        didSet {
+            chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0])) : changeCheckedLabel("체크인 ― 체크아웃")
+            chooseDays.count == 2 ? changeCheckedLabel("\(calculator(chooseDays[0])) ― \(calculator(chooseDays[1]))") : nil
+        }
+    }
     private var periodDays: [IndexPath] = []
 
     override func viewDidLoad() {
@@ -39,7 +44,7 @@ final class CalendarViewController: UIViewController {
     private func configureView() {
         contentView.layer.cornerRadius = 12.0
         contentView.layer.masksToBounds = true
-        headerView.titleLabel.text = "체크인 ― 체크아웃"
+        headerView.changeTitle("체크인 ― 체크아웃")
     }
 
     private func registerNotification() {
@@ -60,6 +65,10 @@ final class CalendarViewController: UIViewController {
         chooseDays.removeAll()
         periodDays.removeAll()
         calendarCollectionView.reloadData()
+    }
+    
+    private func changeCheckedLabel(_ text: String) {
+        headerView.changeTitle(text)
     }
 }
 
@@ -261,8 +270,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     
     private func calculator(_ indexPath: IndexPath) -> String {
         let thisMonth = dateManager.thisMonth(indexPath.section)
-        let month = indexPath.section + thisMonth
-        let date = indexPath.item - dateManager.firstWeekday(thisMonth: thisMonth)
-        return "\(month)월 \(date)일"
+        let date = indexPath.item - dateManager.firstWeekday(thisMonth: thisMonth) + 1
+        return "\(thisMonth)월 \(date)일"
     }
 }
