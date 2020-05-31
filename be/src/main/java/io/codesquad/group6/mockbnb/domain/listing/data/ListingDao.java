@@ -49,11 +49,7 @@ public class ListingDao {
                                      "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
-        try {
-            return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
-        } catch (EmptyResultDataAccessException e) {
-            throw new ListingNotFoundException("No listing meets the provided querying conditions.");
-        }
+        return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
     }
 
     public Listing findListingById(long listingId, long guestId) {
