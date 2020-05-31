@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS booking
 
 CREATE TABLE IF NOT EXISTS bookmark
 (
-    id      BIGINT PRIMARY KEY AUTO_INCREMENT,
     listing BIGINT REFERENCES listing (id),
-    guest   BIGINT REFERENCES guest (id)
+    guest   BIGINT REFERENCES guest (id),
+    PRIMARY KEY (listing, guest)
 );

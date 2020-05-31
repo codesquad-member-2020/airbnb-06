@@ -27,7 +27,7 @@ public class ListingDao {
         String sql = "SELECT l.id, l.name, l.housing_type, l.capacity, l.num_bathrooms, l.num_bedrooms, l.num_beds, " +
                          "l.price, l.cleaning_fee, l.num_reviews, l.rating, l.latitude, l.longitude, " +
                          "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
-                         "EXISTS(SELECT bm.id " +
+                         "EXISTS(SELECT bm.listing " +
                              "FROM bookmark bm " +
                              "WHERE bm.guest = :g_id " +
                                  "AND bm.listing = l.id) AS l_is_bookmarked, " +
@@ -63,7 +63,7 @@ public class ListingDao {
                          "(SELECT GROUP_CONCAT(i.image_url) " +
                              "FROM image i " +
                              "WHERE i.listing = l.id) AS l_image_urls, " +
-                         "EXISTS(SELECT b.id " +
+                         "EXISTS(SELECT b.listing " +
                              "FROM bookmark b " +
                              "WHERE b.guest = :g_id " +
                                  "AND b.listing = l.id) AS l_is_bookmarked, " +
