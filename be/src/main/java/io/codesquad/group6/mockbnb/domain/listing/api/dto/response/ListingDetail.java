@@ -1,6 +1,5 @@
 package io.codesquad.group6.mockbnb.domain.listing.api.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
@@ -12,7 +11,7 @@ import java.util.List;
 public class ListingDetail {
 
     @Singular List<String> imageUrls;
-    boolean isBookmarked;
+    Boolean isBookmarked;
     String name;
     String location;
     String hostName;
@@ -24,10 +23,5 @@ public class ListingDetail {
     double price;
     double rating;
     int numReviews;
-
-    @JsonGetter("isBookmarked")
-    public boolean isBookmarked() {
-        return isBookmarked;
-    }
 
 }

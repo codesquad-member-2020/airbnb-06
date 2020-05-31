@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class BookmarkRequest {
 
-    private boolean isBookmarking;
+    private Boolean isBookmarking;
 
 }
