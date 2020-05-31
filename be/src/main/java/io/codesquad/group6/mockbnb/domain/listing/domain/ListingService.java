@@ -36,6 +36,13 @@ public class ListingService {
         return listingDao.findPriceGraphData(checkin, checkout, numGuests);
     }
 
+    public List<ListingSummary> getBookmarkedListings(long guestId) {
+        List<Listing> bookmarkedListings = listingDao.findBookmarkedListings(guestId);
+        return bookmarkedListings.stream()
+                                 .map(this::mapToListingSummary)
+                                 .collect(Collectors.toList());
+    }
+
     private ListingSummary mapToListingSummary(Listing listing) {
         return ListingSummary.builder()
                              .id(listing.getId())

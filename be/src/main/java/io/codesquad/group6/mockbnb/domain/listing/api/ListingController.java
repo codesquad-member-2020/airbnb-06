@@ -73,4 +73,9 @@ public class ListingController {
         return ResponseEntity.ok(listingService.getPriceGraphData(checkin, checkout, numGuests));
     }
 
+    @GetMapping("/bookmarks")
+    public ResponseEntity<List<ListingSummary>> getBookmarkedListings(@RequestAttribute long guestId) {
+        return ResponseEntity.ok(listingService.getBookmarkedListings(guestId));
+    }
+
 }
