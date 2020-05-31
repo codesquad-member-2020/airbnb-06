@@ -29,7 +29,6 @@ public class PriceGraphDataMapper implements RowMapper<PriceGraphData> {
             // if rs is empty, i.e. no listing satisfying the querying conditions is found,
             // we want to return avg = 0 and distribution array filled with 0.
             return new String[0];
-
         }
     }
 

@@ -82,7 +82,7 @@ public class ListingDao {
 
     public PriceGraphData findPriceGraphData(LocalDate checkin, LocalDate checkout, int numGuests) {
         String sql = "SELECT GROUP_CONCAT(l.price) AS l_prices, " +
-                         "ROUND(AVG(l.price), 2) AS l_price_avg " +
+                         "ROUND(AVG(IF(l.price > 1000, 1000, l.price)), 2) AS l_price_avg " +
                      "FROM listing l " +
                      "WHERE l.capacity >= :num_guests " +
                          "AND NOT EXISTS(SELECT b.id " +
