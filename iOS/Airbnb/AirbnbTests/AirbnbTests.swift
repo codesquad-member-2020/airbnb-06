@@ -11,6 +11,8 @@ import XCTest
 
 class AirbnbTests: XCTestCase {
     
+    var accommodationUseCaseWithQueryItem: AccommodationUseCase!
+    
     func testDecode() {
         if let path = Bundle.main.path(forResource: "FakeAccommodationList", ofType: "json") {
             do {
@@ -23,15 +25,28 @@ class AirbnbTests: XCTestCase {
         }
     }
     
-    func testAddingQueryItems() {
-        let accommodationUseCaseWithQueryItem = AccommodationUseCase(request: AccommodationRequests.list.request)
+    func addQueryItem() {
+        accommodationUseCaseWithQueryItem = AccommodationUseCase(request: AccommodationRequests.list.request)
         accommodationUseCaseWithQueryItem.append(request: accommodationUseCaseWithQueryItem.request as! Queryable, name: .checkIn, value: "2020-06-02")
         accommodationUseCaseWithQueryItem.append(request: accommodationUseCaseWithQueryItem.request as! Queryable, name: .checkOut, value: "2020-06-22")
-        
+    }
+    
+    func testAddingQueryItemsEqualExpectation() {
+        addQueryItem()
         do {
             let request = try? accommodationUseCaseWithQueryItem.request.asURLRequest()
             guard let url = request?.url?.absoluteString else { return }
             XCTAssertEqual(url, "http://52.78.203.80/api/listings?checkIn=2020-06-02&checkOut=2020-06-22")
+        }catch {
+            
+        }
+    }
+    
+    func testAddingQueryItemsNotEqualExpectation() {
+        addQueryItem()
+        do {
+            let request = try? accommodationUseCaseWithQueryItem.request.asURLRequest()
+            guard let url = request?.url?.absoluteString else { return }
             XCTAssertNotEqual(url, "http://52.78.203.80/api/listings")
         }catch {
             

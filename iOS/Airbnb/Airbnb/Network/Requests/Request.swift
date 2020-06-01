@@ -18,12 +18,18 @@ protocol Request {
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
     var bodyParams: [String : Any]? { get }
+    func setToken() -> HTTPHeaders?
 }
 
 extension Request {
     var method: HTTPMethod { return .get }
     var headers: HTTPHeaders? { return nil }
     var bodyParams: [String : Any]? { return nil }
+    func setToken() -> HTTPHeaders? {
+        guard let token = UserDefaults.standard.object(forKey: "token") as? String else { return nil }
+        let headers: HTTPHeaders = ["Authorization": token]
+        return headers
+    }
 }
 
 protocol Queryable {

@@ -41,11 +41,11 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         images.forEach { imageStackView.addArrangedSubview(UIImageView(image: $0)) }
     }
     
-    private func judge(isFavorite: Bool) {
+    @inline(__always) private func judge(isFavorite: Bool) {
         isFavorite ? likeButton.image = UIImage(systemName: "heart.fill") : nil
     }
     
-    private func judge(isSuperHost: Bool) {
+    @inline(__always) private func judge(isSuperHost: Bool) {
         !isSuperHost ? badgeLabel.isHidden = true : nil
     }
     
