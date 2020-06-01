@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 class ListingMapper implements RowMapper<Listing> {
 
-    public static ListingMapper instance() {
+    public static ListingMapper getInstance() {
         return new ListingMapper();
     }
 

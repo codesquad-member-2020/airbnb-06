@@ -57,7 +57,7 @@ public class ListingDao {
                                      "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
-        return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
+        return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.getInstance());
     }
 
     public Listing findListingById(long listingId, long guestId) {
@@ -76,7 +76,7 @@ public class ListingDao {
                          "JOIN host h ON l.host = h.id " +
                      "WHERE l.id = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, ListingMapper.instance(), guestId, listingId);
+            return jdbcTemplate.queryForObject(sql, ListingMapper.getInstance(), guestId, listingId);
         } catch (EmptyResultDataAccessException e) {
             throw new ListingNotFoundException("No listing by the provided ID exists.");
         }
@@ -135,7 +135,7 @@ public class ListingDao {
                          "JOIN host h ON l.host = h.id " +
                          "JOIN bookmark b ON l.id = b.listing " +
                      "WHERE b.guest = ?";
-        return jdbcTemplate.query(sql, ListingMapper.instance(), guestId);
+        return jdbcTemplate.query(sql, ListingMapper.getInstance(), guestId);
     }
 
 }
