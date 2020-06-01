@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ILW-jF-BAl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="94f-IF-uk0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -25,14 +25,14 @@
                                 <rect key="frame" x="116" y="116" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="가격"/>
+                                <connections>
+                                    <action selector="showPriceRangeViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYP-YN-jt4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldT-Of-ujo" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                 <rect key="frame" x="74" y="116" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="인원"/>
-                                <connections>
-                                    <action selector="displayPopup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hsJ-7E-Ojk"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aL-2j-hug" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                 <rect key="frame" x="32" y="116" width="30" height="30"/>
@@ -454,7 +454,7 @@
         <!--Price Range View Controller-->
         <scene sceneID="VJ9-T9-kOO">
             <objects>
-                <viewController id="ILW-jF-BAl" customClass="PriceRangeViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PriceRangeViewController" id="ILW-jF-BAl" customClass="PriceRangeViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fSu-hJ-iTP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
