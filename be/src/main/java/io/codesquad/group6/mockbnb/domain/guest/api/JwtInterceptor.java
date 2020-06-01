@@ -1,6 +1,7 @@
 package io.codesquad.group6.mockbnb.domain.guest.api;
 
 import io.codesquad.group6.mockbnb.domain.guest.domain.GuestService;
+import io.codesquad.group6.mockbnb.domain.guest.exception.UnauthorizedRequestException;
 import io.codesquad.group6.mockbnb.githuboauth.GitHubUserData;
 import io.codesquad.group6.mockbnb.githuboauth.JwtService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +11,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.regex.Pattern;
 
 @Service
 @Slf4j
@@ -19,21 +19,19 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     private final JwtService jwtService;
     private final GuestService guestService;
-    private final Set<String> privateEndpoints;
 
     public JwtInterceptor(JwtService jwtService, GuestService guestService) {
         this.jwtService = jwtService;
         this.guestService = guestService;
-        privateEndpoints = new HashSet<>();
-        privateEndpoints.add("/listings/bookmarks");
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         String jwt = getJwtFromRequestHeader(request);
         long guestId = getGuestIdFromJwt(jwt);
+        checkIfOkToProceed(request, guestId);
         request.setAttribute("guestId", guestId);
-        return okToProceed(request, response, guestId);
+        return true;
     }
 
     private String getJwtFromRequestHeader(HttpServletRequest request) {
@@ -51,13 +49,17 @@ public class JwtInterceptor implements HandlerInterceptor {
         return gitHubUserData.getId();
     }
 
-    private boolean okToProceed(HttpServletRequest request, HttpServletResponse response, long guestId) throws IOException {
+    private void checkIfOkToProceed(HttpServletRequest request, long guestId) {
         String requestEndpoint = request.getServletPath();
-        if (privateEndpoints.contains(requestEndpoint) && guestId == -1L) {
-            response.sendError(401, "Requested operation requires authentication.");
-            return false;
+        if (guestId == -1L && endpointIsPrivate(requestEndpoint)) {
+            throw new UnauthorizedRequestException("Requested operation requires authentication.");
         }
-        return true;
+    }
+
+    private boolean endpointIsPrivate(String requestEndpoint) {
+        return requestEndpoint.equals("/listings/bookmarks")
+               || Pattern.matches("/listings/\\d+", requestEndpoint)
+               || Pattern.matches("/bookings.*", requestEndpoint);
     }
 
 }

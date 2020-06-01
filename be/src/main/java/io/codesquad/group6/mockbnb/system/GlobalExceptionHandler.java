@@ -1,6 +1,7 @@
 package io.codesquad.group6.mockbnb.system;
 
 import io.codesquad.group6.mockbnb.domain.guest.exception.InvalidGuestDataException;
+import io.codesquad.group6.mockbnb.domain.guest.exception.UnauthorizedRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import io.jsonwebtoken.JwtException;
@@ -25,6 +26,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidGuestDataException.class)
     public ResponseEntity<String> handleInvalidGuestDataException(InvalidGuestDataException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                             .body(e.getMessage());
+    }
+
+    @ExceptionHandler(UnauthorizedRequestException.class)
+    public ResponseEntity<String> handleUnauthorizedRequestException(UnauthorizedRequestException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                              .body(e.getMessage());
     }
 
