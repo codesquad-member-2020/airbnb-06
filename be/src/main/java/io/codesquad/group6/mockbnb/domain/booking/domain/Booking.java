@@ -15,7 +15,7 @@ public class Booking {
 
     long id;
     String name;
-    String roomType;
+    String housingType;
     String imageUrl;
     double housingPrice;
     double cleaningFee;
@@ -30,7 +30,7 @@ public class Booking {
         return BookingSummary.builder()
                              .id(id)
                              .imageUrl(imageUrl)
-                             .name(name)
+                             .listingName(name)
                              .checkin(checkin)
                              .checkout(checkout)
                              .numNights(numNights)
@@ -44,7 +44,7 @@ public class Booking {
         double totalHousingPrice = housingPrice * numNights;
         return BookingDetail.builder()
                             .imageUrl(imageUrl)
-                            .roomType(roomType)
+                            .housingType(housingType)
                             .housingPrice(housingPrice)
                             .totalHousingPrice(totalHousingPrice)
                             .cleaningFee(cleaningFee)

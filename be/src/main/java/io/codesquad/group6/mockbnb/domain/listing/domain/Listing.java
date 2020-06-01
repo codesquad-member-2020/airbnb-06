@@ -18,7 +18,6 @@ public class Listing {
     String housingType;
     String location;
     String hostName;
-    String roomType;
     int capacity;
     int numBedrooms;
     int numBeds;
@@ -56,7 +55,7 @@ public class Listing {
                             .name(name)
                             .location(location)
                             .hostName(hostName)
-                            .roomType(roomType)
+                            .housingType(housingType)
                             .capacity(capacity)
                             .numBedrooms(numBedrooms)
                             .numBeds(numBeds)

@@ -11,7 +11,7 @@ public class BookingSummary {
 
     long id;
     String imageUrl;
-    String name;
+    String listingName;
     LocalDate checkin;
     LocalDate checkout;
     int numNights;

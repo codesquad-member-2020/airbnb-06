@@ -15,7 +15,7 @@ public class ListingDetail {
     String name;
     String location;
     String hostName;
-    String roomType;
+    String housingType;
     int capacity;
     int numBedrooms;
     int numBeds;

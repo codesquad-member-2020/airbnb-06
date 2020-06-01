@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class BookingDetail {
 
     String imageUrl;
-    String roomType;
+    String housingType;
     double housingPrice;
     double totalHousingPrice;
     double cleaningFee;

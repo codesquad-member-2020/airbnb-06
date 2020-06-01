@@ -22,7 +22,6 @@ class ListingMapper implements RowMapper<Listing> {
                       .housingType(rs.getString("l.housing_type"))
                       .location(rs.getString("l_location"))
                       .hostName(rs.getString("h.name"))
-                      .roomType(rs.getString("l.housing_type"))
                       .capacity(rs.getInt("l.capacity"))
                       .numBedrooms(rs.getInt("l.num_bedrooms"))
                       .numBeds(rs.getInt("l.num_beds"))
