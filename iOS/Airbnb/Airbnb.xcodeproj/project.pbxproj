@@ -44,6 +44,9 @@
 		78802AE52473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */; };
 		78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */; };
 		78C40E222485293400FA98FD /* PriceRangeGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E212485293400FA98FD /* PriceRangeGraphView.swift */; };
+		78C40E24248562B400FA98FD /* PriceRangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E23248562B400FA98FD /* PriceRangeSlider.swift */; };
+		78C40E262485633700FA98FD /* PriceRangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E252485633700FA98FD /* PriceRangeSliderTrackLayer.swift */; };
+		78C40E282485639F00FA98FD /* PriceRangeSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E272485639F00FA98FD /* PriceRangeSliderThumbLayer.swift */; };
 		78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E570247D35AF00B758E5 /* PopupFooterView.swift */; };
 		78E8E575247D35AF00B758E5 /* PopupHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */; };
 		78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */; };
@@ -103,6 +106,9 @@
 		78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccommodationSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeViewController.swift; sourceTree = "<group>"; };
 		78C40E212485293400FA98FD /* PriceRangeGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeGraphView.swift; sourceTree = "<group>"; };
+		78C40E23248562B400FA98FD /* PriceRangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeSlider.swift; sourceTree = "<group>"; };
+		78C40E252485633700FA98FD /* PriceRangeSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeSliderTrackLayer.swift; sourceTree = "<group>"; };
+		78C40E272485639F00FA98FD /* PriceRangeSliderThumbLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeSliderThumbLayer.swift; sourceTree = "<group>"; };
 		78E8E570247D35AF00B758E5 /* PopupFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupFooterView.swift; sourceTree = "<group>"; };
 		78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupHeaderView.xib; sourceTree = "<group>"; };
 		78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupHeaderView.swift; sourceTree = "<group>"; };
@@ -355,6 +361,9 @@
 			isa = PBXGroup;
 			children = (
 				78C40E212485293400FA98FD /* PriceRangeGraphView.swift */,
+				78C40E23248562B400FA98FD /* PriceRangeSlider.swift */,
+				78C40E252485633700FA98FD /* PriceRangeSliderTrackLayer.swift */,
+				78C40E272485639F00FA98FD /* PriceRangeSliderThumbLayer.swift */,
 			);
 			path = PriceRangeView;
 			sourceTree = "<group>";
@@ -533,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C40E262485633700FA98FD /* PriceRangeSliderTrackLayer.swift in Sources */,
 				78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */,
 				78802AC92473A3C200A901E2 /* AppDelegate.swift in Sources */,
 				30B2E9262473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift in Sources */,
@@ -546,6 +556,7 @@
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,
 				30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */,
 				305B1B842482347000836302 /* SendDataDelegate.swift in Sources */,
+				78C40E282485639F00FA98FD /* PriceRangeSliderThumbLayer.swift in Sources */,
 				30B05656247E7AAB005AD8BB /* Request.swift in Sources */,
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
@@ -561,6 +572,7 @@
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				30AEC503247FA1A300EB7413 /* AccommodationRequest.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
+				78C40E24248562B400FA98FD /* PriceRangeSlider.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
 				306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */,
 			);

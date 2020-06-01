@@ -477,42 +477,55 @@
                                         <rect key="frame" x="0.0" y="60" width="373" height="380"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격 범위" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5V-NQ-0ZM">
-                                                <rect key="frame" x="20" y="28" width="81" height="26.5"/>
+                                                <rect key="frame" x="20" y="28" width="333" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1달러부터 1000달러 이상" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-fN-C1w">
-                                                <rect key="frame" x="20" y="74.5" width="175" height="21"/>
+                                                <rect key="frame" x="20" y="74.5" width="333" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일박 평균 가격은 100달러" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-aA-pQB">
-                                                <rect key="frame" x="20" y="99.5" width="145" height="17"/>
+                                                <rect key="frame" x="20" y="99.5" width="333" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-fG-lPW" customClass="PriceRangeGraphView" customModule="Airbnb" customModuleProvider="target">
-                                                <rect key="frame" x="19" y="144.5" width="335" height="60"/>
+                                                <rect key="frame" x="32" y="144.5" width="309" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="TOd-iD-4oP"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-uv-QS2">
+                                                <rect key="frame" x="32" y="190.5" width="309" height="28"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="z8Z-ue-f6g"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="centerX" secondItem="ohS-gY-iEs" secondAttribute="centerX" id="3vc-jF-aNq"/>
+                                            <constraint firstItem="CdD-uv-QS2" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="32" id="09k-Qp-QiG"/>
                                             <constraint firstItem="obF-fN-C1w" firstAttribute="top" secondItem="O5V-NQ-0ZM" secondAttribute="bottom" constant="20" id="I2p-Nk-yHe"/>
+                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="32" id="IYb-NE-3K7"/>
+                                            <constraint firstAttribute="trailing" secondItem="cFu-aA-pQB" secondAttribute="trailing" constant="20" id="WK2-b4-uH9"/>
                                             <constraint firstItem="obF-fN-C1w" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="Y2W-rs-Var"/>
                                             <constraint firstItem="O5V-NQ-0ZM" firstAttribute="top" secondItem="ohS-gY-iEs" secondAttribute="top" constant="28" id="ZEC-mK-fex"/>
                                             <constraint firstItem="uD4-fG-lPW" firstAttribute="top" secondItem="cFu-aA-pQB" secondAttribute="bottom" constant="28" id="dk7-R6-Bn7"/>
+                                            <constraint firstAttribute="trailing" secondItem="CdD-uv-QS2" secondAttribute="trailing" constant="32" id="lEc-ft-g2z"/>
+                                            <constraint firstAttribute="trailing" secondItem="uD4-fG-lPW" secondAttribute="trailing" constant="32" id="n51-g4-COS"/>
                                             <constraint firstItem="cFu-aA-pQB" firstAttribute="top" secondItem="obF-fN-C1w" secondAttribute="bottom" constant="4" id="nLy-lw-R5t"/>
                                             <constraint firstItem="cFu-aA-pQB" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="rmV-LF-2hk"/>
-                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="width" secondItem="ohS-gY-iEs" secondAttribute="width" multiplier="0.9" id="uqV-rP-cGn"/>
                                             <constraint firstItem="O5V-NQ-0ZM" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="vMO-qr-28g"/>
+                                            <constraint firstAttribute="trailing" secondItem="obF-fN-C1w" secondAttribute="trailing" constant="20" id="wRm-6u-dvl"/>
+                                            <constraint firstItem="CdD-uv-QS2" firstAttribute="top" secondItem="uD4-fG-lPW" secondAttribute="bottom" constant="-14" id="ygp-GB-07U"/>
+                                            <constraint firstAttribute="trailing" secondItem="O5V-NQ-0ZM" secondAttribute="trailing" constant="20" id="zek-fZ-b5l"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIs-ED-zWt" customClass="PopupFooterView" customModule="Airbnb" customModuleProvider="target">
@@ -557,6 +570,7 @@
                         <outlet property="footerView" destination="mIs-ED-zWt" id="j82-6F-T1v"/>
                         <outlet property="graphView" destination="uD4-fG-lPW" id="ipE-aA-pVH"/>
                         <outlet property="headerView" destination="clE-1n-Ug3" id="o5u-Xk-SQZ"/>
+                        <outlet property="sliderView" destination="CdD-uv-QS2" id="ngf-Np-d6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLc-Nj-jaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
