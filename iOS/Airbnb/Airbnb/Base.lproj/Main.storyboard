@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8kN-le-RZa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ILW-jF-BAl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -450,6 +450,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dfs-ZB-thA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3045" y="-629"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VJ9-T9-kOO">
+            <objects>
+                <viewController id="ILW-jF-BAl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fSu-hJ-iTP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHe-mx-yoh" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pC-I4-Q4O" userLabel="Content View">
+                                <rect key="frame" x="20.5" y="150" width="373" height="360"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clE-1n-Ug3" customClass="PopupHeaderView" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="tF7-FX-QrN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-gY-iEs">
+                                        <rect key="frame" x="0.0" y="60" width="373" height="240"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIs-ED-zWt" customClass="PopupFooterView" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="300" width="373" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="mnW-Mu-b0Y"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mIs-ED-zWt" secondAttribute="trailing" id="9gf-3O-4X7"/>
+                                    <constraint firstAttribute="trailing" secondItem="ohS-gY-iEs" secondAttribute="trailing" id="KAC-Mi-mbK"/>
+                                    <constraint firstItem="ohS-gY-iEs" firstAttribute="leading" secondItem="3pC-I4-Q4O" secondAttribute="leading" id="M1Y-QW-PUf"/>
+                                    <constraint firstItem="mIs-ED-zWt" firstAttribute="leading" secondItem="3pC-I4-Q4O" secondAttribute="leading" id="MO0-Cc-tsW"/>
+                                    <constraint firstAttribute="trailing" secondItem="clE-1n-Ug3" secondAttribute="trailing" id="MYw-GU-kYN"/>
+                                    <constraint firstItem="ohS-gY-iEs" firstAttribute="top" secondItem="clE-1n-Ug3" secondAttribute="bottom" id="Nt1-aQ-Cz8"/>
+                                    <constraint firstItem="clE-1n-Ug3" firstAttribute="top" secondItem="3pC-I4-Q4O" secondAttribute="top" id="aNf-C9-7OU"/>
+                                    <constraint firstAttribute="height" constant="360" id="kFv-Zy-bdd"/>
+                                    <constraint firstItem="clE-1n-Ug3" firstAttribute="leading" secondItem="3pC-I4-Q4O" secondAttribute="leading" id="lMj-vc-W57"/>
+                                    <constraint firstItem="mIs-ED-zWt" firstAttribute="top" secondItem="ohS-gY-iEs" secondAttribute="bottom" id="rEm-fy-gQN"/>
+                                    <constraint firstAttribute="bottom" secondItem="mIs-ED-zWt" secondAttribute="bottom" id="yC0-im-eC6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pHe-mx-yoh" firstAttribute="bottom" secondItem="fSu-hJ-iTP" secondAttribute="bottom" id="0xT-wt-eJ8"/>
+                            <constraint firstItem="pHe-mx-yoh" firstAttribute="leading" secondItem="emw-g0-WDN" secondAttribute="leading" id="4td-gl-W0a"/>
+                            <constraint firstItem="emw-g0-WDN" firstAttribute="trailing" secondItem="pHe-mx-yoh" secondAttribute="trailing" id="APk-zS-4XB"/>
+                            <constraint firstItem="3pC-I4-Q4O" firstAttribute="centerX" secondItem="emw-g0-WDN" secondAttribute="centerX" id="Fcw-Kv-U9X"/>
+                            <constraint firstItem="3pC-I4-Q4O" firstAttribute="width" secondItem="emw-g0-WDN" secondAttribute="width" multiplier="0.9" id="e84-cA-ldZ"/>
+                            <constraint firstItem="pHe-mx-yoh" firstAttribute="top" secondItem="fSu-hJ-iTP" secondAttribute="top" id="iJr-8X-DFi"/>
+                            <constraint firstItem="3pC-I4-Q4O" firstAttribute="top" secondItem="fSu-hJ-iTP" secondAttribute="top" constant="150" id="iKW-YI-PEp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="emw-g0-WDN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QLc-Nj-jaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4041" y="-629"/>
         </scene>
         <!--예약-->
         <scene sceneID="I94-iL-uPP">
