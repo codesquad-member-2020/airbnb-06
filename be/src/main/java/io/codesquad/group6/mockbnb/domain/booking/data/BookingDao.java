@@ -37,8 +37,17 @@ public class BookingDao {
     }
 
     public List<Booking> findBookingsByGuestId(long guestId) {
-        String sql = "";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> null, guestId);
+        String sql = "SELECT l.id, l.name, l.housing_type, l.price, l.cleaning_fee, l.rating, l.num_reviews, " +
+                         "(SELECT image_url " +
+                             "FROM image " +
+                             "WHERE id = (SELECT MIN(id) " +
+                                 "FROM image " +
+                                 "WHERE listing = b.listing)) AS l_image_url, " +
+                         "b.num_guests, b.checkin, b.checkout " +
+                     "FROM booking b " +
+                         "JOIN listing l ON b.listing = l.id " +
+                     "WHERE b.guest = ?";
+        return jdbcTemplate.query(sql, BookingMapper.getInstance(), guestId);
     }
 
 }
