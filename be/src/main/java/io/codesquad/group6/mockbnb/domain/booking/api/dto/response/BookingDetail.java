@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.domain.listing.api.dto.response;
+package io.codesquad.group6.mockbnb.domain.booking.api.dto.response;
 
 import lombok.Builder;
 import lombok.Value;

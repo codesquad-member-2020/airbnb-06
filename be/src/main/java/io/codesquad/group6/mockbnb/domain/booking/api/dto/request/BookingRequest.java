@@ -1,4 +1,4 @@
-package io.codesquad.group6.mockbnb.domain.listing.api.dto.request;
+package io.codesquad.group6.mockbnb.domain.booking.api.dto.request;
 
 import lombok.Data;
 

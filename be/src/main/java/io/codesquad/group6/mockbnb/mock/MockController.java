@@ -1,10 +1,10 @@
 package io.codesquad.group6.mockbnb.mock;
 
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookingRequest;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.request.BookingRequest;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookmarkRequest;
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingDetail;
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingResponse;
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.BookingSummary;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingDetail;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingResponse;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingSummary;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
 import lombok.extern.slf4j.Slf4j;
