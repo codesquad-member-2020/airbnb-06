@@ -63,7 +63,7 @@ public class ListingDao {
                          "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
                          "EXISTS(SELECT b.listing " +
                              "FROM bookmark b " +
-                             "WHERE b.guest = :g_id " +
+                             "WHERE b.guest = ? " +
                                  "AND b.listing = l.id) AS l_is_bookmarked, " +
                          "(SELECT GROUP_CONCAT(i.image_url) " +
                              "FROM image i " +
@@ -71,11 +71,9 @@ public class ListingDao {
                          "h.id, h.name, h.is_superhost " +
                      "FROM listing l " +
                          "JOIN host h ON l.host = h.id " +
-                     "WHERE l.id = :l_id";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("l_id", listingId)
-                                                                           .addValue("g_id", guestId);
+                     "WHERE l.id = ?";
         try {
-            return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, ListingMapper.instance());
+            return jdbcTemplate.queryForObject(sql, ListingMapper.instance(), guestId, listingId);
         } catch (EmptyResultDataAccessException e) {
             throw new ListingNotFoundException("No listing by the provided ID exists.");
         }
