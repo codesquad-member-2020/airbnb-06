@@ -3,8 +3,13 @@ package io.codesquad.group6.mockbnb.domain.listing.data;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.PriceGraphData;
 import io.codesquad.group6.mockbnb.domain.listing.domain.Listing;
+import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -15,11 +20,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
+@Slf4j
 public class ListingDao {
 
+    private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public ListingDao(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
@@ -27,7 +35,7 @@ public class ListingDao {
         String sql = "SELECT l.id, l.name, l.housing_type, l.capacity, l.num_bathrooms, l.num_bedrooms, l.num_beds, " +
                          "l.price, l.cleaning_fee, l.num_reviews, l.rating, l.latitude, l.longitude, " +
                          "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
-                         "EXISTS(SELECT bm.id " +
+                         "EXISTS(SELECT bm.listing " +
                              "FROM bookmark bm " +
                              "WHERE bm.guest = :g_id " +
                                  "AND bm.listing = l.id) AS l_is_bookmarked, " +
@@ -49,32 +57,26 @@ public class ListingDao {
                                      "OR (b.checkin < :checkin AND :checkout < checkout))) " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
-        try {
-            return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
-        } catch (EmptyResultDataAccessException e) {
-            throw new ListingNotFoundException("No listing meets the provided querying conditions.");
-        }
+        return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.instance());
     }
 
     public Listing findListingById(long listingId, long guestId) {
         String sql = "SELECT l.id, l.name, l.housing_type, l.capacity, l.num_bathrooms, l.num_bedrooms, l.num_beds, " +
                          "l.price, l.cleaning_fee, l.num_reviews, l.rating, l.latitude, l.longitude, " +
                          "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
+                         "EXISTS(SELECT b.listing " +
+                             "FROM bookmark b " +
+                             "WHERE b.guest = ? " +
+                                 "AND b.listing = l.id) AS l_is_bookmarked, " +
                          "(SELECT GROUP_CONCAT(i.image_url) " +
                              "FROM image i " +
                              "WHERE i.listing = l.id) AS l_image_urls, " +
-                         "EXISTS(SELECT b.id " +
-                             "FROM bookmark b " +
-                             "WHERE b.guest = :g_id " +
-                                 "AND b.listing = l.id) AS l_is_bookmarked, " +
                          "h.id, h.name, h.is_superhost " +
                      "FROM listing l " +
                          "JOIN host h ON l.host = h.id " +
-                     "WHERE l.id = :l_id";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("l_id", listingId)
-                                                                           .addValue("g_id", guestId);
+                     "WHERE l.id = ?";
         try {
-            return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, ListingMapper.instance());
+            return jdbcTemplate.queryForObject(sql, ListingMapper.instance(), guestId, listingId);
         } catch (EmptyResultDataAccessException e) {
             throw new ListingNotFoundException("No listing by the provided ID exists.");
         }
@@ -82,7 +84,7 @@ public class ListingDao {
 
     public PriceGraphData findPriceGraphData(LocalDate checkin, LocalDate checkout, int numGuests) {
         String sql = "SELECT GROUP_CONCAT(l.price) AS l_prices, " +
-                         "ROUND(AVG(l.price), 2) AS l_price_avg " +
+                         "ROUND(AVG(IF(l.price > 1000, 1000, l.price)), 2) AS l_price_avg " +
                      "FROM listing l " +
                      "WHERE l.capacity >= :num_guests " +
                          "AND NOT EXISTS(SELECT b.id " +
@@ -95,6 +97,45 @@ public class ListingDao {
                                                                            .addValue("checkout", checkout)
                                                                            .addValue("num_guests", numGuests);
         return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, PriceGraphDataMapper.instance());
+    }
+
+    public void bookmarkListing(long listingId, long guestId) {
+        String sql = "INSERT INTO bookmark (listing, guest) " +
+                     "VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(sql, listingId, guestId);
+        } catch (DuplicateKeyException e) {
+            throw new InvalidBookmarkRequestException("You already bookmarked this listing.");
+        } catch (DataIntegrityViolationException e) {
+            throw new InvalidBookmarkRequestException("You cannot bookmark a listing that does not exist.");
+        }
+    }
+
+    public void unbookmarkListing(long listingId, long guestId) {
+        String sql = "DELETE FROM bookmark " +
+                     "WHERE listing = ? " +
+                         "AND guest = ?";
+        int numRowsAffected = jdbcTemplate.update(sql, listingId, guestId);
+        if (numRowsAffected == 0) {
+            throw new InvalidBookmarkRequestException("The listing you are trying to unbookmark is not bookmarked. " +
+                                                      "Maybe the listing ID doesn't exist?");
+        }
+    }
+
+    public List<Listing> findBookmarkedListings(long guestId) {
+        String sql = "SELECT l.id, l.name, l.housing_type, l.capacity, l.num_bathrooms, l.num_bedrooms, l.num_beds, " +
+                         "l.price, l.cleaning_fee, l.num_reviews, l.rating, l.latitude, l.longitude, " +
+                         "CONCAT_WS(', ', l.neighborhood, l.city, l.state, l.country) AS l_location, " +
+                         "TRUE AS l_is_bookmarked ," +
+                         "(SELECT GROUP_CONCAT(i.image_url) " +
+                             "FROM image i " +
+                             "WHERE i.listing = l.id) AS l_image_urls, " +
+                         "h.id, h.name, h.is_superhost " +
+                     "FROM listing l " +
+                         "JOIN host h ON l.host = h.id " +
+                         "JOIN bookmark b ON l.id = b.listing " +
+                     "WHERE b.guest = ?";
+        return jdbcTemplate.query(sql, ListingMapper.instance(), guestId);
     }
 
 }

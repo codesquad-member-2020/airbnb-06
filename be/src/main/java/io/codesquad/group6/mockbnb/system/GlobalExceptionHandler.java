@@ -1,6 +1,7 @@
 package io.codesquad.group6.mockbnb.system;
 
 import io.codesquad.group6.mockbnb.domain.guest.exception.InvalidGuestDataException;
+import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ListingNotFoundException.class)
     public ResponseEntity<String> handleListingNotFoundException(ListingNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                             .body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidBookmarkRequestException.class)
+    public ResponseEntity<String> handleDuplicateBookmarkException(InvalidBookmarkRequestException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
                              .body(e.getMessage());
     }
 
