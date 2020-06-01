@@ -12,14 +12,14 @@ public class BookingDetail {
     String imageUrl;
     String roomType;
     double housingPrice;
-    double rating;
-    int numReviews;
-    LocalDate checkin;
-    LocalDate checkout;
-    int numGuests;
-    int numNights;
     double totalHousingPrice;
     double cleaningFee;
     double totalPrice;
+    double rating;
+    int numReviews;
+    int numGuests;
+    int numNights;
+    LocalDate checkin;
+    LocalDate checkout;
 
 }
