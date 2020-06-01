@@ -43,6 +43,7 @@
 		78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78802AE22473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift */; };
 		78802AE52473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */; };
 		78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */; };
+		78C40E222485293400FA98FD /* PriceRangeGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E212485293400FA98FD /* PriceRangeGraphView.swift */; };
 		78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E570247D35AF00B758E5 /* PopupFooterView.swift */; };
 		78E8E575247D35AF00B758E5 /* PopupHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */; };
 		78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */; };
@@ -101,6 +102,7 @@
 		78802AE22473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccommodationSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeViewController.swift; sourceTree = "<group>"; };
+		78C40E212485293400FA98FD /* PriceRangeGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeGraphView.swift; sourceTree = "<group>"; };
 		78E8E570247D35AF00B758E5 /* PopupFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupFooterView.swift; sourceTree = "<group>"; };
 		78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupHeaderView.xib; sourceTree = "<group>"; };
 		78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupHeaderView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				7872575B247511770050DB66 /* SearchView */,
 				3004EE36247550FD00565A2B /* CalendarView */,
 				78262B4C247BDBB7007AAEDA /* GuestView */,
+				78C40E1E248528F600FA98FD /* PriceRangeView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,14 @@
 				30B05657247E9950005AD8BB /* FakeAccommodationList.json */,
 			);
 			path = Airbnb;
+			sourceTree = "<group>";
+		};
+		78C40E1E248528F600FA98FD /* PriceRangeView */ = {
+			isa = PBXGroup;
+			children = (
+				78C40E212485293400FA98FD /* PriceRangeGraphView.swift */,
+			);
+			path = PriceRangeView;
 			sourceTree = "<group>";
 		};
 		A8285F56BCA0ED87EED40B84 /* Pods */ = {
@@ -529,6 +540,7 @@
 				78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */,
 				781FC488247BEE8E0091AB61 /* CountControlButton.swift in Sources */,
 				78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */,
+				78C40E222485293400FA98FD /* PriceRangeGraphView.swift in Sources */,
 				78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */,
 				78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,

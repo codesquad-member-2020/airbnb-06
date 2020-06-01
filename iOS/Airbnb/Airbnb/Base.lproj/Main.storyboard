@@ -473,7 +473,7 @@
                                             <constraint firstAttribute="height" constant="60" id="tF7-FX-QrN"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-gY-iEs">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-gY-iEs" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="60" width="373" height="380"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격 범위" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5V-NQ-0ZM">
@@ -488,20 +488,30 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일박 평균 가격은 10달러" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-aA-pQB">
-                                                <rect key="frame" x="20" y="99.5" width="136" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일박 평균 가격은 100달러" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-aA-pQB">
+                                                <rect key="frame" x="20" y="99.5" width="145" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-fG-lPW" customClass="PriceRangeGraphView" customModule="Airbnb" customModuleProvider="target">
+                                                <rect key="frame" x="19" y="144.5" width="335" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="TOd-iD-4oP"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="centerX" secondItem="ohS-gY-iEs" secondAttribute="centerX" id="3vc-jF-aNq"/>
                                             <constraint firstItem="obF-fN-C1w" firstAttribute="top" secondItem="O5V-NQ-0ZM" secondAttribute="bottom" constant="20" id="I2p-Nk-yHe"/>
                                             <constraint firstItem="obF-fN-C1w" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="Y2W-rs-Var"/>
                                             <constraint firstItem="O5V-NQ-0ZM" firstAttribute="top" secondItem="ohS-gY-iEs" secondAttribute="top" constant="28" id="ZEC-mK-fex"/>
+                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="top" secondItem="cFu-aA-pQB" secondAttribute="bottom" constant="28" id="dk7-R6-Bn7"/>
                                             <constraint firstItem="cFu-aA-pQB" firstAttribute="top" secondItem="obF-fN-C1w" secondAttribute="bottom" constant="4" id="nLy-lw-R5t"/>
                                             <constraint firstItem="cFu-aA-pQB" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="rmV-LF-2hk"/>
+                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="width" secondItem="ohS-gY-iEs" secondAttribute="width" multiplier="0.9" id="uqV-rP-cGn"/>
                                             <constraint firstItem="O5V-NQ-0ZM" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="vMO-qr-28g"/>
                                         </constraints>
                                     </view>
@@ -545,6 +555,7 @@
                         <outlet property="averageLabel" destination="cFu-aA-pQB" id="mm6-n7-TzV"/>
                         <outlet property="contentView" destination="3pC-I4-Q4O" id="B95-gC-Srz"/>
                         <outlet property="footerView" destination="mIs-ED-zWt" id="j82-6F-T1v"/>
+                        <outlet property="graphView" destination="uD4-fG-lPW" id="ipE-aA-pVH"/>
                         <outlet property="headerView" destination="clE-1n-Ug3" id="o5u-Xk-SQZ"/>
                     </connections>
                 </viewController>
