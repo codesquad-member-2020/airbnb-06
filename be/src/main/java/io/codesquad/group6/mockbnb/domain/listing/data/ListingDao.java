@@ -3,8 +3,11 @@ package io.codesquad.group6.mockbnb.domain.listing.data;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.PriceGraphData;
 import io.codesquad.group6.mockbnb.domain.listing.domain.Listing;
+import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -94,6 +97,29 @@ public class ListingDao {
                                                                            .addValue("checkout", checkout)
                                                                            .addValue("num_guests", numGuests);
         return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, PriceGraphDataMapper.instance());
+    }
+
+    public void bookmarkListing(long listingId, long guestId) {
+        String sql = "INSERT INTO bookmark (listing, guest) " +
+                     "VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(sql, listingId, guestId);
+        } catch (DuplicateKeyException e) {
+            throw new InvalidBookmarkRequestException("You already bookmarked this listing.");
+        } catch (DataIntegrityViolationException e) {
+            throw new InvalidBookmarkRequestException("You cannot bookmark a listing that does not exist.");
+        }
+    }
+
+    public void unbookmarkListing(long listingId, long guestId) {
+        String sql = "DELETE FROM bookmark " +
+                     "WHERE listing = ? " +
+                         "AND guest = ?";
+        int numRowsAffected = jdbcTemplate.update(sql, listingId, guestId);
+        if (numRowsAffected == 0) {
+            throw new InvalidBookmarkRequestException("The listing you are trying to unbookmark is not bookmarked. " +
+                                                      "Maybe the listing ID doesn't exist?");
+        }
     }
 
     public List<Listing> findBookmarkedListings(long guestId) {
