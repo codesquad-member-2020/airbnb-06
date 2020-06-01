@@ -42,6 +42,7 @@
 		78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78802ADE2473ABD500A901E2 /* AccommodationSearchCollectionView.swift */; };
 		78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78802AE22473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift */; };
 		78802AE52473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */; };
+		78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */; };
 		78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E570247D35AF00B758E5 /* PopupFooterView.swift */; };
 		78E8E575247D35AF00B758E5 /* PopupHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */; };
 		78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */; };
@@ -99,6 +100,7 @@
 		78802ADE2473ABD500A901E2 /* AccommodationSearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationSearchCollectionView.swift; sourceTree = "<group>"; };
 		78802AE22473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		78802AE32473BF1200A901E2 /* AccommodationSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccommodationSearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeViewController.swift; sourceTree = "<group>"; };
 		78E8E570247D35AF00B758E5 /* PopupFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupFooterView.swift; sourceTree = "<group>"; };
 		78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupHeaderView.xib; sourceTree = "<group>"; };
 		78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupHeaderView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				30B2E9232473F2C6002FB866 /* SearchViewController.swift */,
 				7872575824750C520050DB66 /* CalendarViewController.swift */,
 				78262B4A247BDB88007AAEDA /* GuestViewController.swift */,
+				78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */,
 				781FC488247BEE8E0091AB61 /* CountControlButton.swift in Sources */,
 				78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */,
+				78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */,
 				78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,
 				30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */,

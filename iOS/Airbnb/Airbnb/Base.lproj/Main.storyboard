@@ -451,10 +451,10 @@
             </objects>
             <point key="canvasLocation" x="3045" y="-629"/>
         </scene>
-        <!--View Controller-->
+        <!--Price Range View Controller-->
         <scene sceneID="VJ9-T9-kOO">
             <objects>
-                <viewController id="ILW-jF-BAl" sceneMemberID="viewController">
+                <viewController id="ILW-jF-BAl" customClass="PriceRangeViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fSu-hJ-iTP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
