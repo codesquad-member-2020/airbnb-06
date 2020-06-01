@@ -1,6 +1,8 @@
 package io.codesquad.group6.mockbnb.domain.booking.data;
 
 import io.codesquad.group6.mockbnb.domain.booking.domain.Booking;
+import io.codesquad.group6.mockbnb.domain.booking.exception.BookingNotFoundException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +29,11 @@ public class BookingDao {
                      "FROM booking b " +
                          "JOIN listing l ON b.listing = l.id " +
                      "WHERE b.id = ?";
-        return jdbcTemplate.queryForObject(sql, BookingMapper.getInstance(), bookingId);
+        try {
+            return jdbcTemplate.queryForObject(sql, BookingMapper.getInstance(), bookingId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new BookingNotFoundException("No booking by the provided ID exists.");
+        }
     }
 
     public List<Booking> findBookingsByGuestId(long guestId) {
