@@ -17,6 +17,8 @@ struct Accommodation: Codable {
     var numBeds: Int
     var rating: Double
     var numReviews: Int
-    var superHost: Bool
-    var liked: Bool
+    var isSuperHost: Bool
+    var isBookmarked: Bool
+    var latitude: Double
+    var longitude: Double
 }

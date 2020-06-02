@@ -7,19 +7,26 @@
 //
 
 import Foundation
-import Alamofire
 
 struct AccommodationUseCase {
-    var request: URLRequestConvertible
+    var request: Request
+    var networkDispatcher: NetworkDispatcher
     
-    init(request: URLRequestConvertible) {
+    init(request: Request, networkDispatcher: NetworkDispatcher) {
         self.request = request
+        self.networkDispatcher = networkDispatcher
     }
     
     func perform<T: Codable>(id: Int? = nil, dataType: T.Type, handler: @escaping (Any) -> Void) {
-        AF.request(request).responseJSON { response in
-            guard let data = response.data, response.error != nil else { return }
+        networkDispatcher.execute(request: request) { anyData in
+            guard let data = anyData else { return }
             guard let decodeData = try? JSONDecoder().decode(dataType, from: data) else { return }
+            handler(decodeData)
+        }
+    }
+    
+    func perform(handler: @escaping (Any) -> Void) {
+        AccommodationListMock().request { (decodeData) in
             handler(decodeData)
         }
     }

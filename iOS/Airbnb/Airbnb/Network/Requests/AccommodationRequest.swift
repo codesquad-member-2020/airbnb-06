@@ -14,7 +14,7 @@ enum AccommodationRequests {
     case list
     case liked
     
-    var request: URLRequestConvertible {
+    var request: Request {
         switch self {
         case .detail: return AccommodationRequest()
         case .list: return AccommodationListRequest()
