@@ -20,6 +20,7 @@ class PriceRangeSlider: UIControl {
     var maximumValue: CGFloat = 1.0
     var lowerValue: CGFloat = 0.0
     var upperValue: CGFloat = 1.0
+    var previousLocation = CGPoint()
     
     let trackLayer = PriceRangeSliderTrackLayer()
     let lowerThumbLayer = PriceRangeSliderThumbLayer()
@@ -55,7 +56,7 @@ class PriceRangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: 12.5)
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: (bounds.height - 3.0) / 2)
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = position(of: lowerValue)
@@ -71,5 +72,51 @@ class PriceRangeSlider: UIControl {
     
     func position(of value: CGFloat) -> CGFloat {
         return bounds.width * CGFloat(value)
+    }
+}
+
+extension PriceRangeSlider {
+    
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        previousLocation = touch.location(in: self)
+        
+        if lowerThumbLayer.frame.contains(previousLocation) {
+            lowerThumbLayer.isHighlighted = true
+        } else if upperThumbLayer.frame.contains(previousLocation) {
+            upperThumbLayer.isHighlighted = true
+        }
+        
+        return lowerThumbLayer.isHighlighted || upperThumbLayer.isHighlighted
+    }
+    
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let currentLocation = touch.location(in: self)
+        let draggedValue = (currentLocation.x - previousLocation.x) / bounds.width
+        previousLocation = currentLocation
+        
+        if lowerThumbLayer.isHighlighted {
+            lowerValue += draggedValue
+            lowerValue = min(max(lowerValue, minimumValue), upperValue - (thumbWidth / bounds.width))
+            lowerThumbLayer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
+        } else if upperThumbLayer.isHighlighted {
+            upperValue += draggedValue
+            upperValue = min(max(upperValue, lowerValue + (thumbWidth / bounds.width)), maximumValue)
+            upperThumbLayer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
+        }
+        
+        sendActions(for: .valueChanged)
+        updateLayerFrames()
+        
+        return true
+    }
+    
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        if lowerThumbLayer.isHighlighted {
+            lowerThumbLayer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+            lowerThumbLayer.isHighlighted = false
+        } else if upperThumbLayer.isHighlighted {
+            upperThumbLayer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+            upperThumbLayer.isHighlighted = false
+        }
     }
 }

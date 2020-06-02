@@ -23,6 +23,7 @@ class PriceRangeViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
+        configureGraph()
         configureSlider()
     }
     
@@ -36,7 +37,16 @@ class PriceRangeViewController: UIViewController {
         headerView.titleLabel.text = "가격"
     }
     
+    private func configureGraph() {
+        graphView.highlightLayer.priceRangeSlider = slider
+    }
+    
     private func configureSlider() {
         sliderView.addSubview(slider)
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+    }
+    
+    @objc func sliderValueChanged() {
+        graphView.setNeedsDisplay()
     }
 }
