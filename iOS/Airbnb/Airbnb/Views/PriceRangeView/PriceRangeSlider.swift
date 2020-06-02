@@ -56,7 +56,7 @@ class PriceRangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: 12.5)
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: (bounds.height - 3.0) / 2)
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = position(of: lowerValue)
