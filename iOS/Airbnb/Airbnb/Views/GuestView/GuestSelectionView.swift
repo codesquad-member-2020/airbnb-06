@@ -27,12 +27,30 @@ class GuestSelectionView: UIView {
         configure()
     }
     
-    func configure() {
+    private func configure() {
         Bundle.main.loadNibNamed("GuestSelectionView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+        configureButton()
     }
     
+    private func configureButton() {
+        plusButton.addTarget(self, action: #selector(addCount), for: .touchUpInside)
+        minusButton.addTarget(self, action: #selector(subtractCount), for: .touchUpInside)
+    }
+    
+    @objc private func addCount() {
+        let count = Int(countLabel.text!)!
+        guard count < 8  else { return }
+        countLabel.text = "\(count + 1)"
+    }
+    
+    @objc private func subtractCount() {
+        let count = Int(countLabel.text!)!
+        guard count > 0  else { return }
+        countLabel.text = "\(count - 1)"
+    }
+
     func changeAgeGroupLabel(_ text: String) {
         ageGroupLabel.text = text
     }
