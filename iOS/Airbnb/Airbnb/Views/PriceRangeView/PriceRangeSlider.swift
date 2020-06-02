@@ -96,10 +96,10 @@ extension PriceRangeSlider {
         
         if lowerThumbLayer.isHighlighted {
             lowerValue += draggedValue
-            lowerValue = max(lowerValue, minimumValue)
+            lowerValue = min(max(lowerValue, minimumValue), upperValue - (thumbWidth / bounds.width))
         } else if upperThumbLayer.isHighlighted {
             upperValue += draggedValue
-            upperValue = min(upperValue, maximumValue)
+            upperValue = min(max(upperValue, lowerValue + (thumbWidth / bounds.width)), maximumValue)
         }
         
         updateLayerFrames()
