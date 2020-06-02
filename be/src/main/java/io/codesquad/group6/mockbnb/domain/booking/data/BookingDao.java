@@ -81,7 +81,9 @@ public class BookingDao {
 
 
     public void deleteBooking(long bookingId, long guestId) {
-        String sql = "";
+        String sql = "DELETE FROM booking " +
+                     "WHERE id = ? " +
+                         "AND guest = ?";
         jdbcTemplate.update(sql, bookingId, guestId);
     }
 
