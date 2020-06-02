@@ -1,9 +1,14 @@
 package io.codesquad.group6.mockbnb.domain.booking.data;
 
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.request.BookingInfo;
 import io.codesquad.group6.mockbnb.domain.booking.domain.Booking;
 import io.codesquad.group6.mockbnb.domain.booking.exception.BookingNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -13,9 +18,11 @@ import java.util.List;
 public class BookingDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public BookingDao(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
+        namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
     public Booking findBookingById(long bookingId, long guestId) {
@@ -49,6 +56,20 @@ public class BookingDao {
                          "JOIN listing l ON b.listing = l.id " +
                      "WHERE b.guest = ?";
         return jdbcTemplate.query(sql, BookingMapper.getInstance(), guestId);
+    }
+
+    public long insertBooking(BookingInfo bookingInfo) {
+        String sql = "";
+        SqlParameterSource sqlParameterSource = bookingInfo.toSqlParameterSource();
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder);
+        return keyHolder.getKey().longValue();
+    }
+
+
+    public void deleteBooking(long bookingId, long guestId) {
+        String sql = "";
+        jdbcTemplate.update(sql, bookingId, guestId);
     }
 
 }
