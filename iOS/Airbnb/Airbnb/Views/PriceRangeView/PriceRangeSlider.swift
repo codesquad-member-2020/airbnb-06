@@ -102,6 +102,7 @@ extension PriceRangeSlider {
             upperValue = min(max(upperValue, lowerValue + (thumbWidth / bounds.width)), maximumValue)
         }
         
+        sendActions(for: .valueChanged)
         updateLayerFrames()
         
         return true
