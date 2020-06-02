@@ -46,25 +46,36 @@ class GuestSelectionView: UIView {
     
     @objc private func reset() {
         countLabel.text = "0"
+        post()
     }
     
     @objc private func addCount() {
         let count = Int(countLabel.text!)!
         guard count < 8  else { return }
         countLabel.text = "\(count + 1)"
+        post()
     }
     
     @objc private func subtractCount() {
         let count = Int(countLabel.text!)!
         guard count > 0  else { return }
         countLabel.text = "\(count - 1)"
+        post()
     }
 
+    private func post() {
+        NotificationCenter.default.post(name: .guestCount, object: nil)
+    }
+    
     func changeAgeGroupLabel(_ text: String) {
         ageGroupLabel.text = text
     }
     
     func changeDetailLabel(_ text: String) {
         detailLabel.text = text
+    }
+    
+    func accordWithCondition() -> Bool {
+        return Int(countLabel.text!)! > 0
     }
 }
