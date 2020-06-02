@@ -3,6 +3,7 @@ package io.codesquad.group6.mockbnb.domain.booking.data;
 import io.codesquad.group6.mockbnb.domain.booking.api.dto.request.BookingInfo;
 import io.codesquad.group6.mockbnb.domain.booking.domain.Booking;
 import io.codesquad.group6.mockbnb.domain.booking.exception.BookingNotFoundException;
+import io.codesquad.group6.mockbnb.domain.booking.exception.InvalidBookingCancelRequestException;
 import io.codesquad.group6.mockbnb.domain.booking.exception.InvalidBookingRequestException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -84,7 +85,12 @@ public class BookingDao {
         String sql = "DELETE FROM booking " +
                      "WHERE id = ? " +
                          "AND guest = ?";
-        jdbcTemplate.update(sql, bookingId, guestId);
+        int numRowsAffected = jdbcTemplate.update(sql, bookingId, guestId);
+        if (numRowsAffected != 1) {
+            throw new InvalidBookingCancelRequestException("Failed to cancel the booking. " +
+                                                           "Either you are trying to delete a booking that does not exist " +
+                                                           "or you don't have the permission to delete the booking.");
+        }
     }
 
     private long getGeneratedId(KeyHolder keyHolder) {
