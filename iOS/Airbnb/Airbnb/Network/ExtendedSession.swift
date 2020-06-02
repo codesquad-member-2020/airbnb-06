@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import Alamofire
+
+extension Session: NetworkDispatcher {
+    func execute(request: Request, handler: @escaping (Data?) -> Void) {
+        self.request(request as! URLRequestConvertible).validate().response { response in
+            handler(response.data)
+        }
+    }
+}
