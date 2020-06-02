@@ -13,9 +13,9 @@ class GuestSelectionView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var ageGroupLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var minusButton: CountControlButton!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var plusButton: CountControlButton!
+    @IBOutlet weak var minusButton: CountControlButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,5 +31,13 @@ class GuestSelectionView: UIView {
         Bundle.main.loadNibNamed("GuestSelectionView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+    }
+    
+    func changeAgeGroupLabel(_ text: String) {
+        ageGroupLabel.text = text
+    }
+    
+    func changeDetailLabel(_ text: String) {
+        detailLabel.text = text
     }
 }
