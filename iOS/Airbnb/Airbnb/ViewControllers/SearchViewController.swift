@@ -34,18 +34,6 @@ class SearchViewController: UIViewController {
         accommodationSearchCollectionView.showsVerticalScrollIndicator = false
     }
     
-    private func requestMockList() {
-        AccommodationListMock().request { accommodationList in
-            self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList, handler: { accommodations in
-                DispatchQueue.main.async {
-                    self.accommodationSearchDataSource = AccommodationSearchCollectionViewDataSource(accommodations: accommodations)
-                    self.accommodationSearchCollectionView.dataSource = self.accommodationSearchDataSource
-                    self.accommodationSearchCollectionView.reloadData()
-                }
-            })
-        }
-    }
-    
     @IBAction func showCalendarViewController(_ sender: Any) {
         guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else { return }
         calendarViewController.delegate = self
