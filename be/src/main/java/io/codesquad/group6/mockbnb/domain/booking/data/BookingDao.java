@@ -3,6 +3,7 @@ package io.codesquad.group6.mockbnb.domain.booking.data;
 import io.codesquad.group6.mockbnb.domain.booking.api.dto.request.BookingInfo;
 import io.codesquad.group6.mockbnb.domain.booking.domain.Booking;
 import io.codesquad.group6.mockbnb.domain.booking.exception.BookingNotFoundException;
+import io.codesquad.group6.mockbnb.domain.booking.exception.InvalidBookingRequestException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class BookingDao {
@@ -74,7 +76,14 @@ public class BookingDao {
         SqlParameterSource sqlParameterSource = bookingInfo.toSqlParameterSource();
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder);
-        return keyHolder.getKey().longValue();
+        try {
+            return Objects.requireNonNull(keyHolder.getKey())
+                          .longValue();
+        } catch (NullPointerException e) {
+            throw new InvalidBookingRequestException("Failed to book the listing. " +
+                                                     "Either the listing is already booked for the requested period " +
+                                                     "or the requested number of guests exceeds the listing capacity.");
+        }
     }
 
 
