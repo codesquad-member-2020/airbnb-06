@@ -16,7 +16,7 @@ public class BookingMapper implements RowMapper<Booking> {
     public Booking mapRow(ResultSet rs, int rowNum) throws SQLException {
         return Booking.builder()
                       .id(rs.getLong("l.id"))
-                      .name(rs.getString("l.name"))
+                      .listingName(rs.getString("l.name"))
                       .housingType(rs.getString("l.housing_type"))
                       .imageUrl(rs.getString("l_image_url"))
                       .housingPrice(rs.getDouble("l.price"))
