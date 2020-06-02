@@ -4,7 +4,6 @@ import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
 import lombok.Builder;
 import lombok.Value;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @Builder
 public class Listing {
 
-    @Id long id;
+    long id;
     List<String> imageUrls;
     String name;
     String housingType;
