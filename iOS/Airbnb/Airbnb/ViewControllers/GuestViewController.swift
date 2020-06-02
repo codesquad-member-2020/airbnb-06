@@ -28,16 +28,16 @@ class GuestViewController: UIViewController {
     private func configureView() {
         contentView.layer.cornerRadius = 12.0
         contentView.layer.masksToBounds = true
-        headerView.changeTitle(GuestSelectionViewModel.personCountText)
+        headerView.changeTitle("인원")
         
-        adultSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.adultText)
-        adultSelectionView.changeDetailLabel(GuestSelectionViewModel.adultRangeText)
+        adultSelectionView.changeAgeGroupLabel("성인")
+        adultSelectionView.changeDetailLabel("만13세 이상")
         
-        childSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.childText)
-        childSelectionView.changeDetailLabel(GuestSelectionViewModel.childRangeText)
+        childSelectionView.changeAgeGroupLabel("청소년")
+        childSelectionView.changeDetailLabel("만3세 ~ 만12세")
         
-        infantSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.infantText)
-        infantSelectionView.changeDetailLabel(GuestSelectionViewModel.infantRangeText)
+        infantSelectionView.changeAgeGroupLabel("영유아")
+        infantSelectionView.changeDetailLabel("만2세 이하")
     }
     
     private func registerNotification() {
@@ -46,6 +46,13 @@ class GuestViewController: UIViewController {
                                                name: NotificationName.closeButtonDidTouch,
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(judgeGuestCount), name: .guestCount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(completeSelection), name: .complete, object: nil)
+    }
+    
+    @objc private func completeSelection() {
+        dismiss(animated: true) {
+            self.delegate?.send(text: "성인 \(self.adultSelectionView.selectedCount())명, 청소년 \(self.childSelectionView.selectedCount())명, 영유아\(self.infantSelectionView.selectedCount())명")
+        }
     }
     
     @objc private func judgeGuestCount() {
