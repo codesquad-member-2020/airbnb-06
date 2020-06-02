@@ -32,11 +32,20 @@ class GuestSelectionView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         configureButton()
+        addObserver()
     }
     
     private func configureButton() {
         plusButton.addTarget(self, action: #selector(addCount), for: .touchUpInside)
         minusButton.addTarget(self, action: #selector(subtractCount), for: .touchUpInside)
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: .reset, object: nil)
+    }
+    
+    @objc private func reset() {
+        countLabel.text = "0"
     }
     
     @objc private func addCount() {
