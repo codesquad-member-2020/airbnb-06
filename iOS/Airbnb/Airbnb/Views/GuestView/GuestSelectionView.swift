@@ -78,4 +78,8 @@ class GuestSelectionView: UIView {
     func accordWithCondition() -> Bool {
         return Int(countLabel.text!)! > 0
     }
+    
+    func selectedCount() -> Int {
+        return Int(countLabel.text!)!
+    }
 }
