@@ -17,6 +17,8 @@ class GuestViewController: UIViewController {
     @IBOutlet weak var infantSelectionView: GuestSelectionView!
     @IBOutlet weak var footerView: PopupFooterView!
     
+    var delegate: SendDataDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -26,13 +28,16 @@ class GuestViewController: UIViewController {
     private func configureView() {
         contentView.layer.cornerRadius = 12.0
         contentView.layer.masksToBounds = true
-        headerView.titleLabel.text = "인원"
-        adultSelectionView.ageGroupLabel.text = "성인"
-        adultSelectionView.detailLabel.text = "만13세 이상"
-        childSelectionView.ageGroupLabel.text = "청소년"
-        childSelectionView.detailLabel.text = "만3세 ~ 만12세"
-        infantSelectionView.ageGroupLabel.text = "영유아"
-        infantSelectionView.detailLabel.text = "만2세 이하"
+        headerView.changeTitle(GuestSelectionViewModel.personCountText)
+        
+        adultSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.adultText)
+        adultSelectionView.changeDetailLabel(GuestSelectionViewModel.adultRangeText)
+        
+        childSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.childText)
+        childSelectionView.changeDetailLabel(GuestSelectionViewModel.childRangeText)
+        
+        infantSelectionView.changeAgeGroupLabel(GuestSelectionViewModel.infantText)
+        infantSelectionView.changeDetailLabel(GuestSelectionViewModel.infantRangeText)
     }
     
     private func registerNotification() {
