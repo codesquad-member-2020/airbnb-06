@@ -81,12 +81,12 @@ extension PriceRangeSlider {
         previousLocation = touch.location(in: self)
         
         if lowerThumbLayer.frame.contains(previousLocation) {
-            lowerThumbLayer.highlighted = true
+            lowerThumbLayer.isHighlighted = true
         } else if upperThumbLayer.frame.contains(previousLocation) {
-            upperThumbLayer.highlighted = true
+            upperThumbLayer.isHighlighted = true
         }
         
-        return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
+        return lowerThumbLayer.isHighlighted || upperThumbLayer.isHighlighted
     }
     
     override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -94,10 +94,10 @@ extension PriceRangeSlider {
         let draggedValue = (currentLocation.x - previousLocation.x) / bounds.width
         previousLocation = currentLocation
         
-        if lowerThumbLayer.highlighted {
+        if lowerThumbLayer.isHighlighted {
             lowerValue += draggedValue
             lowerValue = max(lowerValue, minimumValue)
-        } else if upperThumbLayer.highlighted {
+        } else if upperThumbLayer.isHighlighted {
             upperValue += draggedValue
             upperValue = min(upperValue, maximumValue)
         }
@@ -105,5 +105,10 @@ extension PriceRangeSlider {
         updateLayerFrames()
         
         return true
+    }
+    
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        lowerThumbLayer.isHighlighted = false
+        upperThumbLayer.isHighlighted = false
     }
 }

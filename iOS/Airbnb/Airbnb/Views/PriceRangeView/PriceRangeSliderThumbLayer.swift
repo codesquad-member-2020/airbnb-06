@@ -11,7 +11,7 @@ import UIKit
 class PriceRangeSliderThumbLayer: CALayer {
 
     weak var priceRangeSlider: PriceRangeSlider?
-    var highlighted = false
+    var isHighlighted = false
     
     override func draw(in ctx: CGContext) {
         guard let priceRangeSlider = priceRangeSlider else { return }
