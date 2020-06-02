@@ -59,7 +59,18 @@ public class BookingDao {
     }
 
     public long insertBooking(BookingInfo bookingInfo) {
-        String sql = "";
+        String sql = "INSERT INTO booking (listing, guest, checkin, checkout, num_guests)" +
+                     "SELECT :l_id, :g_id, :checkin, :checkout, :num_guests " +
+                     "FROM DUAL " +
+                     "WHERE NOT EXISTS(SELECT b.id " +
+                             "FROM booking b " +
+                             "WHERE b.listing = :l_id " +
+                                 "AND ((:checkin <= b.checkin AND b.checkin < :checkout) " +
+                                 "OR (:checkin < b.checkout AND b.checkout <= :checkout) " +
+                                 "OR (b.checkin < :checkin AND :checkout < checkout))) " +
+                         "AND :num_guests <= (SELECT l.capacity " +
+                             "FROM listing l " +
+                             "WHERE l.id = :l_id)";
         SqlParameterSource sqlParameterSource = bookingInfo.toSqlParameterSource();
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder);
