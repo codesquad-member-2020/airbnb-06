@@ -45,9 +45,18 @@ class GuestViewController: UIViewController {
                                                selector: #selector(close),
                                                name: NotificationName.closeButtonDidTouch,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(judgeGuestCount), name: .guestCount, object: nil)
+    }
+    
+    @objc private func judgeGuestCount() {
+        adultSelectionView.accordWithCondition() ? footerView.enableCompleteButton() : footerView.disableCompleteButton()
     }
     
     @objc private func close() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension Notification.Name {
+    static let guestCount = Notification.Name("getCount")
 }
