@@ -1,12 +1,12 @@
 package io.codesquad.group6.mockbnb.mock;
 
-import io.codesquad.group6.mockbnb.api.request.BookingRequest;
-import io.codesquad.group6.mockbnb.api.request.BookmarkRequest;
-import io.codesquad.group6.mockbnb.api.response.BookingDetail;
-import io.codesquad.group6.mockbnb.api.response.BookingResponse;
-import io.codesquad.group6.mockbnb.api.response.BookingSummary;
-import io.codesquad.group6.mockbnb.api.response.ListingDetail;
-import io.codesquad.group6.mockbnb.api.response.ListingSummary;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.request.BookingRequest;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookmarkRequest;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingDetail;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingResponse;
+import io.codesquad.group6.mockbnb.domain.booking.api.dto.response.BookingSummary;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail;
+import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -110,7 +110,7 @@ public class MockController {
                                               .name("listing1")
                                               .location("Korea Town, Los Angeles, California, United States")
                                               .hostName("David")
-                                              .roomType("Entire home/apt")
+                                              .housingType("Entire home/apt")
                                               .capacity(4)
                                               .numBedrooms(2)
                                               .numBeds(4)
@@ -135,7 +135,7 @@ public class MockController {
         bookings.add(BookingSummary.builder()
                                    .id(1)
                                    .imageUrl("https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large")
-                                   .name("listing1")
+                                   .listingName("listing1")
                                    .checkin(LocalDate.parse("2020-05-22"))
                                    .checkout(LocalDate.parse("2020-05-23"))
                                    .numNights(1)
@@ -145,7 +145,7 @@ public class MockController {
         bookings.add(BookingSummary.builder()
                                    .id(2)
                                    .imageUrl("https://a0.muscache.com/im/pictures/38165109-1f28-429f-b9fd-99d0932c154e.jpg?aki_policy=large")
-                                   .name("listing2")
+                                   .listingName("listing2")
                                    .checkin(LocalDate.parse("2020-06-01"))
                                    .checkout(LocalDate.parse("2020-06-15"))
                                    .numNights(14)
@@ -155,7 +155,7 @@ public class MockController {
         bookings.add(BookingSummary.builder()
                                    .id(3)
                                    .imageUrl("https://a0.muscache.com/im/pictures/df7f56e6-71c0-4402-96de-27604ee4d460.jpg?aki_policy=large")
-                                   .name("listing3")
+                                   .listingName("listing3")
                                    .checkin(LocalDate.parse("2020-12-24"))
                                    .checkout(LocalDate.parse("2020-12-31"))
                                    .numNights(7)
@@ -170,7 +170,7 @@ public class MockController {
         log.debug("bookingId: {}", bookingId);
         return ResponseEntity.ok(BookingDetail.builder()
                                               .imageUrl("https://a0.muscache.com/im/pictures/dd850460-46df-4422-a98b-86991f8de674.jpg?aki_policy=large")
-                                              .roomType("Entire home/apt")
+                                              .housingType("Entire home/apt")
                                               .housingPrice(123.45)
                                               .rating(4.56)
                                               .numReviews(123)

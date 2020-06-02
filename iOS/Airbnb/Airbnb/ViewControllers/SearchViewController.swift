@@ -18,9 +18,6 @@ class SearchViewController: UIViewController {
     
     private var accommodationListViewModel: AccommodationListViewModel!
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
-    private let identifiers: [String : String] = ["날짜": "CalendarViewController",
-                                                  "인원": "GuestViewController",
-                                                  "가격": "PriceViewController"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,21 +34,30 @@ class SearchViewController: UIViewController {
         accommodationSearchCollectionView.showsVerticalScrollIndicator = false
     }
     
+    private func requestMockList() {
+        AccommodationListMock().request { accommodationList in
+            self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList, handler: { accommodations in
+                DispatchQueue.main.async {
+                    self.accommodationSearchDataSource = AccommodationSearchCollectionViewDataSource(accommodations: accommodations)
+                    self.accommodationSearchCollectionView.dataSource = self.accommodationSearchDataSource
+                    self.accommodationSearchCollectionView.reloadData()
+                }
+            })
+        }
+    }
+    
     @IBAction func showCalendarViewController(_ sender: Any) {
         guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else { return }
         calendarViewController.delegate = self
         show(calendarViewController)
     }
     
-    private func show(_ viewController: UIViewController) {
-        viewController.modalPresentationStyle = .overCurrentContext
-        viewController.modalTransitionStyle = .crossDissolve
-        present(viewController, animated: true, completion: nil)
+    @IBAction func showPriceRangeViewController(_ sender: FilterButton) {
+        guard let priceRangeViewController = storyboard?.instantiateViewController(withIdentifier: "PriceRangeViewController") as? PriceRangeViewController else { return }
+        show(priceRangeViewController)
     }
     
-    @IBAction func displayPopup(_ sender: UIButton) {
-        guard let title = sender.currentTitle else { return }
-        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifiers[title]!) else { return }
+    private func show(_ viewController: UIViewController) {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         present(viewController, animated: true, completion: nil)
