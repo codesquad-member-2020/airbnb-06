@@ -11,6 +11,8 @@
 		3054CF6624813F3F0097775B /* DateMangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054CF6524813F3F0097775B /* DateMangerTests.swift */; };
 		305B1B842482347000836302 /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B1B832482347000836302 /* SendDataDelegate.swift */; };
 		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
+		30A5C16624852D3900D8D2D9 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */; };
+		30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C1672485412600D8D2D9 /* ExtendedSession.swift */; };
 		30AEC503247FA1A300EB7413 /* AccommodationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC502247FA1A300EB7413 /* AccommodationRequest.swift */; };
 		30B05656247E7AAB005AD8BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B05655247E7AAB005AD8BB /* Request.swift */; };
 		30B05658247E9950005AD8BB /* FakeAccommodationList.json in Resources */ = {isa = PBXBuildFile; fileRef = 30B05657247E9950005AD8BB /* FakeAccommodationList.json */; };
@@ -64,6 +66,8 @@
 		3054CF6524813F3F0097775B /* DateMangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMangerTests.swift; sourceTree = "<group>"; };
 		305B1B832482347000836302 /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
 		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
+		30A5C1672485412600D8D2D9 /* ExtendedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedSession.swift; sourceTree = "<group>"; };
 		30AEC502247FA1A300EB7413 /* AccommodationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationRequest.swift; sourceTree = "<group>"; };
 		30B05655247E7AAB005AD8BB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		30B05657247E9950005AD8BB /* FakeAccommodationList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeAccommodationList.json; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				30AEC500247FA17A00EB7413 /* Requests */,
 				30C038A8247E552E00E1A921 /* UseCases */,
 				30C038A4247E481000E1A921 /* EndPoints.swift */,
+				30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */,
+				30A5C1672485412600D8D2D9 /* ExtendedSession.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -542,10 +548,12 @@
 				30B89495247FD7DA00DFF944 /* ViewModelBinding.swift in Sources */,
 				787257642475132A0050DB66 /* DateManager.swift in Sources */,
 				78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */,
+				30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */,
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				30AEC503247FA1A300EB7413 /* AccommodationRequest.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
+				30A5C16624852D3900D8D2D9 /* NetworkDispatcher.swift in Sources */,
 				306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
