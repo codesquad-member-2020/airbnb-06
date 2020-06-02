@@ -1,6 +1,8 @@
 package io.codesquad.group6.mockbnb.system;
 
 import io.codesquad.group6.mockbnb.domain.booking.exception.BookingNotFoundException;
+import io.codesquad.group6.mockbnb.domain.booking.exception.InvalidBookingCancelRequestException;
+import io.codesquad.group6.mockbnb.domain.booking.exception.InvalidBookingRequestException;
 import io.codesquad.group6.mockbnb.domain.guest.exception.InvalidGuestDataException;
 import io.codesquad.group6.mockbnb.domain.guest.exception.UnauthorizedRequestException;
 import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkRequestException;
@@ -50,6 +52,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BookingNotFoundException.class)
     public ResponseEntity<String> handleBookingNotFoundException(BookingNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                             .body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidBookingRequestException.class)
+    public ResponseEntity<String> handleInvalidBookingRequestException(InvalidBookingRequestException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                             .body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidBookingCancelRequestException.class)
+    public ResponseEntity<String> handleInvalidBookingCancelRequestException(InvalidBookingCancelRequestException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                              .body(e.getMessage());
     }
