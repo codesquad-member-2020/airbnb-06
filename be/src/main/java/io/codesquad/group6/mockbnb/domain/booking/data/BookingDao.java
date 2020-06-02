@@ -76,6 +76,16 @@ public class BookingDao {
         SqlParameterSource sqlParameterSource = bookingInfo.toSqlParameterSource();
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder);
+        return getGeneratedId(keyHolder);
+    }
+
+
+    public void deleteBooking(long bookingId, long guestId) {
+        String sql = "";
+        jdbcTemplate.update(sql, bookingId, guestId);
+    }
+
+    private long getGeneratedId(KeyHolder keyHolder) {
         try {
             return Objects.requireNonNull(keyHolder.getKey())
                           .longValue();
@@ -84,12 +94,6 @@ public class BookingDao {
                                                      "Either the listing is already booked for the requested period " +
                                                      "or the requested number of guests exceeds the listing capacity.");
         }
-    }
-
-
-    public void deleteBooking(long bookingId, long guestId) {
-        String sql = "";
-        jdbcTemplate.update(sql, bookingId, guestId);
     }
 
 }
