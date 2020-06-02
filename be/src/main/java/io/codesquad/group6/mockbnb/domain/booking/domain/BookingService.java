@@ -24,8 +24,8 @@ public class BookingService {
                        .collect(Collectors.toList());
     }
 
-    public BookingDetail getBookingDetail(long bookingId) {
-        Booking booking = bookingDao.findBookingById(bookingId);
+    public BookingDetail getBookingDetail(long bookingId, long guestId) {
+        Booking booking = bookingDao.findBookingById(bookingId, guestId);
         return booking.toBookingDetail();
     }
 

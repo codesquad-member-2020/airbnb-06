@@ -18,7 +18,7 @@ public class BookingDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Booking findBookingById(long bookingId) {
+    public Booking findBookingById(long bookingId, long guestId) {
         String sql = "SELECT l.id, l.name, l.housing_type, l.price, l.cleaning_fee, l.rating, l.num_reviews, " +
                          "(SELECT image_url " +
                              "FROM image " +
@@ -28,11 +28,12 @@ public class BookingDao {
                          "b.num_guests, b.checkin, b.checkout " +
                      "FROM booking b " +
                          "JOIN listing l ON b.listing = l.id " +
-                     "WHERE b.id = ?";
+                     "WHERE b.id = ? AND b.guest = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, BookingMapper.getInstance(), bookingId);
+            return jdbcTemplate.queryForObject(sql, BookingMapper.getInstance(), bookingId, guestId);
         } catch (EmptyResultDataAccessException e) {
-            throw new BookingNotFoundException("No booking by the provided ID exists.");
+            throw new BookingNotFoundException("No booking by the provided ID exists " +
+                                               "or you don't have the permission to view the booking.");
         }
     }
 

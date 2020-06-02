@@ -28,8 +28,9 @@ public class BookingController {
     }
 
     @GetMapping("/{booking-id}")
-    public ResponseEntity<BookingDetail> getBookingDetail(@PathVariable(name = "booking-id") long bookingId) {
-        return ResponseEntity.ok(bookingService.getBookingDetail(bookingId));
+    public ResponseEntity<BookingDetail> getBookingDetail(@PathVariable(name = "booking-id") long bookingId,
+                                                          @RequestAttribute long guestId) {
+        return ResponseEntity.ok(bookingService.getBookingDetail(bookingId, guestId));
     }
 
 }
