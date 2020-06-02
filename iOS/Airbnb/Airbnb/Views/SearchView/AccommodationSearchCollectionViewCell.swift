@@ -50,8 +50,8 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureData(_ accommodation: Accommodation) {
-        judge(isFavorite: accommodation.liked)
-        judge(isSuperHost: accommodation.superHost)
+        judge(isFavorite: accommodation.isBookmarked)
+        judge(isSuperHost: accommodation.isSuperHost)
         infoLabel.text =  "\(accommodation.housingType) " + "\(accommodation.numBedrooms)" + "bedrooms " + "\(accommodation.numBeds)" + "bed"
         pointAverageLabel.text = "\(accommodation.rating)"
         reviewCountLabel.text = "\(accommodation.numReviews)"
