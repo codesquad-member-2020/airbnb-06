@@ -20,6 +20,7 @@ class PriceRangeSlider: UIControl {
     var maximumValue: CGFloat = 1.0
     var lowerValue: CGFloat = 0.0
     var upperValue: CGFloat = 1.0
+    var previousLocation = CGPoint()
     
     let trackLayer = PriceRangeSliderTrackLayer()
     let lowerThumbLayer = PriceRangeSliderThumbLayer()
@@ -71,5 +72,20 @@ class PriceRangeSlider: UIControl {
     
     func position(of value: CGFloat) -> CGFloat {
         return bounds.width * CGFloat(value)
+    }
+}
+
+extension PriceRangeSlider {
+    
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        previousLocation = touch.location(in: self)
+        
+        if lowerThumbLayer.frame.contains(previousLocation) {
+            lowerThumbLayer.highlighted = true
+        } else if upperThumbLayer.frame.contains(previousLocation) {
+            upperThumbLayer.highlighted = true
+        }
+        
+        return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
     }
 }
