@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol NetworkDispatcher {
+    func execute(request: Request, handler: @escaping (Data?) -> Void)
+}
