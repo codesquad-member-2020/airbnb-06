@@ -97,9 +97,11 @@ extension PriceRangeSlider {
         if lowerThumbLayer.isHighlighted {
             lowerValue += draggedValue
             lowerValue = min(max(lowerValue, minimumValue), upperValue - (thumbWidth / bounds.width))
+            lowerThumbLayer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
         } else if upperThumbLayer.isHighlighted {
             upperValue += draggedValue
             upperValue = min(max(upperValue, lowerValue + (thumbWidth / bounds.width)), maximumValue)
+            upperThumbLayer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
         }
         
         sendActions(for: .valueChanged)
@@ -109,7 +111,12 @@ extension PriceRangeSlider {
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        lowerThumbLayer.isHighlighted = false
-        upperThumbLayer.isHighlighted = false
+        if lowerThumbLayer.isHighlighted {
+            lowerThumbLayer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+            lowerThumbLayer.isHighlighted = false
+        } else if upperThumbLayer.isHighlighted {
+            upperThumbLayer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+            upperThumbLayer.isHighlighted = false
+        }
     }
 }
