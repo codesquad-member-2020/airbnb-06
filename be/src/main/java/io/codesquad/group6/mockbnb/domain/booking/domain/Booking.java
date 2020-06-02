@@ -14,7 +14,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class Booking {
 
     long id;
-    String name;
+    String listingName;
     String housingType;
     String imageUrl;
     double housingPrice;
@@ -30,7 +30,7 @@ public class Booking {
         return BookingSummary.builder()
                              .id(id)
                              .imageUrl(imageUrl)
-                             .listingName(name)
+                             .listingName(listingName)
                              .checkin(checkin)
                              .checkout(checkout)
                              .numNights(numNights)
