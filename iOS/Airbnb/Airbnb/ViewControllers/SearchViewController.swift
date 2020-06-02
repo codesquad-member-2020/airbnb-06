@@ -25,31 +25,16 @@ class SearchViewController: UIViewController {
         requestAccommodationList()
     }
     
-    private func collectionViewConfigure() {
-        accommodationSearchCollectionView.register(UINib(nibName: "AccommodationSearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AccommodationSearchCollectionViewCell")
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width - 40, height: self.view.frame.height / 3)
-        layout.scrollDirection = .vertical
-        accommodationSearchCollectionView.collectionViewLayout = layout
-        accommodationSearchCollectionView.showsVerticalScrollIndicator = false
-    }
-    
-    private func requestMockList() {
-        AccommodationListMock().request { accommodationList in
-            self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList, handler: { accommodations in
-                DispatchQueue.main.async {
-                    self.accommodationSearchDataSource = AccommodationSearchCollectionViewDataSource(accommodations: accommodations)
-                    self.accommodationSearchCollectionView.dataSource = self.accommodationSearchDataSource
-                    self.accommodationSearchCollectionView.reloadData()
-                }
-            })
-        }
-    }
-    
     @IBAction func showCalendarViewController(_ sender: Any) {
         guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else { return }
         calendarViewController.delegate = self
         show(calendarViewController)
+    }
+    
+    @IBAction func showGuestViewController(_ sender: FilterButton) {
+        guard let guestViewController = storyboard?.instantiateViewController(withIdentifier: "GuestViewController") as? GuestViewController else { return }
+        guestViewController.delegate = self
+        show(guestViewController)
     }
     
     @IBAction func showPriceRangeViewController(_ sender: FilterButton) {
@@ -61,6 +46,15 @@ class SearchViewController: UIViewController {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         present(viewController, animated: true, completion: nil)
+    }
+    
+    private func collectionViewConfigure() {
+        accommodationSearchCollectionView.register(UINib(nibName: "AccommodationSearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AccommodationSearchCollectionViewCell")
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width - 40, height: self.view.frame.height / 3)
+        layout.scrollDirection = .vertical
+        accommodationSearchCollectionView.collectionViewLayout = layout
+        accommodationSearchCollectionView.showsVerticalScrollIndicator = false
     }
     
     private func requestAccommodationList() {
