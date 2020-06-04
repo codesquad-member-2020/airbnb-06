@@ -25,7 +25,7 @@ struct AccommodationUseCase {
         }
     }
     
-    func perform(handler: @escaping (Any) -> Void) {
+    func performMock(handler: @escaping (Any) -> Void) {
         AccommodationListMock().request { (decodeData) in
             handler(decodeData)
         }
