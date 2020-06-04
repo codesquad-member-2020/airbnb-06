@@ -13,6 +13,7 @@ class PriceRangeViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerView: PopupHeaderView!
+    @IBOutlet weak var rangeLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var graphView: PriceRangeGraphView!
     @IBOutlet weak var sliderView: UIView!
@@ -60,6 +61,15 @@ class PriceRangeViewController: UIViewController {
     }
     
     @objc func sliderValueChanged() {
+        changeRangeLabel()
         graphView.setNeedsDisplay()
+    }
+    
+    private func changeRangeLabel() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let lowerPrice = numberFormatter.string(from: NSNumber(value: Int(slider.lowerValue * 1000)))!
+        let upperPrice = numberFormatter.string(from: NSNumber(value: Int(slider.upperValue * 1000)))!
+        rangeLabel.text = "$\(lowerPrice) - $\(upperPrice)"
     }
 }

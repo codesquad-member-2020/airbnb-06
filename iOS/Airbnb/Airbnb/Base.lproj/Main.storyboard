@@ -482,27 +482,27 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1달러부터 1000달러 이상" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-fN-C1w">
-                                                <rect key="frame" x="20" y="74" width="333" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 - $1,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-fN-C1w">
+                                                <rect key="frame" x="20" y="74" width="333" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일박 평균 가격은 100달러" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-aA-pQB">
-                                                <rect key="frame" x="20" y="99" width="333" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                <rect key="frame" x="20" y="102" width="333" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-fG-lPW" customClass="PriceRangeGraphView" customModule="Airbnb" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="156" width="309" height="60"/>
+                                                <rect key="frame" x="32" y="160" width="309" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="TOd-iD-4oP"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-uv-QS2">
-                                                <rect key="frame" x="32" y="202" width="309" height="28"/>
+                                                <rect key="frame" x="32" y="206" width="309" height="28"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="z8Z-ue-f6g"/>
@@ -570,6 +570,7 @@
                         <outlet property="footerView" destination="mIs-ED-zWt" id="j82-6F-T1v"/>
                         <outlet property="graphView" destination="uD4-fG-lPW" id="ipE-aA-pVH"/>
                         <outlet property="headerView" destination="clE-1n-Ug3" id="o5u-Xk-SQZ"/>
+                        <outlet property="rangeLabel" destination="obF-fN-C1w" id="Un1-VY-b5m"/>
                         <outlet property="sliderView" destination="CdD-uv-QS2" id="ngf-Np-d6d"/>
                     </connections>
                 </viewController>
