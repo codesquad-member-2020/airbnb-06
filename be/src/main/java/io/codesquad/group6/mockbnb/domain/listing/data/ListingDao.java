@@ -7,12 +7,12 @@ import io.codesquad.group6.mockbnb.domain.listing.exception.InvalidBookmarkReque
 import io.codesquad.group6.mockbnb.domain.listing.exception.ListingNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -99,26 +99,14 @@ public class ListingDao {
         return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, PriceGraphDataMapper.instance());
     }
 
-    public void bookmarkListing(long listingId, long guestId) {
-        String sql = "INSERT INTO bookmark (listing, guest) " +
-                     "VALUES (?, ?)";
+    public void toggleBookmark(long listingId, long guestId) {
+        SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("toggle_bookmark");
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("l_id", listingId)
+                                                                           .addValue("g_id", guestId);
         try {
-            jdbcTemplate.update(sql, listingId, guestId);
-        } catch (DuplicateKeyException e) {
-            throw new InvalidBookmarkRequestException("You already bookmarked this listing.");
+            simpleJdbcCall.execute(sqlParameterSource);
         } catch (DataIntegrityViolationException e) {
-            throw new InvalidBookmarkRequestException("You cannot bookmark a listing that does not exist.");
-        }
-    }
-
-    public void unbookmarkListing(long listingId, long guestId) {
-        String sql = "DELETE FROM bookmark " +
-                     "WHERE listing = ? " +
-                         "AND guest = ?";
-        int numRowsAffected = jdbcTemplate.update(sql, listingId, guestId);
-        if (numRowsAffected == 0) {
-            throw new InvalidBookmarkRequestException("The listing you are trying to unbookmark is not bookmarked. " +
-                                                      "Maybe the listing ID doesn't exist?");
+            throw new InvalidBookmarkRequestException("You cannot (un)bookmark a listing that does not exist.");
         }
     }
 
