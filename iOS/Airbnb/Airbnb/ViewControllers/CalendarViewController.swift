@@ -15,15 +15,15 @@ final class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var footerView: PopupFooterView!
 
-    var delegate: SendDataDelegate?
+    var delegate: PassSelectedConditionDelegate?
     private var dateManager = DateManager()
     private var chooseDays: [IndexPath] = [] {
         didSet {
             if chooseDays.count == 2 {
-                changeCheckedLabel("\(calculator(chooseDays[0])) ― \(calculator(chooseDays[1]))")
+                changeCheckedLabel("\(calculator(chooseDays[0], forHeader: true)) ― \(calculator(chooseDays[1], forHeader: true))")
                 footerView.enableCompleteButton()
             } else {
-                chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0])) : changeCheckedLabel("체크인 ― 체크아웃")
+                chooseDays.count == 1 ? changeCheckedLabel(calculator(chooseDays[0], forHeader: true)) : changeCheckedLabel("체크인 ― 체크아웃")
                 footerView.disableCompleteButton()
             }
         }
@@ -78,7 +78,7 @@ final class CalendarViewController: UIViewController {
     
     @objc private func completeSelection() {
         dismiss(animated: true) {
-            self.delegate?.send(text: "\(self.calculator(self.chooseDays[0])) ― \(self.calculator(self.chooseDays[1]))")
+            self.delegate?.date(checkIn: "\(self.calculator(self.chooseDays[0], forHeader: false))", checkOut:  "\(self.calculator(self.chooseDays[1], forHeader: false))")
         }
     }
     
@@ -284,9 +284,11 @@ extension CalendarViewController: UICollectionViewDelegate {
         cell.changeBackground()
     }
     
-    private func calculator(_ indexPath: IndexPath) -> String {
-        let thisMonth = dateManager.thisMonth(indexPath.section)
-        let date = indexPath.item - dateManager.firstWeekday(thisMonth: indexPath.section) + 2
-        return "\(thisMonth)월 \(date)일"
+    private func calculator(_ indexPath: IndexPath, forHeader: Bool) -> String {
+        var thisMonth = "\(dateManager.thisMonth(indexPath.section))"
+        var date = "\(indexPath.item - dateManager.firstWeekday(thisMonth: indexPath.section) + 2)"
+        thisMonth.count == 1 ? thisMonth = "0\(thisMonth)" : nil
+        date.count == 1 ? date = "0\(date)" : nil
+        return forHeader ? "\(thisMonth)월 \(date)일" : "2020-\(thisMonth)-\(date)"
     }
 }
