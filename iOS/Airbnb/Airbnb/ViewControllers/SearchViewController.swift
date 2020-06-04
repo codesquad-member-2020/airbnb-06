@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         collectionViewConfigure()
         requestAccommodationList()
+        configureObservers()
     }
     
     @IBAction func showCalendarViewController(_ sender: Any) {
@@ -70,6 +71,14 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccommodationBookmark(_:)), name: .bookmark, object: nil)
+    }
+    
+    @objc private func requestAccommodationBookmark(_ notification: Notification) {
+        guard let id = notification.userInfo?["id"] as? Int else { return }
+    }
+    
     func changeFilteringDescription(_ text: String) {
         filteringDescriptionLabel.text = text
     }
@@ -79,4 +88,8 @@ extension SearchViewController: SendDataDelegate {
     func send(text: String) {
         changeFilteringDescription(text)
     }
+}
+
+extension Notification.Name {
+    static let bookmark = Notification.Name("bookmark")
 }
