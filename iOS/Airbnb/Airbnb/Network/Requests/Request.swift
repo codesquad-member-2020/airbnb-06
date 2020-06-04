@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum HTTPMethod: String {
-    case get, post, put, patch, delete
+    case GET, POST, PUT, PATCH, DELETE
 }
 
 protocol Request {
@@ -22,7 +22,7 @@ protocol Request {
 }
 
 extension Request {
-    var method: HTTPMethod { return .get }
+    var method: HTTPMethod { return .GET }
     var headers: HTTPHeaders? { return nil }
     var bodyParams: [String : Any]? { return nil }
     func setToken() -> HTTPHeaders? {
