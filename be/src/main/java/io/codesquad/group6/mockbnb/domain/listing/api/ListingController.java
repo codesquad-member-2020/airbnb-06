@@ -42,6 +42,7 @@ public class ListingController {
             @RequestParam(name = "max-latitude", required = false, defaultValue = "37.85") double maxLatitude,
             @RequestParam(name = "min-longitude", required = false, defaultValue = "-122.55") double minLongitude,
             @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude,
+            @RequestParam(required = false, defaultValue = "") String query,
             @RequestAttribute long guestId) {
         ListingFilter listingFilter = ListingFilter.builder()
                                                    .guestId(guestId)
@@ -56,6 +57,7 @@ public class ListingController {
                                                    .maxLatitude(maxLatitude)
                                                    .minLongitude(minLongitude)
                                                    .maxLongitude(maxLongitude)
+                                                   .query(query)
                                                    .build();
         return ResponseEntity.ok(listingService.getListings(listingFilter));
     }
