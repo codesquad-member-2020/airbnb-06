@@ -48,6 +48,10 @@ class PriceRangeGraphView: UIView {
             point1 = point2
         }
         
+        path.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
+        path.addLine(to: CGPoint(x: 0.0, y: bounds.height))
+        path.close()
+        
         return path
     }
     
