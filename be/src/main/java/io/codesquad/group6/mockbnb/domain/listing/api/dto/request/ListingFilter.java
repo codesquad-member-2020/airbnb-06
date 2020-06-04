@@ -23,6 +23,7 @@ public class ListingFilter {
     double maxLatitude;
     double minLongitude;
     double maxLongitude;
+    String query;
 
     public SqlParameterSource toSqlParameterSource() {
         return new MapSqlParameterSource().addValue("g_id", guestId)
@@ -36,7 +37,8 @@ public class ListingFilter {
                                           .addValue("min_latitude", minLatitude)
                                           .addValue("max_latitude", maxLatitude)
                                           .addValue("min_longitude", minLongitude)
-                                          .addValue("max_longitude", maxLongitude);
+                                          .addValue("max_longitude", maxLongitude)
+                                          .addValue("query", "%" + query + "%");
     }
 
 }

@@ -12,10 +12,17 @@ class PriceRangeGraphView: UIView {
     
     var data: [CGFloat] = [0, 0, 0, 0, 0, 2, 5, 4, 13, 10, 14, 11, 16, 14, 20, 15, 13, 10, 8, 6, 7, 6, 4, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     
+    let highlightLayer = PriceRangeGraphHighlightLayer()
+    
     override func draw(_ rect: CGRect) {
         let path = curvedPath()
-        UIColor(white: 0.7, alpha: 1.0).set()
-        path.fill()
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        
+        layer.addSublayer(highlightLayer)
+        highlightLayer.mask = mask
+        highlightLayer.frame = bounds
+        highlightLayer.setNeedsDisplay()
     }
     
     func curvedPath() -> UIBezierPath {

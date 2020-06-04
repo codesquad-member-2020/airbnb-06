@@ -1,6 +1,5 @@
 package io.codesquad.group6.mockbnb.domain.listing.api;
 
-import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.BookmarkRequest;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.request.ListingFilter;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingDetail;
 import io.codesquad.group6.mockbnb.domain.listing.api.dto.response.ListingSummary;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +42,7 @@ public class ListingController {
             @RequestParam(name = "max-latitude", required = false, defaultValue = "37.85") double maxLatitude,
             @RequestParam(name = "min-longitude", required = false, defaultValue = "-122.55") double minLongitude,
             @RequestParam(name = "max-longitude", required = false, defaultValue = "-122.35") double maxLongitude,
+            @RequestParam(required = false, defaultValue = "") String query,
             @RequestAttribute long guestId) {
         ListingFilter listingFilter = ListingFilter.builder()
                                                    .guestId(guestId)
@@ -58,6 +57,7 @@ public class ListingController {
                                                    .maxLatitude(maxLatitude)
                                                    .minLongitude(minLongitude)
                                                    .maxLongitude(maxLongitude)
+                                                   .query(query)
                                                    .build();
         return ResponseEntity.ok(listingService.getListings(listingFilter));
     }
@@ -77,10 +77,9 @@ public class ListingController {
     }
 
     @PatchMapping("/{listing-id}")
-    public ResponseEntity<?> bookmarkListing(@PathVariable(name = "listing-id") long listingId,
-                                             @RequestBody BookmarkRequest bookmarkRequest,
-                                             @RequestAttribute long guestId) {
-        listingService.bookmarkListing(listingId, guestId, bookmarkRequest);
+    public ResponseEntity<?> toggleBookmark(@PathVariable(name = "listing-id") long listingId,
+                                            @RequestAttribute long guestId) {
+        listingService.toggleBookmark(listingId, guestId);
         return ResponseEntity.accepted()
                              .build();
     }

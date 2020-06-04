@@ -57,6 +57,7 @@
 		78E8E575247D35AF00B758E5 /* PopupHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */; };
 		78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */; };
 		78E8E577247D35AF00B758E5 /* PopupFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8E573247D35AF00B758E5 /* PopupFooterView.xib */; };
+		78F799AB2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F799AA2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift */; };
 		D6EB7079E86E0EB83762633F /* Pods_Airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A1F45877EB89C0FF48E0AC /* Pods_Airbnb.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		78E8E571247D35AF00B758E5 /* PopupHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupHeaderView.xib; sourceTree = "<group>"; };
 		78E8E572247D35AF00B758E5 /* PopupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupHeaderView.swift; sourceTree = "<group>"; };
 		78E8E573247D35AF00B758E5 /* PopupFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupFooterView.xib; sourceTree = "<group>"; };
+		78F799AA2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeGraphHighlightLayer.swift; sourceTree = "<group>"; };
 		83A1F45877EB89C0FF48E0AC /* Pods_Airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14DC9E64FE40C2DA9226DDC /* Pods-Airbnb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airbnb.release.xcconfig"; path = "Target Support Files/Pods-Airbnb/Pods-Airbnb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -387,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				78C40E212485293400FA98FD /* PriceRangeGraphView.swift */,
+				78F799AA2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift */,
 				78C40E23248562B400FA98FD /* PriceRangeSlider.swift */,
 				78C40E252485633700FA98FD /* PriceRangeSliderTrackLayer.swift */,
 				78C40E272485639F00FA98FD /* PriceRangeSliderThumbLayer.swift */,
@@ -578,6 +581,7 @@
 				781FC488247BEE8E0091AB61 /* CountControlButton.swift in Sources */,
 				78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */,
 				78C40E222485293400FA98FD /* PriceRangeGraphView.swift in Sources */,
+				78F799AB2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift in Sources */,
 				78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */,
 				78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,

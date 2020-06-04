@@ -44,6 +44,7 @@ public class Listing {
                              .isBookmarked(isBookmarked)
                              .latitude(latitude)
                              .longitude(longitude)
+                             .price(price)
                              .build();
     }
 

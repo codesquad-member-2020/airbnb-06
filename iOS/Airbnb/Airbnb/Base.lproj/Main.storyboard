@@ -483,32 +483,32 @@
                                         <rect key="frame" x="0.0" y="60" width="373" height="280"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격 범위" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5V-NQ-0ZM">
-                                                <rect key="frame" x="20" y="30" width="333" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <rect key="frame" x="20" y="30" width="333" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1달러부터 1000달러 이상" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-fN-C1w">
-                                                <rect key="frame" x="20" y="86.5" width="333" height="21"/>
+                                                <rect key="frame" x="20" y="74" width="333" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일박 평균 가격은 100달러" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-aA-pQB">
-                                                <rect key="frame" x="20" y="111.5" width="333" height="17"/>
+                                                <rect key="frame" x="20" y="99" width="333" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD4-fG-lPW" customClass="PriceRangeGraphView" customModule="Airbnb" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="158.5" width="309" height="60"/>
+                                                <rect key="frame" x="32" y="156" width="309" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="TOd-iD-4oP"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-uv-QS2">
-                                                <rect key="frame" x="32" y="204.5" width="309" height="28"/>
+                                                <rect key="frame" x="32" y="202" width="309" height="28"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="z8Z-ue-f6g"/>
@@ -518,12 +518,12 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="CdD-uv-QS2" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="32" id="09k-Qp-QiG"/>
-                                            <constraint firstItem="obF-fN-C1w" firstAttribute="top" secondItem="O5V-NQ-0ZM" secondAttribute="bottom" constant="30" id="I2p-Nk-yHe"/>
+                                            <constraint firstItem="obF-fN-C1w" firstAttribute="top" secondItem="O5V-NQ-0ZM" secondAttribute="bottom" constant="20" id="I2p-Nk-yHe"/>
                                             <constraint firstItem="uD4-fG-lPW" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="32" id="IYb-NE-3K7"/>
                                             <constraint firstAttribute="trailing" secondItem="cFu-aA-pQB" secondAttribute="trailing" constant="20" id="WK2-b4-uH9"/>
                                             <constraint firstItem="obF-fN-C1w" firstAttribute="leading" secondItem="ohS-gY-iEs" secondAttribute="leading" constant="20" id="Y2W-rs-Var"/>
                                             <constraint firstItem="O5V-NQ-0ZM" firstAttribute="top" secondItem="ohS-gY-iEs" secondAttribute="top" constant="30" id="ZEC-mK-fex"/>
-                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="top" secondItem="cFu-aA-pQB" secondAttribute="bottom" constant="30" id="dk7-R6-Bn7"/>
+                                            <constraint firstItem="uD4-fG-lPW" firstAttribute="top" secondItem="cFu-aA-pQB" secondAttribute="bottom" constant="40" id="dk7-R6-Bn7"/>
                                             <constraint firstAttribute="trailing" secondItem="CdD-uv-QS2" secondAttribute="trailing" constant="32" id="lEc-ft-g2z"/>
                                             <constraint firstAttribute="trailing" secondItem="uD4-fG-lPW" secondAttribute="trailing" constant="32" id="n51-g4-COS"/>
                                             <constraint firstItem="cFu-aA-pQB" firstAttribute="top" secondItem="obF-fN-C1w" secondAttribute="bottom" constant="4" id="nLy-lw-R5t"/>
