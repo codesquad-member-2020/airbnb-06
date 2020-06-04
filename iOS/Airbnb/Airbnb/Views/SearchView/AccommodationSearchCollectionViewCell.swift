@@ -27,6 +27,17 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         configure()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        pageControl.currentPage = 0
+        badgeLabel.text = nil
+        infoLabel.text = nil
+        pointAverageLabel.text = nil
+        reviewCountLabel.text = nil
+        nameLabel.text = nil
+        bookmarkButton.isSelected = false
+    }
+    
     @IBAction func bookmark(_ sender: UIButton) {
         sender.isSelected.toggle()
         NotificationCenter.default.post(name: .bookmark, object: nil, userInfo: ["id":id])
