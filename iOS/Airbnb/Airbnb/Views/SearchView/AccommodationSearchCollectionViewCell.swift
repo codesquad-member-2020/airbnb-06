@@ -20,6 +20,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     
+    private var id = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         scrollView.delegate = self
@@ -28,6 +29,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
     @IBAction func bookmark(_ sender: UIButton) {
         sender.isSelected.toggle()
+        NotificationCenter.default.post(name: .bookmark, object: nil, userInfo: ["id":id])
     }
     
     private func configure() {
@@ -64,6 +66,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         pointAverageLabel.text = "\(accommodation.rating)"
         reviewCountLabel.text = "(\(accommodation.numReviews))"
         nameLabel.text = "\(accommodation.name)"
+        id = accommodation.id
     }
 }
 
