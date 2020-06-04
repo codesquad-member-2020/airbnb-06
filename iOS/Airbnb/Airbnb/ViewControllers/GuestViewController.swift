@@ -17,7 +17,7 @@ class GuestViewController: UIViewController {
     @IBOutlet weak var infantSelectionView: GuestSelectionView!
     @IBOutlet weak var footerView: PopupFooterView!
     
-    var delegate: SendDataDelegate?
+    var delegate: PassSelectedConditionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class GuestViewController: UIViewController {
     
     @objc private func completeSelection() {
         dismiss(animated: true) {
-            self.delegate?.send(text: "성인 \(self.adultSelectionView.selectedCount())명, 청소년 \(self.childSelectionView.selectedCount())명, 영유아\(self.infantSelectionView.selectedCount())명")
+            self.delegate?.guest(count: "\(self.adultSelectionView.selectedCount() + self.childSelectionView.selectedCount() + self.infantSelectionView.selectedCount() )")
         }
     }
     
