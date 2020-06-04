@@ -96,13 +96,13 @@ extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let firstWeekday = dateManager.firstWeekday(thisMonth: indexPath.section) - 1
         let date = indexPath.item - firstWeekday + 1
-        let thisMonth = dateManager.thisMonth(indexPath.section)
-        let firstFirstWeekday = dateManager.firstWeekday(thisMonth: dateManager.thisMonth(0)) + dateManager.today()
+        let firstMonthFirstWeekday = dateManager.firstWeekday(thisMonth: 0) + dateManager.today() - 1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCollectionViewCell
+        let thisMonth = dateManager.thisMonth(indexPath.section)
 
         1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date ? cell.configure(date: date) : nil
         chooseDays.contains(indexPath) ? cell.select() : nil
-        indexPath < IndexPath(item: firstFirstWeekday, section: 0) ? cell.disable() : nil
+        indexPath < IndexPath(item: firstMonthFirstWeekday, section: 0) ? cell.disable() : nil
         changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
 
         return cell
@@ -285,7 +285,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     
     private func calculator(_ indexPath: IndexPath) -> String {
         let thisMonth = dateManager.thisMonth(indexPath.section)
-        let date = indexPath.item - dateManager.firstWeekday(thisMonth: thisMonth) + 1
+        let date = indexPath.item - dateManager.firstWeekday(thisMonth: indexPath.section) + 2
         return "\(thisMonth)월 \(date)일"
     }
 }
