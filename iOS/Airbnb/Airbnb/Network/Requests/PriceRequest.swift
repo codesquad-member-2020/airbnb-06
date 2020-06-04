@@ -14,7 +14,7 @@ final class PriceDetailRequest: Request, URLRequestConvertible {
     var path: String = EndPoints.defaultURL + EndPoints.priceGraph
     var headers: HTTPHeaders?
     
-    func asURLRequest() throws -> URLRequest {
+    func asURLRequest() -> URLRequest {
         var request = URLRequest(url: URL(string: path)!)
         guard let headersWithToken = setToken() else { return request }
         request.headers = headersWithToken

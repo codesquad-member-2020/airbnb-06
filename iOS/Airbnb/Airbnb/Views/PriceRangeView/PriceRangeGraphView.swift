@@ -10,8 +10,7 @@ import UIKit
 
 class PriceRangeGraphView: UIView {
     
-    var data: [CGFloat] = [0, 0, 0, 0, 0, 2, 5, 4, 13, 10, 14, 11, 16, 14, 20, 15, 13, 10, 8, 6, 7, 6, 4, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    
+    var priceDistribution: [Int]?
     let highlightLayer = PriceRangeGraphHighlightLayer()
     
     override func draw(_ rect: CGRect) {
@@ -26,18 +25,20 @@ class PriceRangeGraphView: UIView {
     }
     
     func curvedPath() -> UIBezierPath {
+        guard let priceDistribution = priceDistribution else { return UIBezierPath() }
+        
         let path = UIBezierPath()
-        let step = bounds.width / CGFloat(data.count - 1)
+        let step = bounds.width / CGFloat(priceDistribution.count - 1)
         var point1 = CGPoint(x: 0, y: yCoordinate(index: 0))
         var oldControlPoint: CGPoint?
         
         path.move(to: point1)
         
-        for index in 1..<data.count {
+        for index in 1..<priceDistribution.count {
             let point2 = CGPoint(x: step * CGFloat(index), y: yCoordinate(index: index))
             var point3: CGPoint?
             
-            if index < data.count - 1 {
+            if index < priceDistribution.count - 1 {
                 point3 = CGPoint(x: step * CGFloat(index + 1), y: yCoordinate(index: index + 1))
             }
             
@@ -51,7 +52,8 @@ class PriceRangeGraphView: UIView {
     }
     
     func yCoordinate(index: Int) -> CGFloat {
-        return bounds.height - bounds.height * data[index] / (data.max() ?? 0)
+        guard let priceDistribution = priceDistribution else { return 0.0 }
+        return bounds.height - bounds.height * CGFloat(priceDistribution[index]) / CGFloat((priceDistribution.max() ?? 0))
     }
     
     func controlPoint(point1: CGPoint, point2: CGPoint, next point3: CGPoint?) -> CGPoint? {

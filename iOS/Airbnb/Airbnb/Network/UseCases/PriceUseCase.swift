@@ -18,7 +18,7 @@ struct PriceUseCase {
         self.networkDispatcher = networkDispatcher
     }
     
-    func perform<T: Codable>(dataType: T.Type, handler: @escaping (Any) -> ()) {
+    func perform<T: Codable>(dataType: T.Type, handler: @escaping (T) -> ()) {
         networkDispatcher.execute(request: request) { (data) in
             guard let data = data else { return }
             guard let decodedData = try? JSONDecoder().decode(dataType, from: data) else { return }

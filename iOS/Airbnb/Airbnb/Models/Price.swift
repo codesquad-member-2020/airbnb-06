@@ -11,10 +11,10 @@ import Foundation
 struct PriceDetail: Codable {
     
     let average: Double
-    let prices: [Int]
+    let priceDistribution: [Int]
     
     enum CodingKeys: String, CodingKey {
         case average = "avg"
-        case prices = "priceDistribution"
+        case priceDistribution
     }
 }

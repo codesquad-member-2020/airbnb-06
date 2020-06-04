@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PriceRangeViewController: UIViewController {
     
@@ -22,6 +23,7 @@ class PriceRangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        requestPriceDetail()
         configureView()
         configureGraph()
         configureSlider()
@@ -29,6 +31,17 @@ class PriceRangeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         slider.frame = CGRect(x: 0, y: 0, width: sliderView.bounds.width, height: sliderView.bounds.height)
+    }
+    
+    private func requestPriceDetail() {
+        let request = PriceDetailRequest()
+        PriceUseCase(request: request, networkDispatcher: AF).perform(dataType: PriceDetail.self) { (priceDetail) in
+            DispatchQueue.main.async {
+                self.averageLabel.text = "일박 평균 가격은 \(Int(priceDetail.average))달러"
+                self.graphView.priceDistribution = priceDetail.priceDistribution
+                self.graphView.setNeedsDisplay()
+            }
+        }
     }
     
     private func configureView() {
