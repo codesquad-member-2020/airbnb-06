@@ -10,9 +10,16 @@ import Foundation
 import Alamofire
 
 extension Session: NetworkDispatcher {
-    func execute(request: Request, handler: @escaping (Data?) -> Void) {
-        self.request(request as! URLRequestConvertible).validate().response { response in
+    func execute(request: URLRequest, handler: @escaping (Data?) -> Void) {
+        self.request(request).validate().response { response in
             handler(response.data)
+        }
+    }
+    
+    func implement(request: URLRequest, handler: @escaping (Int) -> Void) {
+        self.request(request).validate().response { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            handler(statusCode)
         }
     }
 }
