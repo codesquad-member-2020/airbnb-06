@@ -55,6 +55,7 @@ public class ListingDao {
                                  "AND ((:checkin <= b.checkin AND b.checkin < :checkout) " +
                                      "OR (:checkin < b.checkout AND b.checkout <= :checkout) " +
                                      "OR (b.checkin < :checkin AND :checkout < checkout))) " +
+                         "AND l.name LIKE :query " +
                      "LIMIT :limit OFFSET :offset";
         SqlParameterSource sqlParameterSource = listingFilter.toSqlParameterSource();
         return namedParameterJdbcTemplate.query(sql, sqlParameterSource, ListingMapper.getInstance());
