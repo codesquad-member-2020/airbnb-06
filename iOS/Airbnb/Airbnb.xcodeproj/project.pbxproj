@@ -33,6 +33,7 @@
 		78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78262B4D247BDCBE007AAEDA /* GuestSelectionView.swift */; };
 		78262B50247BDDAB007AAEDA /* GuestSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78262B4F247BDDAB007AAEDA /* GuestSelectionView.xib */; };
 		7859A0EE2488D0260014E085 /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0ED2488D0260014E085 /* PriceRequest.swift */; };
+		7859A0F22488D83D0014E085 /* PriceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0F12488D83D0014E085 /* PriceUseCase.swift */; };
 		7872575924750C520050DB66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872575824750C520050DB66 /* CalendarViewController.swift */; };
 		787257642475132A0050DB66 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787257632475132A0050DB66 /* DateManager.swift */; };
 		78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78725765247525270050DB66 /* CalendarCollectionViewCell.swift */; };
@@ -97,6 +98,7 @@
 		78262B4D247BDCBE007AAEDA /* GuestSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestSelectionView.swift; sourceTree = "<group>"; };
 		78262B4F247BDDAB007AAEDA /* GuestSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestSelectionView.xib; sourceTree = "<group>"; };
 		7859A0ED2488D0260014E085 /* PriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequest.swift; sourceTree = "<group>"; };
+		7859A0F12488D83D0014E085 /* PriceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUseCase.swift; sourceTree = "<group>"; };
 		7872575824750C520050DB66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		787257632475132A0050DB66 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		78725765247525270050DB66 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				30C038A9247E578400E1A921 /* AccommodationUseCase.swift */,
+				7859A0F12488D83D0014E085 /* PriceUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,
 				30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */,
+				7859A0F22488D83D0014E085 /* PriceUseCase.swift in Sources */,
 				305B1B842482347000836302 /* SendDataDelegate.swift in Sources */,
 				78C40E282485639F00FA98FD /* PriceRangeSliderThumbLayer.swift in Sources */,
 				30B05656247E7AAB005AD8BB /* Request.swift in Sources */,
