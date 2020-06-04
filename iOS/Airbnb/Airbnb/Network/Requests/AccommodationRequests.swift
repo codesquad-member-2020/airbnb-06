@@ -9,16 +9,16 @@
 import Foundation
 import Alamofire
 
-enum AccommodationRequests {
+enum AccommodationRequests<T> {
     case detail
     case list
     case liked
     
-    var request: AccommodationRequest {
+    var request: T {
         switch self {
-        case .detail: return AccommodationRequest()
-        case .list: return AccommodationListRequest()
-        case .liked: return LikedAccommodationListRequest()
+        case .detail: return AccommodationRequest() as! T
+        case .list: return AccommodationListRequest() as! T
+        case .liked: return LikedAccommodationListRequest() as! T
         }
     }
 }
