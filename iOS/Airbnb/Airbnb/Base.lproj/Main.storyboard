@@ -46,13 +46,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행하시는 날짜와 인원을 입력해주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-N8-4Vl">
-                                <rect key="frame" x="80.5" y="170" width="253" height="19.5"/>
+                                <rect key="frame" x="80.5" y="158" width="253" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q4f-ws-TDw" customClass="AccommodationSearchCollectionView" customModule="Airbnb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="213.5" width="414" height="599.5"/>
+                                <rect key="frame" x="0.0" y="189.5" width="414" height="623.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mq6-ga-34U">
                                     <size key="itemSize" width="398" height="251"/>
@@ -102,7 +102,7 @@
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="7nY-3z-LnU"/>
                             <constraint firstItem="ldT-Of-ujo" firstAttribute="leading" secondItem="7aL-2j-hug" secondAttribute="trailing" constant="12" id="Cyf-kb-Tc8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q4f-ws-TDw" secondAttribute="trailing" id="Xk6-fo-Dz8"/>
-                            <constraint firstItem="iJz-N8-4Vl" firstAttribute="top" secondItem="OIr-cS-Znl" secondAttribute="bottom" constant="24" id="ZTX-M7-bET"/>
+                            <constraint firstItem="iJz-N8-4Vl" firstAttribute="top" secondItem="OIr-cS-Znl" secondAttribute="bottom" constant="12" id="ZTX-M7-bET"/>
                             <constraint firstItem="7aL-2j-hug" firstAttribute="leading" secondItem="ipc-gY-hMO" secondAttribute="leading" id="ZoI-wG-pP1"/>
                             <constraint firstItem="7aL-2j-hug" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="16" id="a1C-VD-RGo"/>
                             <constraint firstItem="OIr-cS-Znl" firstAttribute="leading" secondItem="ldT-Of-ujo" secondAttribute="trailing" constant="12" id="eRW-o6-qdD"/>
@@ -111,7 +111,7 @@
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="lYg-on-H3L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQB-yv-dul" secondAttribute="trailing" constant="12" id="m4Y-Ve-M6q"/>
                             <constraint firstItem="OIr-cS-Znl" firstAttribute="centerY" secondItem="ldT-Of-ujo" secondAttribute="centerY" id="pGw-BS-hgd"/>
-                            <constraint firstItem="Q4f-ws-TDw" firstAttribute="top" secondItem="iJz-N8-4Vl" secondAttribute="bottom" constant="24" id="rXq-f8-5iX"/>
+                            <constraint firstItem="Q4f-ws-TDw" firstAttribute="top" secondItem="iJz-N8-4Vl" secondAttribute="bottom" constant="12" id="rXq-f8-5iX"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wfB-fm-JS2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -119,8 +119,11 @@
                     <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="VwQ-nf-25J"/>
                     <connections>
                         <outlet property="accommodationSearchCollectionView" destination="Q4f-ws-TDw" id="fwg-7X-aVd"/>
+                        <outlet property="dateSelectionButton" destination="7aL-2j-hug" id="JIh-x6-YPW"/>
                         <outlet property="filteringDescriptionLabel" destination="iJz-N8-4Vl" id="uhC-qX-nhJ"/>
                         <outlet property="floatingButton" destination="bQB-yv-dul" id="dMf-gK-vlR"/>
+                        <outlet property="guestSelectionButton" destination="ldT-Of-ujo" id="Lii-lX-CsJ"/>
+                        <outlet property="priceSelectionButton" destination="OIr-cS-Znl" id="gW2-90-sFH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
