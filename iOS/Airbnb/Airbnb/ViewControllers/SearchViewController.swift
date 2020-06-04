@@ -12,17 +12,25 @@ import Alamofire
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var dateSelectionButton: FilterButton!
+    @IBOutlet weak var guestSelectionButton: FilterButton!
+    @IBOutlet weak var priceSelectionButton: FilterButton!
     @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
     @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
     @IBOutlet weak var floatingButton: Floaty!
     
     private var accommodationListViewModel: AccommodationListViewModel!
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
+    private var searchViewModel: SearchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionViewConfigure()
         requestAccommodationList()
+        configureObservers()
+        searchViewModel = SearchViewModel(filteringCondition: FilteringCondition(), handler: { filteringCondition in
+            self.makeFilteringRequest(filteringCondition)
+        })
     }
     
     @IBAction func showCalendarViewController(_ sender: Any) {
@@ -58,7 +66,7 @@ class SearchViewController: UIViewController {
     }
     
     private func requestAccommodationList() {
-        let request = AccommodationRequests.list.request
+        let request = AccommodationRequests<AccommodationRequest>.list.request.asURLRequest()
         AccommodationUseCase(request: request, networkDispatcher: AF).perform(dataType: [Accommodation].self) { accommodationList in
             self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList as! [Accommodation], handler: { accommodations in
                 DispatchQueue.main.async {
@@ -70,13 +78,95 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func changeFilteringDescription(_ text: String) {
-        filteringDescriptionLabel.text = text
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccommodationBookmark(_:)), name: .bookmark, object: nil)
+    }
+    
+    @objc private func requestAccommodationBookmark(_ notification: Notification) {
+        guard let id = notification.userInfo?["id"] as? Int else { return }
+        let likeRequest = AccommodationRequests<LikedAccommodationListRequest>.liked.request
+        likeRequest.append(id: id)
+        let request = likeRequest.asURLRequest()
+        AccommodationUseCase(request: request, networkDispatcher: AF).perform(id: id) { result in
+            switch result {
+            case .success(let isBookmarked):
+                break
+            case .failure(let error):
+                let errorAlert = ErrorAlertController()
+                errorAlert.set(message: error)
+                errorAlert.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(errorAlert, animated: true)
+            }
+        }
+    }
+    
+    private func filteringAccommodation(listRequest: AccommodationListRequest) {
+        let request = listRequest.asURLRequest()
+        AccommodationUseCase(request: request, networkDispatcher: AF).perform(dataType: [Accommodation].self) { accommodationList in
+            self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList as! [Accommodation], handler: { accommodations in
+                DispatchQueue.main.async {
+                    self.accommodationSearchDataSource = AccommodationSearchCollectionViewDataSource(accommodations: accommodations)
+                    self.accommodationSearchCollectionView.dataSource = self.accommodationSearchDataSource
+                    self.accommodationSearchCollectionView.reloadData()
+                }
+            })
+        }
+    }
+    
+    private func makeFilteringRequest(_ filteringCondition: FilteringCondition?) {
+        let listRequest = AccommodationRequests<AccommodationListRequest>.list.request
+        
+        if let checkIn = filteringCondition?.checkIn, let checkOut = filteringCondition?.checkOut {
+            listRequest.append(name: .checkIn, value: checkIn)
+            listRequest.append(name: .checkOut, value: checkOut)
+        }
+        
+        if let guestCount = filteringCondition?.guestCount {
+            listRequest.append(name: .numGuests, value: guestCount)
+        }
+        
+        if let minPrice = filteringCondition?.minPrice, let maxPrice = filteringCondition?.maxPrice {
+            listRequest.append(name: .minPrice, value: minPrice)
+            listRequest.append(name: .maxPrice, value: maxPrice)
+        }
+        self.filteringAccommodation(listRequest: listRequest)
+    }
+    
+    private func updateSearchViewModelDate(checkIn: String, checkOut: String) {
+        searchViewModel.update(checkIn: checkIn, checkOut: checkOut)
+    }
+    
+    private func updateSearchViewModelGuest(count: String) {
+        searchViewModel.update(guestCount: count)
+    }
+    
+    private func updateSearchViewModelPrice(minimum: String, maximum: String) {
+        searchViewModel.update(minPrice: minimum, maxPrice: maximum)
     }
 }
 
-extension SearchViewController: SendDataDelegate {
-    func send(text: String) {
-        changeFilteringDescription(text)
+extension SearchViewController: PassSelectedConditionDelegate {
+    func date(checkIn: String, checkOut: String) {
+        updateSearchViewModelDate(checkIn: checkIn, checkOut: checkOut)
+        let start = checkIn.index(checkIn.startIndex, offsetBy: 5)
+        let end = checkIn.index(checkIn.endIndex, offsetBy: -1)
+        dateSelectionButton.configureTitle("\(checkIn[start...end]) ~ \(checkOut[start...end])")
+        filteringDescriptionLabel.isHidden = true
     }
+    
+    func guest(count: String) {
+        updateSearchViewModelGuest(count: count)
+        guestSelectionButton.configureTitle("\(count)명")
+        filteringDescriptionLabel.isHidden = true
+    }
+    
+    func price(minimum: String, maximum: String) {
+        updateSearchViewModelPrice(minimum: minimum, maximum: maximum)
+        priceSelectionButton.configureTitle("\(minimum)원 ~ \(maximum)원")
+        filteringDescriptionLabel.isHidden = true
+    }
+}
+
+extension Notification.Name {
+    static let bookmark = Notification.Name("bookmark")
 }

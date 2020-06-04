@@ -12,24 +12,45 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageStackView: UIStackView!
-    @IBOutlet weak var likeButton: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pointAverageLabel: UILabel!
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
+    private var id = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         scrollView.delegate = self
         configure()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        pageControl.currentPage = 0
+        badgeLabel.text = nil
+        infoLabel.text = nil
+        pointAverageLabel.text = nil
+        reviewCountLabel.text = nil
+        nameLabel.text = nil
+        bookmarkButton.isSelected = false
+    }
+    
+    @IBAction func bookmark(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        NotificationCenter.default.post(name: .bookmark, object: nil, userInfo: ["id":id])
+    }
+    
     private func configure() {
         self.contentView.layer.cornerRadius = 10.0
         self.contentView.layer.masksToBounds = true
-        
+
+        configureLayer()
+    }
+    
+    private func configureLayer() {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.layer.shadowRadius = 2.0
@@ -42,7 +63,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     }
     
     @inline(__always) private func judge(isFavorite: Bool) {
-        isFavorite ? likeButton.image = UIImage(systemName: "heart.fill") : nil
+        isFavorite ? bookmarkButton.isSelected.toggle() : nil
     }
     
     @inline(__always) private func judge(isSuperHost: Bool) {
@@ -54,8 +75,9 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         judge(isSuperHost: accommodation.isSuperHost)
         infoLabel.text =  "\(accommodation.housingType) " + "\(accommodation.numBedrooms)" + "bedrooms " + "\(accommodation.numBeds)" + "bed"
         pointAverageLabel.text = "\(accommodation.rating)"
-        reviewCountLabel.text = "\(accommodation.numReviews)"
+        reviewCountLabel.text = "(\(accommodation.numReviews))"
         nameLabel.text = "\(accommodation.name)"
+        id = accommodation.id
     }
 }
 

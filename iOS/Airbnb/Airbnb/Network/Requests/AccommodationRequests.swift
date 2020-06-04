@@ -9,23 +9,23 @@
 import Foundation
 import Alamofire
 
-enum AccommodationRequests {
+enum AccommodationRequests<T> {
     case detail
     case list
     case liked
     
-    var request: Request {
+    var request: T {
         switch self {
-        case .detail: return AccommodationRequest()
-        case .list: return AccommodationListRequest()
-        case .liked: return LikedAccommodationListRequest()
+        case .detail: return AccommodationRequest() as! T
+        case .list: return AccommodationListRequest() as! T
+        case .liked: return LikedAccommodationListRequest() as! T
         }
     }
 }
 
 class AccommodationRequest: Request, URLRequestConvertible {
     var path: String = EndPoints.defaultURL + EndPoints.listings
-    var method: HTTPMethod = .get
+    var method: HTTPMethod = .GET
     var headers: HTTPHeaders?
     
     func append(id: Int) {
@@ -64,7 +64,7 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
 
 final class LikedAccommodationListRequest: AccommodationRequest {
     override var method: HTTPMethod {
-        get { return .patch }
+        get { return .PATCH }
         set { super.method = newValue }
     }
 }

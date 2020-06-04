@@ -9,10 +9,10 @@
 import Foundation
 
 struct AccommodationUseCase {
-    var request: Request
+    var request: URLRequest
     var networkDispatcher: NetworkDispatcher
     
-    init(request: Request, networkDispatcher: NetworkDispatcher) {
+    init(request: URLRequest, networkDispatcher: NetworkDispatcher) {
         self.request = request
         self.networkDispatcher = networkDispatcher
     }
@@ -25,7 +25,18 @@ struct AccommodationUseCase {
         }
     }
     
-    func perform(handler: @escaping (Any) -> Void) {
+    func perform(id: Int, handler: @escaping (Result<Any, NetworkError>) -> Void) {
+        networkDispatcher.implement(request: request) { statusCode in
+            switch statusCode {
+            case 200...202:
+                return handler(.success(true))
+            default:
+                return handler(.failure(.BadRequest))
+            }
+        }
+    }
+    
+    func performMock(handler: @escaping (Any) -> Void) {
         AccommodationListMock().request { (decodeData) in
             handler(decodeData)
         }

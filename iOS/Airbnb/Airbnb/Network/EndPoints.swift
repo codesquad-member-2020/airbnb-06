@@ -21,7 +21,7 @@ enum QueryParameters: CustomStringConvertible {
     case checkIn
     case checkOut
     case numGuests
-    case numPrice
+    case minPrice
     case maxPrice
     case offset
     case limit
@@ -31,7 +31,7 @@ enum QueryParameters: CustomStringConvertible {
         case .checkIn: return "checkIn"
         case .checkOut: return "checkOut"
         case .numGuests: return "numGuests"
-        case .numPrice: return "numPrice"
+        case .minPrice: return "minPrice"
         case .maxPrice: return "maxPrice"
         case .offset: return "offset"
         case .limit: return "limit"
