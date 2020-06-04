@@ -59,7 +59,7 @@ class SearchViewController: UIViewController {
     }
     
     private func requestAccommodationList() {
-        let request = AccommodationRequests.list.request
+        let request = AccommodationRequests.list.request.asURLRequest()
         AccommodationUseCase(request: request, networkDispatcher: AF).perform(dataType: [Accommodation].self) { accommodationList in
             self.accommodationListViewModel = AccommodationListViewModel(accommodation: accommodationList as! [Accommodation], handler: { accommodations in
                 DispatchQueue.main.async {
@@ -77,6 +77,20 @@ class SearchViewController: UIViewController {
     
     @objc private func requestAccommodationBookmark(_ notification: Notification) {
         guard let id = notification.userInfo?["id"] as? Int else { return }
+        let likeRequest = AccommodationRequests.liked.request
+        likeRequest.append(id: id)
+        let request = likeRequest.asURLRequest()
+        AccommodationUseCase(request: request, networkDispatcher: AF).perform(id: id) { result in
+            switch result {
+            case .success(let isBookmarked):
+                break
+            case .failure(let error):
+                let errorAlert = ErrorAlertController()
+                errorAlert.set(message: error)
+                errorAlert.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(errorAlert, animated: true)
+            }
+        }
     }
     
     func changeFilteringDescription(_ text: String) {

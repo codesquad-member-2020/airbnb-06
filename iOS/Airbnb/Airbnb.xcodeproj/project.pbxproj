@@ -13,7 +13,7 @@
 		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
 		30A5C16624852D3900D8D2D9 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */; };
 		30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C1672485412600D8D2D9 /* ExtendedSession.swift */; };
-		30AEC503247FA1A300EB7413 /* AccommodationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC502247FA1A300EB7413 /* AccommodationRequest.swift */; };
+		30AEC503247FA1A300EB7413 /* AccommodationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */; };
 		30B05656247E7AAB005AD8BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B05655247E7AAB005AD8BB /* Request.swift */; };
 		30B05658247E9950005AD8BB /* FakeAccommodationList.json in Resources */ = {isa = PBXBuildFile; fileRef = 30B05657247E9950005AD8BB /* FakeAccommodationList.json */; };
 		30B05660247E99AC005AD8BB /* AirbnbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0565F247E99AC005AD8BB /* AirbnbTests.swift */; };
@@ -29,6 +29,7 @@
 		30C038AA247E578400E1A921 /* AccommodationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C038A9247E578400E1A921 /* AccommodationUseCase.swift */; };
 		30D248DE247694C3002F64F2 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */; };
 		30DE2A4A2488C55A00867973 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE2A492488C55A00867973 /* NetworkError.swift */; };
+		30DE2A4C2488D57400867973 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE2A4B2488D57400867973 /* ErrorAlertController.swift */; };
 		781FC488247BEE8E0091AB61 /* CountControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FC487247BEE8E0091AB61 /* CountControlButton.swift */; };
 		78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78262B4A247BDB88007AAEDA /* GuestViewController.swift */; };
 		78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78262B4D247BDCBE007AAEDA /* GuestSelectionView.swift */; };
@@ -74,7 +75,7 @@
 		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		30A5C1672485412600D8D2D9 /* ExtendedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedSession.swift; sourceTree = "<group>"; };
-		30AEC502247FA1A300EB7413 /* AccommodationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationRequest.swift; sourceTree = "<group>"; };
+		30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationRequests.swift; sourceTree = "<group>"; };
 		30B05655247E7AAB005AD8BB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		30B05657247E9950005AD8BB /* FakeAccommodationList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeAccommodationList.json; sourceTree = "<group>"; };
 		30B0565D247E99AC005AD8BB /* AirbnbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirbnbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +92,7 @@
 		30C038A9247E578400E1A921 /* AccommodationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationUseCase.swift; sourceTree = "<group>"; };
 		30D248DC247694C3002F64F2 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		30DE2A492488C55A00867973 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		30DE2A4B2488D57400867973 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		4012801DAD21A7AE478D9312 /* Pods-Airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airbnb.debug.xcconfig"; path = "Target Support Files/Pods-Airbnb/Pods-Airbnb.debug.xcconfig"; sourceTree = "<group>"; };
 		781FC487247BEE8E0091AB61 /* CountControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountControlButton.swift; sourceTree = "<group>"; };
 		78262B4A247BDB88007AAEDA /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				30B05655247E7AAB005AD8BB /* Request.swift */,
-				30AEC502247FA1A300EB7413 /* AccommodationRequest.swift */,
+				30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				30DE2A492488C55A00867973 /* NetworkError.swift */,
+				30DE2A4B2488D57400867973 /* ErrorAlertController.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
 				30B89492247FD57A00DFF944 /* AccommodationListMock.swift in Sources */,
+				30DE2A4C2488D57400867973 /* ErrorAlertController.swift in Sources */,
 				30C038AA247E578400E1A921 /* AccommodationUseCase.swift in Sources */,
 				30B89497247FDC4200DFF944 /* AccommodationListViewModel.swift in Sources */,
 				78802ADD2473A7E200A901E2 /* FilterButton.swift in Sources */,
@@ -588,7 +592,7 @@
 				78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */,
 				30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */,
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
-				30AEC503247FA1A300EB7413 /* AccommodationRequest.swift in Sources */,
+				30AEC503247FA1A300EB7413 /* AccommodationRequests.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
 				78C40E24248562B400FA98FD /* PriceRangeSlider.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
