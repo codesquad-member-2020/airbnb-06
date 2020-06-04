@@ -34,5 +34,6 @@ class FilterButton: UIButton {
     
     func configureTitle(_ text: String) {
         self.setTitle(text, for: .normal)
+        self.setTitleColor(.darkGray, for: .normal)
     }
 }
