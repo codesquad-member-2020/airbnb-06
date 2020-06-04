@@ -103,6 +103,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         1...dateManager.countOfDays(year: 2020, month: thisMonth) ~= date ? cell.configure(date: date) : nil
         chooseDays.contains(indexPath) ? cell.select() : nil
         indexPath < IndexPath(item: firstMonthFirstWeekday, section: 0) ? cell.disable() : nil
+        cell.isLabelEmpty() ? cell.disable() : nil
         changeWholePeriodCellsBackground(collectionView, cell: cell, indexPath: indexPath)
 
         return cell
