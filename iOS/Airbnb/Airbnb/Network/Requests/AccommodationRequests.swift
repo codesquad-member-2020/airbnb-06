@@ -25,7 +25,7 @@ enum AccommodationRequests {
 
 class AccommodationRequest: Request, URLRequestConvertible {
     var path: String = EndPoints.defaultURL + EndPoints.listings
-    var method: HTTPMethod = .get
+    var method: HTTPMethod = .GET
     var headers: HTTPHeaders?
     
     func append(id: Int) {
@@ -64,7 +64,7 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
 
 final class LikedAccommodationListRequest: AccommodationRequest {
     override var method: HTTPMethod {
-        get { return .patch }
+        get { return .PATCH }
         set { super.method = newValue }
     }
 }
