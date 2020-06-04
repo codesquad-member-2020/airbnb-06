@@ -12,6 +12,9 @@ import Alamofire
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var dateSelectionButton: FilterButton!
+    @IBOutlet weak var guestSelectionButton: FilterButton!
+    @IBOutlet weak var priceSelectionButton: FilterButton!
     @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
     @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
     @IBOutlet weak var floatingButton: Floaty!
@@ -145,14 +148,22 @@ class SearchViewController: UIViewController {
 extension SearchViewController: PassSelectedConditionDelegate {
     func date(checkIn: String, checkOut: String) {
         updateSearchViewModelDate(checkIn: checkIn, checkOut: checkOut)
+        let start = checkIn.index(checkIn.startIndex, offsetBy: 5)
+        let end = checkIn.index(checkIn.endIndex, offsetBy: -1)
+        dateSelectionButton.configureTitle("\(checkIn[start...end]) ~ \(checkOut[start...end])")
+        filteringDescriptionLabel.isHidden = true
     }
     
     func guest(count: String) {
         updateSearchViewModelGuest(count: count)
+        guestSelectionButton.configureTitle("\(count)명")
+        filteringDescriptionLabel.isHidden = true
     }
     
     func price(minimum: String, maximum: String) {
         updateSearchViewModelPrice(minimum: minimum, maximum: maximum)
+        priceSelectionButton.configureTitle("\(minimum)원 ~ \(maximum)원")
+        filteringDescriptionLabel.isHidden = true
     }
 }
 
