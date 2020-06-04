@@ -78,4 +78,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         dateLabel.textColor = .lightGray
         self.isUserInteractionEnabled = false
     }
+    
+    func isLabelEmpty() -> Bool {
+        return dateLabel.text == ""
+    }
 }
