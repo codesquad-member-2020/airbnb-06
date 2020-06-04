@@ -12,15 +12,16 @@ public class ListingSummary {
 
     long id;
     String name;
-    @Singular List<String> imageUrls;
     String housingType;
-    int numBedrooms;
-    int numBeds;
-    double rating;
-    int numReviews;
-    Boolean isSuperHost;
-    Boolean isBookmarked;
+    @Singular List<String> imageUrls;
     double latitude;
     double longitude;
+    double price;
+    double rating;
+    int numReviews;
+    int numBedrooms;
+    int numBeds;
+    Boolean isSuperHost;
+    Boolean isBookmarked;
 
 }
