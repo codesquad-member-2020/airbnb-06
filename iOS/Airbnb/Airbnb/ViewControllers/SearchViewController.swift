@@ -42,6 +42,12 @@ class SearchViewController: UIViewController {
         show(priceRangeViewController)
     }
     
+    @IBAction func showMapViewController(_ sender: Floaty) {
+        guard let mapViewController = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
+        mapViewController.modalPresentationStyle = .fullScreen
+        present(mapViewController, animated: true, completion: nil)
+    }
+    
     private func show(_ viewController: UIViewController) {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
