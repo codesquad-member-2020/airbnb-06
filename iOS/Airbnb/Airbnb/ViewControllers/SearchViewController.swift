@@ -12,6 +12,7 @@ import Alamofire
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var searchTextField: SearchTextField!
     @IBOutlet weak var dateSelectionButton: FilterButton!
     @IBOutlet weak var guestSelectionButton: FilterButton!
     @IBOutlet weak var priceSelectionButton: FilterButton!
@@ -25,6 +26,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.delegate = self
         collectionViewConfigure()
         requestAccommodationList()
         configureObservers()
@@ -129,19 +131,12 @@ class SearchViewController: UIViewController {
             listRequest.append(name: .minPrice, value: minPrice)
             listRequest.append(name: .maxPrice, value: maxPrice)
         }
+        
+        if let searchText = filteringCondition?.query {
+            listRequest.append(name: .query, value: searchText)
+        }
+        
         self.filteringAccommodation(listRequest: listRequest)
-    }
-    
-    private func updateSearchViewModelDate(checkIn: String, checkOut: String) {
-        searchViewModel.update(checkIn: checkIn, checkOut: checkOut)
-    }
-    
-    private func updateSearchViewModelGuest(count: String) {
-        searchViewModel.update(guestCount: count)
-    }
-    
-    private func updateSearchViewModelPrice(minimum: String, maximum: String) {
-        searchViewModel.update(minPrice: minimum, maxPrice: maximum)
     }
 }
 
@@ -164,6 +159,37 @@ extension SearchViewController: PassSelectedConditionDelegate {
         updateSearchViewModelPrice(minimum: minimum, maximum: maximum)
         priceSelectionButton.configureTitle("\(minimum)원 ~ \(maximum)원")
         filteringDescriptionLabel.isHidden = true
+    }
+    
+    private func updateSearchViewModelDate(checkIn: String, checkOut: String) {
+        searchViewModel.update(checkIn: checkIn, checkOut: checkOut)
+    }
+    
+    private func updateSearchViewModelGuest(count: String) {
+        searchViewModel.update(guestCount: count)
+    }
+    
+    private func updateSearchViewModelPrice(minimum: String, maximum: String) {
+        searchViewModel.update(minPrice: minimum, maxPrice: maximum)
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let searchText = textField.text, searchText != "" {
+            updateSearchViewModelQuery(searchText: searchText)
+            textField.resignFirstResponder()
+            return true
+        }
+        return false
+    }
+    
+    private func updateSearchViewModelQuery(searchText: String) {
+        searchViewModel.update(searchText: searchText)
     }
 }
 

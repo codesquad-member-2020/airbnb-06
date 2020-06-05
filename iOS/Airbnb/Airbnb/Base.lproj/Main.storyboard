@@ -124,6 +124,7 @@
                         <outlet property="floatingButton" destination="bQB-yv-dul" id="dMf-gK-vlR"/>
                         <outlet property="guestSelectionButton" destination="ldT-Of-ujo" id="Lii-lX-CsJ"/>
                         <outlet property="priceSelectionButton" destination="OIr-cS-Znl" id="gW2-90-sFH"/>
+                        <outlet property="searchTextField" destination="ipc-gY-hMO" id="3c5-6o-uRI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

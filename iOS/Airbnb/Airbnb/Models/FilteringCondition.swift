@@ -14,4 +14,5 @@ struct FilteringCondition {
     var guestCount: String?
     var minPrice: String?
     var maxPrice: String?
+    var query: String?
 }

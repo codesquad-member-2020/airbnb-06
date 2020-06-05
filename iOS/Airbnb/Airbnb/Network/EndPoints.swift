@@ -26,6 +26,7 @@ enum QueryParameters: CustomStringConvertible {
     case maxPrice
     case offset
     case limit
+    case query
     
     var description: String{
         switch self {
@@ -36,6 +37,7 @@ enum QueryParameters: CustomStringConvertible {
         case .maxPrice: return "maxPrice"
         case .offset: return "offset"
         case .limit: return "limit"
+        case .query: return "query"
         }
     }
 }
