@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8kN-le-RZa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8kN-le-RZa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -73,47 +73,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-yv-dul" customClass="Floaty" customModule="Floaty">
-                                <rect key="frame" x="353" y="755" width="50" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="tintColor" red="0.3406607385" green="0.75541996320000004" blue="0.73081690749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAI-GL-6dV">
+                                <rect key="frame" x="157" y="743" width="100" height="50"/>
+                                <color key="backgroundColor" name="MainColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="csV-27-c0P"/>
-                                    <constraint firstAttribute="height" constant="50" id="iNz-DJ-EyT"/>
+                                    <constraint firstAttribute="width" constant="100" id="6qY-xL-Duc"/>
+                                    <constraint firstAttribute="height" constant="50" id="shL-HR-dlM"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="map" catalog="system"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="itemButtonColor">
-                                        <color key="value" name="MainColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="itemTitleColor">
-                                        <color key="value" red="0.36549225909999999" green="0.81048420809999999" blue="0.78408778089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                        <color key="value" name="MainColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="itemImageColor">
-                                        <color key="value" name="MainColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title=" Map" image="map" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMapViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="157-Ep-d1J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ldT-Of-ujo" firstAttribute="centerY" secondItem="7aL-2j-hug" secondAttribute="centerY" id="18g-Kv-YuS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ipc-gY-hMO" secondAttribute="trailing" constant="32" id="2yT-8n-NaL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bQB-yv-dul" secondAttribute="bottom" constant="8" id="7N0-Zc-VwK"/>
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="7nY-3z-LnU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tAI-GL-6dV" secondAttribute="bottom" constant="20" id="B3s-gi-MPB"/>
                             <constraint firstItem="ldT-Of-ujo" firstAttribute="leading" secondItem="7aL-2j-hug" secondAttribute="trailing" constant="12" id="Cyf-kb-Tc8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q4f-ws-TDw" secondAttribute="trailing" id="Xk6-fo-Dz8"/>
                             <constraint firstItem="iJz-N8-4Vl" firstAttribute="top" secondItem="OIr-cS-Znl" secondAttribute="bottom" constant="12" id="ZTX-M7-bET"/>
                             <constraint firstItem="7aL-2j-hug" firstAttribute="leading" secondItem="ipc-gY-hMO" secondAttribute="leading" id="ZoI-wG-pP1"/>
                             <constraint firstItem="7aL-2j-hug" firstAttribute="top" secondItem="ipc-gY-hMO" secondAttribute="bottom" constant="16" id="a1C-VD-RGo"/>
+                            <constraint firstItem="tAI-GL-6dV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cuX-UM-L13"/>
                             <constraint firstItem="OIr-cS-Znl" firstAttribute="leading" secondItem="ldT-Of-ujo" secondAttribute="trailing" constant="12" id="eRW-o6-qdD"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="euT-Cg-PlQ"/>
                             <constraint firstItem="iJz-N8-4Vl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZL-8o-hst"/>
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="lYg-on-H3L"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQB-yv-dul" secondAttribute="trailing" constant="11" id="m4Y-Ve-M6q"/>
                             <constraint firstItem="OIr-cS-Znl" firstAttribute="centerY" secondItem="ldT-Of-ujo" secondAttribute="centerY" id="pGw-BS-hgd"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="top" secondItem="iJz-N8-4Vl" secondAttribute="bottom" constant="12" id="rXq-f8-5iX"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wfB-fm-JS2"/>
@@ -125,8 +118,8 @@
                         <outlet property="accommodationSearchCollectionView" destination="Q4f-ws-TDw" id="fwg-7X-aVd"/>
                         <outlet property="dateSelectionButton" destination="7aL-2j-hug" id="JIh-x6-YPW"/>
                         <outlet property="filteringDescriptionLabel" destination="iJz-N8-4Vl" id="uhC-qX-nhJ"/>
-                        <outlet property="floatingButton" destination="bQB-yv-dul" id="dMf-gK-vlR"/>
                         <outlet property="guestSelectionButton" destination="ldT-Of-ujo" id="Lii-lX-CsJ"/>
+                        <outlet property="mapButton" destination="tAI-GL-6dV" id="e1G-os-T70"/>
                         <outlet property="priceSelectionButton" destination="OIr-cS-Znl" id="gW2-90-sFH"/>
                         <outlet property="searchTextField" destination="ipc-gY-hMO" id="3c5-6o-uRI"/>
                     </connections>
@@ -186,7 +179,7 @@
         <!--Map View Controller-->
         <scene sceneID="Tod-Yt-4FU">
             <objects>
-                <viewController id="h8A-zd-Ygi" customClass="MapViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="h8A-zd-Ygi" customClass="MapViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pZd-0A-EeZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,12 +187,24 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kpO-7R-VJ9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqv-zY-A1G">
+                                <rect key="frame" x="40" y="60" width="19" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="h8A-zd-Ygi" eventType="touchUpInside" id="E6d-Mv-Dka"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="kpO-7R-VJ9" firstAttribute="bottom" secondItem="pZd-0A-EeZ" secondAttribute="bottom" id="ZuO-2G-Md8"/>
                             <constraint firstItem="kpO-7R-VJ9" firstAttribute="leading" secondItem="md9-A3-hNI" secondAttribute="leading" id="dVq-7M-M1s"/>
                             <constraint firstItem="md9-A3-hNI" firstAttribute="trailing" secondItem="kpO-7R-VJ9" secondAttribute="trailing" id="gWs-AM-Wan"/>
+                            <constraint firstItem="dqv-zY-A1G" firstAttribute="leading" secondItem="pZd-0A-EeZ" secondAttribute="leading" constant="40" id="mzb-3O-bkZ"/>
+                            <constraint firstItem="dqv-zY-A1G" firstAttribute="top" secondItem="pZd-0A-EeZ" secondAttribute="top" constant="60" id="q92-D6-i4E"/>
                             <constraint firstItem="kpO-7R-VJ9" firstAttribute="top" secondItem="pZd-0A-EeZ" secondAttribute="top" id="vPS-QS-Ymc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="md9-A3-hNI"/>
@@ -740,8 +745,9 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="113"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="MainColor">
-            <color red="1" green="0.44418793274461787" blue="0.39827966316728181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.4440000057220459" blue="0.39800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
