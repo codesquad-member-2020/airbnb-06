@@ -11,6 +11,8 @@
 		3054CF6624813F3F0097775B /* DateMangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054CF6524813F3F0097775B /* DateMangerTests.swift */; };
 		305B1B842482347000836302 /* PassSelectedConditionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B1B832482347000836302 /* PassSelectedConditionDelegate.swift */; };
 		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
+		30729FD724893CEF00A61092 /* BookMarkedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD624893CEF00A61092 /* BookMarkedViewController.swift */; };
+		30729FD924893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */; };
 		30A5C16624852D3900D8D2D9 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */; };
 		30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A5C1672485412600D8D2D9 /* ExtendedSession.swift */; };
 		30AEC503247FA1A300EB7413 /* AccommodationRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */; };
@@ -76,6 +78,8 @@
 		3054CF6524813F3F0097775B /* DateMangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMangerTests.swift; sourceTree = "<group>"; };
 		305B1B832482347000836302 /* PassSelectedConditionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassSelectedConditionDelegate.swift; sourceTree = "<group>"; };
 		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		30729FD624893CEF00A61092 /* BookMarkedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookMarkedViewController.swift; path = Airbnb/ViewControllers/BookMarkedViewController.swift; sourceTree = SOURCE_ROOT; };
+		30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkedCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		30A5C16524852D3900D8D2D9 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		30A5C1672485412600D8D2D9 /* ExtendedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedSession.swift; sourceTree = "<group>"; };
 		30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationRequests.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				30B2E9252473F367002FB866 /* AccommodationSearchCollectionViewDataSource.swift */,
+				30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				306FD629247D402A00A65DB0 /* MainViewController.swift */,
 				30B2E9232473F2C6002FB866 /* SearchViewController.swift */,
 				7872575824750C520050DB66 /* CalendarViewController.swift */,
+				30729FD624893CEF00A61092 /* BookMarkedViewController.swift */,
 				78262B4A247BDB88007AAEDA /* GuestViewController.swift */,
 				78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */,
 			);
@@ -589,6 +595,7 @@
 				305B1B842482347000836302 /* PassSelectedConditionDelegate.swift in Sources */,
 				78C40E282485639F00FA98FD /* PriceRangeSliderThumbLayer.swift in Sources */,
 				30B05656247E7AAB005AD8BB /* Request.swift in Sources */,
+				30729FD724893CEF00A61092 /* BookMarkedViewController.swift in Sources */,
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
 				30B89492247FD57A00DFF944 /* AccommodationListMock.swift in Sources */,
@@ -610,6 +617,7 @@
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
 				30DE2A4A2488C55A00867973 /* NetworkError.swift in Sources */,
 				30A5C16624852D3900D8D2D9 /* NetworkDispatcher.swift in Sources */,
+				30729FD924893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift in Sources */,
 				306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

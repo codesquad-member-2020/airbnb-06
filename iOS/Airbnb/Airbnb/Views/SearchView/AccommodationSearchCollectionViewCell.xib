@@ -61,7 +61,7 @@
                                 <state key="selected" image="heart.fill" catalog="system"/>
                                 <state key="highlighted" image="heart.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="bookmark:" destination="gTV-IL-0wX" eventType="touchUpInside" id="UfJ-YT-4oS"/>
+                                    <action selector="bookmark:" destination="gTV-IL-0wX" eventType="touchUpInside" id="3BR-Al-qcb"/>
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="a2i-RE-zCy">
