@@ -41,4 +41,8 @@ class SearchViewModel: ViewModelBinding {
     func update(guestCount: String) {
         filteringCondition?.guestCount = guestCount
     }
+    
+    func update(searchText: String) {
+        filteringCondition?.query = searchText
+    }
 }
