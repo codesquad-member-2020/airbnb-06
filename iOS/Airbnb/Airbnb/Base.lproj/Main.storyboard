@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,24 +73,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-yv-dul" customClass="Floaty" customModule="Floaty">
-                                <rect key="frame" x="343" y="745" width="60" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-yv-dul" customClass="Floaty" customModule="Floaty">
+                                <rect key="frame" x="353" y="755" width="50" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="tintColor" red="0.3406607385" green="0.75541996320000004" blue="0.73081690749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="csV-27-c0P"/>
-                                    <constraint firstAttribute="height" constant="60" id="iNz-DJ-EyT"/>
+                                    <constraint firstAttribute="width" constant="50" id="csV-27-c0P"/>
+                                    <constraint firstAttribute="height" constant="50" id="iNz-DJ-EyT"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="map.fill" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="map" catalog="system"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemButtonColor">
-                                        <color key="value" red="0.3406607385" green="0.75541996320000004" blue="0.73081690749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="MainColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemTitleColor">
                                         <color key="value" red="0.36549225909999999" green="0.81048420809999999" blue="0.78408778089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                        <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="MainColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="itemImageColor">
+                                        <color key="value" name="MainColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -98,7 +102,7 @@
                         <constraints>
                             <constraint firstItem="ldT-Of-ujo" firstAttribute="centerY" secondItem="7aL-2j-hug" secondAttribute="centerY" id="18g-Kv-YuS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ipc-gY-hMO" secondAttribute="trailing" constant="32" id="2yT-8n-NaL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bQB-yv-dul" secondAttribute="bottom" constant="12" id="7N0-Zc-VwK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bQB-yv-dul" secondAttribute="bottom" constant="8" id="7N0-Zc-VwK"/>
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="7nY-3z-LnU"/>
                             <constraint firstItem="ldT-Of-ujo" firstAttribute="leading" secondItem="7aL-2j-hug" secondAttribute="trailing" constant="12" id="Cyf-kb-Tc8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q4f-ws-TDw" secondAttribute="trailing" id="Xk6-fo-Dz8"/>
@@ -109,7 +113,7 @@
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="euT-Cg-PlQ"/>
                             <constraint firstItem="iJz-N8-4Vl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZL-8o-hst"/>
                             <constraint firstItem="ipc-gY-hMO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="lYg-on-H3L"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQB-yv-dul" secondAttribute="trailing" constant="12" id="m4Y-Ve-M6q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQB-yv-dul" secondAttribute="trailing" constant="11" id="m4Y-Ve-M6q"/>
                             <constraint firstItem="OIr-cS-Znl" firstAttribute="centerY" secondItem="ldT-Of-ujo" secondAttribute="centerY" id="pGw-BS-hgd"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="top" secondItem="iJz-N8-4Vl" secondAttribute="bottom" constant="12" id="rXq-f8-5iX"/>
                             <constraint firstItem="Q4f-ws-TDw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wfB-fm-JS2"/>
@@ -648,7 +652,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryg-lN-drI">
                                 <rect key="frame" x="25" y="582" width="364" height="48"/>
-                                <color key="backgroundColor" red="0.86976736779999997" green="0.36666804549999998" blue="0.3143491149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="MainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="g3m-xT-8N5"/>
                                 </constraints>
@@ -687,6 +691,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="MainColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Yv8-7Y-XlW"/>
@@ -703,7 +708,10 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="logo" width="81.666664123535156" height="90"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="map.fill" catalog="system" width="128" height="113"/>
+        <image name="map" catalog="system" width="128" height="113"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="MainColor">
+            <color red="1" green="0.44418793274461787" blue="0.39827966316728181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

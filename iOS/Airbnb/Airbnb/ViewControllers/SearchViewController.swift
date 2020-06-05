@@ -58,6 +58,19 @@ class SearchViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccommodationBookmark(_:)), name: .bookmark, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showErrorAlert(_:)), name: .showErrorAlert, object: nil)
+    }
+    
+    @objc private func showErrorAlert(_ notification: Notification) {
+        guard let error = notification.userInfo?["error"] as? Error else { return }
+        let errorAlert = ErrorAlertController()
+        errorAlert.set(message: error as! NetworkError)
+        errorAlert.addAction(UIAlertAction(title: "확인", style: .default))
+        self.present(errorAlert, animated: true)
+    }
+    
     private func collectionViewConfigure() {
         accommodationSearchCollectionView.register(UINib(nibName: "AccommodationSearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AccommodationSearchCollectionViewCell")
         let layout = UICollectionViewFlowLayout()
@@ -78,10 +91,6 @@ class SearchViewController: UIViewController {
                 }
             })
         }
-    }
-    
-    private func configureObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(requestAccommodationBookmark(_:)), name: .bookmark, object: nil)
     }
     
     @objc private func requestAccommodationBookmark(_ notification: Notification) {
@@ -195,4 +204,5 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension Notification.Name {
     static let bookmark = Notification.Name("bookmark")
+    static let showErrorAlert = Notification.Name("showErrorAlert")
 }

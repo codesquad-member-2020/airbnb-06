@@ -58,8 +58,34 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
     
-    private func add(images: [UIImage]) {
-        images.forEach { imageStackView.addArrangedSubview(UIImageView(image: $0)) }
+    private func loadImage(urlStrings: [String], to stackView: UIStackView) {
+        urlStrings.forEach { url in
+            ImageLoader.shared.load(urlString: url) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        guard let image = UIImage(data: data) else { return }
+                        let imageView = self.makeImageView(image: image)
+                        self.addArrangedSubview(to: stackView, subView: imageView)
+                    }
+                case .failure(let error):
+                    NotificationCenter.default.post(name: .showErrorAlert, object: nil, userInfo: ["error":error])
+                }
+            }
+        }
+    }
+    
+    private func makeImageView(image: UIImage) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = image
+        return imageView
+    }
+    
+    private func addArrangedSubview(to stackView: UIStackView, subView: UIImageView) {
+        let height = self.frame.height / 3
+        subView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        subView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
+        stackView.addArrangedSubview(subView)
     }
     
     @inline(__always) private func judge(isFavorite: Bool) {
@@ -71,6 +97,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureData(_ accommodation: Accommodation) {
+        imageStackView.subviews.forEach { $0.removeFromSuperview() }
         judge(isFavorite: accommodation.isBookmarked)
         judge(isSuperHost: accommodation.isSuperHost)
         infoLabel.text =  "\(accommodation.housingType) " + "\(accommodation.numBedrooms)" + "bedrooms " + "\(accommodation.numBeds)" + "bed"
@@ -78,6 +105,7 @@ class AccommodationSearchCollectionViewCell: UICollectionViewCell {
         reviewCountLabel.text = "(\(accommodation.numReviews))"
         nameLabel.text = "\(accommodation.name)"
         id = accommodation.id
+        loadImage(urlStrings: accommodation.imageUrls, to: self.imageStackView)
     }
 }
 

@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301B81332489F5CA009AFC1F /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B81322489F5CA009AFC1F /* ImageRequest.swift */; };
 		301FD85A247552F000F95C72 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301FD859247552F000F95C72 /* CircleView.swift */; };
 		3054CF6624813F3F0097775B /* DateMangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054CF6524813F3F0097775B /* DateMangerTests.swift */; };
 		305B1B842482347000836302 /* PassSelectedConditionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B1B832482347000836302 /* PassSelectedConditionDelegate.swift */; };
+		30609554248A0A9600BF250E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609553248A0A9600BF250E /* ImageLoader.swift */; };
+		30609556248A0AB200BF250E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609555248A0AB200BF250E /* ImageCache.swift */; };
+		30609558248A0B3B00BF250E /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609557248A0B3B00BF250E /* NetworkUseCase.swift */; };
 		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
 		30729FD724893CEF00A61092 /* BookMarkedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD624893CEF00A61092 /* BookMarkedViewController.swift */; };
 		30729FD924893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */; };
@@ -74,9 +78,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		301B81322489F5CA009AFC1F /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
 		301FD859247552F000F95C72 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3054CF6524813F3F0097775B /* DateMangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMangerTests.swift; sourceTree = "<group>"; };
 		305B1B832482347000836302 /* PassSelectedConditionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassSelectedConditionDelegate.swift; sourceTree = "<group>"; };
+		30609553248A0A9600BF250E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		30609555248A0AB200BF250E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		30609557248A0B3B00BF250E /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
 		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		30729FD624893CEF00A61092 /* BookMarkedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookMarkedViewController.swift; path = Airbnb/ViewControllers/BookMarkedViewController.swift; sourceTree = SOURCE_ROOT; };
 		30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkedCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -184,9 +192,19 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		30609552248A0A8B00BF250E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				30609553248A0A9600BF250E /* ImageLoader.swift */,
+				30609555248A0AB200BF250E /* ImageCache.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		30AEC500247FA17A00EB7413 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				301B81322489F5CA009AFC1F /* ImageRequest.swift */,
 				30B05655247E7AAB005AD8BB /* Request.swift */,
 				30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */,
 			);
@@ -239,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				30C038A9247E578400E1A921 /* AccommodationUseCase.swift */,
+				30609557248A0B3B00BF250E /* NetworkUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -337,6 +356,8 @@
 		78725761247513100050DB66 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				30609552248A0A8B00BF250E /* Image */,
+				30C0389E247E460C00E1A921 /* Network */,
 				787257622475131D0050DB66 /* Date */,
 			);
 			path = Utilities;
@@ -375,7 +396,6 @@
 			children = (
 				305B1B822482344E00836302 /* Delegates */,
 				30B89493247FD7C100DFF944 /* ViewModels */,
-				30C0389E247E460C00E1A921 /* Network */,
 				78802AD12473A3C300A901E2 /* Assets.xcassets */,
 				7872575D247511F30050DB66 /* DataSources */,
 				7872575F247512300050DB66 /* Entry */,
@@ -598,20 +618,24 @@
 				30729FD724893CEF00A61092 /* BookMarkedViewController.swift in Sources */,
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
+				30609558248A0B3B00BF250E /* NetworkUseCase.swift in Sources */,
 				30B89492247FD57A00DFF944 /* AccommodationListMock.swift in Sources */,
 				30DE2A4C2488D57400867973 /* ErrorAlertController.swift in Sources */,
 				30C038AA247E578400E1A921 /* AccommodationUseCase.swift in Sources */,
 				30B89497247FDC4200DFF944 /* AccommodationListViewModel.swift in Sources */,
+				301B81332489F5CA009AFC1F /* ImageRequest.swift in Sources */,
 				78802ADD2473A7E200A901E2 /* FilterButton.swift in Sources */,
 				301FD85A247552F000F95C72 /* CircleView.swift in Sources */,
 				30D248DE247694C3002F64F2 /* CalendarHeaderView.swift in Sources */,
 				30B89495247FD7DA00DFF944 /* ViewModelBinding.swift in Sources */,
 				30DE2A502488E7C200867973 /* FilteringCondition.swift in Sources */,
+				30609554248A0A9600BF250E /* ImageLoader.swift in Sources */,
 				787257642475132A0050DB66 /* DateManager.swift in Sources */,
 				78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */,
 				30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */,
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				30AEC503247FA1A300EB7413 /* AccommodationRequests.swift in Sources */,
+				30609556248A0AB200BF250E /* ImageCache.swift in Sources */,
 				78802AE42473BF1200A901E2 /* AccommodationSearchCollectionViewCell.swift in Sources */,
 				78C40E24248562B400FA98FD /* PriceRangeSlider.swift in Sources */,
 				30B2E9202473D228002FB866 /* Accommodation.swift in Sources */,
