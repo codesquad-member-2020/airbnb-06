@@ -1,5 +1,5 @@
 //
-//  ImageUseCase.swift
+//  NetworkUseCase.swift
 //  Airbnb
 //
 //  Created by delma on 2020/06/05.
