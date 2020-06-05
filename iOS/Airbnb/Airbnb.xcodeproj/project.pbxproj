@@ -14,6 +14,8 @@
 		30609554248A0A9600BF250E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609553248A0A9600BF250E /* ImageLoader.swift */; };
 		30609556248A0AB200BF250E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609555248A0AB200BF250E /* ImageCache.swift */; };
 		30609558248A0B3B00BF250E /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30609557248A0B3B00BF250E /* NetworkUseCase.swift */; };
+		306B3C58248A22FB00874B30 /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B3C57248A22FB00874B30 /* PriceRequest.swift */; };
+		306B3C5C248A240200874B30 /* PriceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B3C5B248A240200874B30 /* PriceUseCase.swift */; };
 		306FD62A247D402A00A65DB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD629247D402A00A65DB0 /* MainViewController.swift */; };
 		30729FD724893CEF00A61092 /* BookMarkedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD624893CEF00A61092 /* BookMarkedViewController.swift */; };
 		30729FD924893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */; };
@@ -42,6 +44,11 @@
 		78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78262B4A247BDB88007AAEDA /* GuestViewController.swift */; };
 		78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78262B4D247BDCBE007AAEDA /* GuestSelectionView.swift */; };
 		78262B50247BDDAB007AAEDA /* GuestSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78262B4F247BDDAB007AAEDA /* GuestSelectionView.xib */; };
+		7859A0F42488DA370014E085 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0F32488DA370014E085 /* Price.swift */; };
+		7859A1082489EC8C0014E085 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A1072489EC8C0014E085 /* MapViewController.swift */; };
+		7859A10B2489ED890014E085 /* AccommodationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A10A2489ED890014E085 /* AccommodationAnnotation.swift */; };
+		7859A10E2489EDF10014E085 /* AccommodationAnnotationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A10D2489EDF10014E085 /* AccommodationAnnotationLabel.swift */; };
+		7859A1102489EE2E0014E085 /* AccommodationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A10F2489EE2E0014E085 /* AccommodationAnnotationView.swift */; };
 		7872575924750C520050DB66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872575824750C520050DB66 /* CalendarViewController.swift */; };
 		787257642475132A0050DB66 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787257632475132A0050DB66 /* DateManager.swift */; };
 		78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78725765247525270050DB66 /* CalendarCollectionViewCell.swift */; };
@@ -85,6 +92,8 @@
 		30609553248A0A9600BF250E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		30609555248A0AB200BF250E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		30609557248A0B3B00BF250E /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
+		306B3C57248A22FB00874B30 /* PriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequest.swift; sourceTree = "<group>"; };
+		306B3C5B248A240200874B30 /* PriceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUseCase.swift; sourceTree = "<group>"; };
 		306FD629247D402A00A65DB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		30729FD624893CEF00A61092 /* BookMarkedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookMarkedViewController.swift; path = Airbnb/ViewControllers/BookMarkedViewController.swift; sourceTree = SOURCE_ROOT; };
 		30729FD824893D9C00A61092 /* BookMarkedCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkedCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -115,6 +124,11 @@
 		78262B4A247BDB88007AAEDA /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		78262B4D247BDCBE007AAEDA /* GuestSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestSelectionView.swift; sourceTree = "<group>"; };
 		78262B4F247BDDAB007AAEDA /* GuestSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestSelectionView.xib; sourceTree = "<group>"; };
+		7859A0F32488DA370014E085 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		7859A1072489EC8C0014E085 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7859A10A2489ED890014E085 /* AccommodationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationAnnotation.swift; sourceTree = "<group>"; };
+		7859A10D2489EDF10014E085 /* AccommodationAnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationAnnotationLabel.swift; sourceTree = "<group>"; };
+		7859A10F2489EE2E0014E085 /* AccommodationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationAnnotationView.swift; sourceTree = "<group>"; };
 		7872575824750C520050DB66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		787257632475132A0050DB66 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		78725765247525270050DB66 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +221,7 @@
 				301B81322489F5CA009AFC1F /* ImageRequest.swift */,
 				30B05655247E7AAB005AD8BB /* Request.swift */,
 				30AEC502247FA1A300EB7413 /* AccommodationRequests.swift */,
+				306B3C57248A22FB00874B30 /* PriceRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -257,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				30C038A9247E578400E1A921 /* AccommodationUseCase.swift */,
+				306B3C5B248A240200874B30 /* PriceUseCase.swift */,
 				30609557248A0B3B00BF250E /* NetworkUseCase.swift */,
 			);
 			path = UseCases;
@@ -289,6 +305,23 @@
 			path = GuestView;
 			sourceTree = "<group>";
 		};
+		7859A1092489ED620014E085 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				7859A10A2489ED890014E085 /* AccommodationAnnotation.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		7859A10C2489EDB70014E085 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				7859A10F2489EE2E0014E085 /* AccommodationAnnotationView.swift */,
+				7859A10D2489EDF10014E085 /* AccommodationAnnotationLabel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		7872575A2475116F0050DB66 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +330,7 @@
 				3004EE36247550FD00565A2B /* CalendarView */,
 				78262B4C247BDBB7007AAEDA /* GuestView */,
 				78C40E1E248528F600FA98FD /* PriceRangeView */,
+				7859A10C2489EDB70014E085 /* MapView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +365,7 @@
 				30729FD624893CEF00A61092 /* BookMarkedViewController.swift */,
 				78262B4A247BDB88007AAEDA /* GuestViewController.swift */,
 				78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */,
+				7859A1072489EC8C0014E085 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -349,6 +384,7 @@
 			children = (
 				30B2E91F2473D228002FB866 /* Accommodation.swift */,
 				30DE2A4F2488E7C200867973 /* FilteringCondition.swift */,
+				7859A0F32488DA370014E085 /* Price.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,6 +442,7 @@
 				78725761247513100050DB66 /* Utilities */,
 				7872575E2475120B0050DB66 /* ViewControllers */,
 				7872575A2475116F0050DB66 /* Views */,
+				7859A1092489ED620014E085 /* Annotations */,
 				30B05657247E9950005AD8BB /* FakeAccommodationList.json */,
 			);
 			path = Airbnb;
@@ -605,13 +642,17 @@
 				30C038A5247E481000E1A921 /* EndPoints.swift in Sources */,
 				78E8E574247D35AF00B758E5 /* PopupFooterView.swift in Sources */,
 				781FC488247BEE8E0091AB61 /* CountControlButton.swift in Sources */,
+				7859A0F42488DA370014E085 /* Price.swift in Sources */,
 				78262B4E247BDCBE007AAEDA /* GuestSelectionView.swift in Sources */,
+				7859A10E2489EDF10014E085 /* AccommodationAnnotationLabel.swift in Sources */,
 				78C40E222485293400FA98FD /* PriceRangeGraphView.swift in Sources */,
 				78F799AB2486376D007D7DEC /* PriceRangeGraphHighlightLayer.swift in Sources */,
+				306B3C5C248A240200874B30 /* PriceUseCase.swift in Sources */,
 				78C40E1A24851FF800FA98FD /* PriceRangeViewController.swift in Sources */,
 				78E8E576247D35AF00B758E5 /* PopupHeaderView.swift in Sources */,
 				7872575924750C520050DB66 /* CalendarViewController.swift in Sources */,
 				30B2E9242473F2C6002FB866 /* SearchViewController.swift in Sources */,
+				305B1B842482347000836302 /* PassSelectedConditionDelegate.swift in Sources */,
 				305B1B842482347000836302 /* PassSelectedConditionDelegate.swift in Sources */,
 				78C40E282485639F00FA98FD /* PriceRangeSliderThumbLayer.swift in Sources */,
 				30B05656247E7AAB005AD8BB /* Request.swift in Sources */,
@@ -621,18 +662,22 @@
 				30609558248A0B3B00BF250E /* NetworkUseCase.swift in Sources */,
 				30B89492247FD57A00DFF944 /* AccommodationListMock.swift in Sources */,
 				30DE2A4C2488D57400867973 /* ErrorAlertController.swift in Sources */,
+				7859A10B2489ED890014E085 /* AccommodationAnnotation.swift in Sources */,
+				7859A1082489EC8C0014E085 /* MapViewController.swift in Sources */,
 				30C038AA247E578400E1A921 /* AccommodationUseCase.swift in Sources */,
 				30B89497247FDC4200DFF944 /* AccommodationListViewModel.swift in Sources */,
 				301B81332489F5CA009AFC1F /* ImageRequest.swift in Sources */,
 				78802ADD2473A7E200A901E2 /* FilterButton.swift in Sources */,
 				301FD85A247552F000F95C72 /* CircleView.swift in Sources */,
 				30D248DE247694C3002F64F2 /* CalendarHeaderView.swift in Sources */,
+				7859A1102489EE2E0014E085 /* AccommodationAnnotationView.swift in Sources */,
 				30B89495247FD7DA00DFF944 /* ViewModelBinding.swift in Sources */,
 				30DE2A502488E7C200867973 /* FilteringCondition.swift in Sources */,
 				30609554248A0A9600BF250E /* ImageLoader.swift in Sources */,
 				787257642475132A0050DB66 /* DateManager.swift in Sources */,
 				78262B4B247BDB88007AAEDA /* GuestViewController.swift in Sources */,
 				30A5C1682485412600D8D2D9 /* ExtendedSession.swift in Sources */,
+				306B3C58248A22FB00874B30 /* PriceRequest.swift in Sources */,
 				78802ADF2473ABD500A901E2 /* AccommodationSearchCollectionView.swift in Sources */,
 				30AEC503247FA1A300EB7413 /* AccommodationRequests.swift in Sources */,
 				30609556248A0AB200BF250E /* ImageCache.swift in Sources */,

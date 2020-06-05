@@ -14,8 +14,8 @@ enum EndPoints {
     static let listings = "listings"
     static let bookings = "bookings"
     static let map = "map"
-    static let priceGraph = "price-graph"
     static let bookmarks = "bookmarks"
+    static let priceGraph = "listings/price-graph"
 }
 
 enum QueryParameters: CustomStringConvertible {
@@ -27,7 +27,7 @@ enum QueryParameters: CustomStringConvertible {
     case offset
     case limit
     case query
-    
+
     var description: String{
         switch self {
         case .checkIn: return "checkIn"

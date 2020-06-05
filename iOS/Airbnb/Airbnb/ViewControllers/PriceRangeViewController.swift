@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class PriceRangeViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerView: PopupHeaderView!
+    @IBOutlet weak var rangeLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var graphView: PriceRangeGraphView!
     @IBOutlet weak var sliderView: UIView!
@@ -22,6 +24,7 @@ class PriceRangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        requestPriceDetail()
         configureView()
         configureGraph()
         configureSlider()
@@ -29,6 +32,17 @@ class PriceRangeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         slider.frame = CGRect(x: 0, y: 0, width: sliderView.bounds.width, height: sliderView.bounds.height)
+    }
+    
+    private func requestPriceDetail() {
+        let request = PriceDetailRequest().asURLRequest()
+        PriceUseCase(request: request, networkDispatcher: AF).perform(dataType: PriceDetail.self) { (priceDetail) in
+            DispatchQueue.main.async {
+                self.averageLabel.text = "일박 평균 가격은 \(Int(priceDetail.average))달러"
+                self.graphView.priceDistribution = priceDetail.priceDistribution
+                self.graphView.setNeedsDisplay()
+            }
+        }
     }
     
     private func configureView() {
@@ -47,6 +61,15 @@ class PriceRangeViewController: UIViewController {
     }
     
     @objc func sliderValueChanged() {
+        changeRangeLabel()
         graphView.setNeedsDisplay()
+    }
+    
+    private func changeRangeLabel() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let lowerPrice = numberFormatter.string(from: NSNumber(value: Int(slider.lowerValue * 1000)))!
+        let upperPrice = numberFormatter.string(from: NSNumber(value: Int(slider.upperValue * 1000)))!
+        rangeLabel.text = "$\(lowerPrice) - $\(upperPrice)"
     }
 }
