@@ -15,6 +15,7 @@ enum EndPoints {
     static let bookings = "bookings"
     static let map = "map"
     static let priceGraph = "price-graph"
+    static let bookmarks = "bookmarks"
 }
 
 enum QueryParameters: CustomStringConvertible {
