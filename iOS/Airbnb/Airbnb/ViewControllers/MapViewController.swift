@@ -16,10 +16,17 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureMapView()
+        registerMapAnnotationView()
     }
     
     private func configureMapView() {
         mapView.delegate = self
+    }
+    
+    private func registerMapAnnotationView() {
+        mapView.register(AccommodationAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(AccommodationAnnotation.self))
     }
 }
 
