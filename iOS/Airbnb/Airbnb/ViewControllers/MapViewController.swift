@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
         
         configureMapView()
         registerMapAnnotationView()
+        displayAnnotations()
     }
     
     private func configureMapView() {
@@ -27,6 +28,23 @@ class MapViewController: UIViewController {
     
     private func registerMapAnnotationView() {
         mapView.register(AccommodationAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(AccommodationAnnotation.self))
+    }
+    
+    private func displayAnnotations() {
+        let request = AccommodationRequests.list.request
+        AccommodationUseCase(request: request, networkDispatcher: AF).perform(dataType: [Accommodation].self) { accommodationList in
+            let accommodations = accommodationList as! [Accommodation]
+            let annotations = accommodations.map { AccommodationAnnotation(coordinate: CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude), price: $0.price) }
+            self.mapView.addAnnotations(annotations)
+            self.centerMapOnSanFrancisco()
+            self.mapView.setNeedsLayout()
+        }
+    }
+    
+    private func centerMapOnSanFrancisco() {
+        let center = CLLocationCoordinate2D(latitude: 37.76931, longitude: -122.43386)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        mapView.setRegion(MKCoordinateRegion(center: center, span: span), animated: true)
     }
 }
 
