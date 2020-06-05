@@ -17,4 +17,18 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    private func configureMapView() {
+        mapView.delegate = self
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? AccommodationAnnotation else { return nil }
+        
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: NSStringFromClass(AccommodationAnnotation.self), for: annotation)
+        return annotationView
+    }
 }
