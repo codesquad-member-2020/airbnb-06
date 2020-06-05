@@ -49,6 +49,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func showPriceRangeViewController(_ sender: FilterButton) {
         guard let priceRangeViewController = storyboard?.instantiateViewController(withIdentifier: "PriceRangeViewController") as? PriceRangeViewController else { return }
+        priceRangeViewController.delegate = self
         show(priceRangeViewController)
     }
     
@@ -172,7 +173,7 @@ extension SearchViewController: PassSelectedConditionDelegate {
     
     func price(minimum: String, maximum: String) {
         updateSearchViewModelPrice(minimum: minimum, maximum: maximum)
-        priceSelectionButton.configureTitle("\(minimum)원 ~ \(maximum)원")
+        priceSelectionButton.configureTitle("$\(minimum) ~ $\(maximum)")
         filteringDescriptionLabel.isHidden = true
     }
     
