@@ -20,10 +20,12 @@ class PriceRangeViewController: UIViewController {
     @IBOutlet weak var footerView: PopupFooterView!
     
     private let slider = PriceRangeSlider(frame: .zero)
-
+    var delegate: PassSelectedConditionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerNotification()
         requestPriceDetail()
         configureView()
         configureGraph()
@@ -43,6 +45,23 @@ class PriceRangeViewController: UIViewController {
                 self.graphView.setNeedsDisplay()
             }
         }
+    }
+    private func registerNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(close),
+                                               name: NotificationName.closeButtonDidTouch,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(completeSelection), name: .complete, object: nil)
+    }
+    
+    @objc private func completeSelection() {
+        dismiss(animated: true) {
+            self.delegate?.price(minimum: self.changeRangeLabel().minimum, maximum: self.changeRangeLabel().maximum)
+        }
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func configureView() {
@@ -65,11 +84,14 @@ class PriceRangeViewController: UIViewController {
         graphView.setNeedsDisplay()
     }
     
-    private func changeRangeLabel() {
+    private func changeRangeLabel() -> (minimum: String, maximum: String){
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         let lowerPrice = numberFormatter.string(from: NSNumber(value: Int(slider.lowerValue * 1000)))!
         let upperPrice = numberFormatter.string(from: NSNumber(value: Int(slider.upperValue * 1000)))!
         rangeLabel.text = "$\(lowerPrice) - $\(upperPrice)"
+        self.footerView.enableCompleteButton()
+        return (minimum: lowerPrice, maximum: upperPrice)
     }
 }
+
