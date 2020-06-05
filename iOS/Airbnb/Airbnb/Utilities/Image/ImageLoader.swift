@@ -39,7 +39,7 @@ extension ImageLoader: ImageLoadable {
 extension ImageLoader {
     func requestImage(urlString: String, completion: @escaping Handler) {
         let request = ImageRequest(path: urlString).asURLRequest()
-        ImageUseCase(request: request, networkDispatcher: AF).perform() {
+        NetworkUseCase(request: request, networkDispatcher: AF).perform() {
             completion(.success($0))
         }
     }
