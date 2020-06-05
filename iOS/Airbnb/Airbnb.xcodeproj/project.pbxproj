@@ -337,6 +337,7 @@
 		78725761247513100050DB66 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				30C0389E247E460C00E1A921 /* Network */,
 				787257622475131D0050DB66 /* Date */,
 			);
 			path = Utilities;
@@ -375,7 +376,6 @@
 			children = (
 				305B1B822482344E00836302 /* Delegates */,
 				30B89493247FD7C100DFF944 /* ViewModels */,
-				30C0389E247E460C00E1A921 /* Network */,
 				78802AD12473A3C300A901E2 /* Assets.xcassets */,
 				7872575D247511F30050DB66 /* DataSources */,
 				7872575F247512300050DB66 /* Entry */,
