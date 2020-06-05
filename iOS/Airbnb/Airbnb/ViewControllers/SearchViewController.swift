@@ -84,7 +84,7 @@ class SearchViewController: UIViewController {
     
     @objc private func requestAccommodationBookmark(_ notification: Notification) {
         guard let id = notification.userInfo?["id"] as? Int else { return }
-        let likeRequest = AccommodationRequests<LikedAccommodationListRequest>.liked.request
+        let likeRequest = AccommodationRequests<AccommodationLikedRequest>.liked.request
         likeRequest.append(id: id)
         let request = likeRequest.asURLRequest()
         AccommodationUseCase(request: request, networkDispatcher: AF).perform(id: id) { result in
