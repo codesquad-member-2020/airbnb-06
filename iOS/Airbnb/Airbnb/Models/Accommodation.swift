@@ -21,4 +21,5 @@ struct Accommodation: Codable {
     var isBookmarked: Bool
     var latitude: Double
     var longitude: Double
+    var price: Double
 }
