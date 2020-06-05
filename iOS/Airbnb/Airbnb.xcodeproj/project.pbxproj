@@ -35,6 +35,7 @@
 		7859A0EE2488D0260014E085 /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0ED2488D0260014E085 /* PriceRequest.swift */; };
 		7859A0F22488D83D0014E085 /* PriceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0F12488D83D0014E085 /* PriceUseCase.swift */; };
 		7859A0F42488DA370014E085 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A0F32488DA370014E085 /* Price.swift */; };
+		7859A1082489EC8C0014E085 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7859A1072489EC8C0014E085 /* MapViewController.swift */; };
 		7872575924750C520050DB66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872575824750C520050DB66 /* CalendarViewController.swift */; };
 		787257642475132A0050DB66 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787257632475132A0050DB66 /* DateManager.swift */; };
 		78725766247525270050DB66 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78725765247525270050DB66 /* CalendarCollectionViewCell.swift */; };
@@ -101,6 +102,7 @@
 		7859A0ED2488D0260014E085 /* PriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequest.swift; sourceTree = "<group>"; };
 		7859A0F12488D83D0014E085 /* PriceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUseCase.swift; sourceTree = "<group>"; };
 		7859A0F32488DA370014E085 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		7859A1072489EC8C0014E085 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		7872575824750C520050DB66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		787257632475132A0050DB66 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		78725765247525270050DB66 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				7872575824750C520050DB66 /* CalendarViewController.swift */,
 				78262B4A247BDB88007AAEDA /* GuestViewController.swift */,
 				78C40E1924851FF800FA98FD /* PriceRangeViewController.swift */,
+				7859A1072489EC8C0014E085 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				78802ACB2473A3C200A901E2 /* SceneDelegate.swift in Sources */,
 				30B2E928247401EB002FB866 /* SearchTextField.swift in Sources */,
 				30B89492247FD57A00DFF944 /* AccommodationListMock.swift in Sources */,
+				7859A1082489EC8C0014E085 /* MapViewController.swift in Sources */,
 				30C038AA247E578400E1A921 /* AccommodationUseCase.swift in Sources */,
 				30B89497247FDC4200DFF944 /* AccommodationListViewModel.swift in Sources */,
 				78802ADD2473A7E200A901E2 /* FilterButton.swift in Sources */,
