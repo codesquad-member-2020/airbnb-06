@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var priceSelectionButton: FilterButton!
     @IBOutlet weak var filteringDescriptionLabel: SearchTextField!
     @IBOutlet weak var accommodationSearchCollectionView: AccommodationSearchCollectionView!
-    @IBOutlet weak var floatingButton: Floaty!
+    @IBOutlet weak var mapButton: UIButton!
     
     private var accommodationListViewModel: AccommodationListViewModel!
     private var accommodationSearchDataSource: AccommodationSearchCollectionViewDataSource!
@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
         searchViewModel = SearchViewModel(filteringCondition: FilteringCondition(), handler: { filteringCondition in
             self.makeFilteringRequest(filteringCondition)
         })
+        configureMapButton()
     }
     
     @IBAction func showCalendarViewController(_ sender: Any) {
@@ -152,6 +153,11 @@ class SearchViewController: UIViewController {
         }
         
         self.filteringAccommodation(listRequest: listRequest)
+    }
+    
+    private func configureMapButton() {
+        mapButton.layer.cornerRadius = mapButton.bounds.height / 2
+        mapButton.layer.masksToBounds = true
     }
 }
 
