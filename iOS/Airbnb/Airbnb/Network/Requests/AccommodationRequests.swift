@@ -13,12 +13,14 @@ enum AccommodationRequests<T> {
     case detail
     case list
     case liked
+    case likedList
     
     var request: T {
         switch self {
         case .detail: return AccommodationRequest() as! T
         case .list: return AccommodationListRequest() as! T
-        case .liked: return LikedAccommodationListRequest() as! T
+        case .liked: return AccommodationLikedRequest() as! T
+        case .likedList: return AccommodationLikedListRequest() as! T
         }
     }
 }
@@ -62,9 +64,17 @@ final class AccommodationListRequest: AccommodationRequest, Queryable {
     }
 }
 
-final class LikedAccommodationListRequest: AccommodationRequest {
+final class AccommodationLikedRequest: AccommodationRequest {
     override var method: HTTPMethod {
         get { return .PATCH }
         set { super.method = newValue }
     }
 }
+
+final class AccommodationLikedListRequest: AccommodationRequest {
+    override var path: String {
+        get { return EndPoints.defaultURL + EndPoints.listings + "/" + EndPoints.bookmarks }
+        set { super.path = newValue }
+    }
+}
+
