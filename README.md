@@ -50,7 +50,4 @@ ex) [BE] 카드 추가 (라벨 BE, 프로젝트 추가)
 
 ## Wiki Contents
 
-- [API Document]()
-- [Daily Scrum]()
-- [BE Feature Requirements]()
-- [iOS Feature Requirements]()
+- [API Document](https://docs.google.com/spreadsheets/d/1-B_6fueLGhgTaa7JLzuS2FNO9OH1BwfgdoFh2ViFzmw/edit#gid=0)
